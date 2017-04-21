@@ -14,26 +14,17 @@
  * limitations under the License.
  */
 
-apply from: 'dependencies.gradle'
-
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven { url 'https://maven.fabric.io/public' }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-    }
-}
-
 allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.fabric.io/public' }
-    }
-}
+    ext {
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+        daggerVersion = '2.10'
+
+        dependencies = [
+                support       : "com.android.support:appcompat-v7:25.3.1",
+                gson          : "com.google.code.gson:gson:2.8.0",
+                dagger        : "com.google.dagger:dagger:${daggerVersion}",
+                daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
+                autoValue     : "com.google.auto.value:auto-value:1.4.1"
+        ]
+    }
 }
