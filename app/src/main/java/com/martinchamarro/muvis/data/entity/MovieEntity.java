@@ -31,7 +31,7 @@ public class MovieEntity {
     @SerializedName("adult") private boolean forAdults;
     @SerializedName("popularity") private float popularity;
     @SerializedName("vote_count") private int votesCount;
-    @SerializedName("vote_average") private float voteAverage;
+    @SerializedName("vote_average") private float votesAverage;
     @SerializedName("poster_path") private String posterPath;
     @SerializedName("backdrop_path") private String backdropPath;
 
@@ -108,11 +108,11 @@ public class MovieEntity {
     }
 
     public float getVotesAverage() {
-        return voteAverage;
+        return votesAverage;
     }
 
-    public void setVotesAverage(float voteAverage) {
-        this.voteAverage = voteAverage;
+    public void setVotesAverage(float votesAverage) {
+        this.votesAverage = votesAverage;
     }
 
     public String getPosterPath() {
@@ -150,10 +150,10 @@ public class MovieEntity {
         sb.append(", originalLanguage='").append(originalLanguage).append('\'');
         sb.append(", overview='").append(overview).append('\'');
         sb.append(", releaseDate='").append(releaseDate).append('\'');
-        sb.append(", forAdults=").append(forAdults);
+        sb.append(", isForAdults=").append(forAdults);
         sb.append(", popularity=").append(popularity);
         sb.append(", votesCount=").append(votesCount);
-        sb.append(", voteAverage=").append(voteAverage);
+        sb.append(", votesAverage=").append(votesAverage);
         sb.append(", posterPath='").append(posterPath).append('\'');
         sb.append(", backdropPath='").append(backdropPath).append('\'');
         sb.append('}');
