@@ -1,0 +1,29 @@
+# Folders
+.idea/
+.gradle
+.sonar/
+bin/
+build/
+gen/
+gradle/
+
+# Files
+.class
+.classpath
+.DS_Store
+.externalNativeBuild
+.gradletasknamecache
+.settings
+ant.properties
+com_crashlytics_export_strings.xml
+gradle.properties
+gradlew
+lint.xml
+local.properties
+previews.xml
+crashlytics-build.properties
+*.apk
+*.dex
+*.iml
+*.jks
+*.keystore
