@@ -14,29 +14,18 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.presentation.navigation;
 
 import android.app.Activity;
 
-import com.martinchamarro.muvis.presentation.navigation.Navigator;
+import javax.inject.Inject;
 
-import dagger.Module;
-import dagger.Provides;
-
-@Module public class ActivityModule {
+public class Navigator {
 
     private Activity activity;
 
-    public ActivityModule(Activity activity) {
+    @Inject public Navigator(Activity activity) {
         this.activity = activity;
-    }
-
-    @Provides @PerActivity Activity provideActivity() {
-        return activity;
-    }
-
-    @Provides @PerActivity public Navigator provideNavigator(Activity activity) {
-        return new Navigator(activity);
     }
 
 }

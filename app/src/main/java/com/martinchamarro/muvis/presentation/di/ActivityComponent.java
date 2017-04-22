@@ -17,6 +17,8 @@
 package com.martinchamarro.muvis.presentation.di;
 
 
+import android.app.Activity;
+
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
 import com.martinchamarro.muvis.presentation.views.splash.SplashActivity;
 
@@ -28,5 +30,9 @@ import dagger.Component;
     modules = { ActivityModule.class, PresenterModule.class }
 )
 public interface ActivityComponent {
+
     void inject(SplashActivity activity);
+
+    Activity activity();
+
 }
