@@ -23,6 +23,7 @@ import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
 import com.martinchamarro.muvis.presentation.di.ActivityComponent;
 import com.martinchamarro.muvis.presentation.di.ActivityModule;
 import com.martinchamarro.muvis.presentation.di.DaggerActivityComponent;
+import com.martinchamarro.muvis.presentation.di.PresenterModule;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class BaseActivity extends AppCompatActivity {
             activityComponent = DaggerActivityComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .activityModule(new ActivityModule(this))
+                .presenterModule(new PresenterModule())
                 .build();
         }
         return activityComponent;

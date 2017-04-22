@@ -14,19 +14,32 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.presentation.views.splash;
+
+import com.martinchamarro.muvis.presentation.base.Presenter;
+
+import javax.inject.Inject;
 
 
-import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
-import com.martinchamarro.muvis.presentation.views.splash.SplashActivity;
+public class SplashPresenter implements Presenter {
 
-import dagger.Component;
+    @Inject public SplashPresenter() {
+        // Empty
+    }
 
-@PerActivity
-@Component(
-    dependencies = { ApplicationComponent.class },
-    modules = { ActivityModule.class, PresenterModule.class }
-)
-public interface ActivityComponent {
-    void inject(SplashActivity activity);
+    @Override public void initialize() {
+        // Empty
+    }
+
+    @Override public void onResume() {
+        // Empty
+    }
+
+    @Override public void onPause() {
+        // Empty
+    }
+
+    @Override public void onDestroy() {
+        // Empty
+    }
 }

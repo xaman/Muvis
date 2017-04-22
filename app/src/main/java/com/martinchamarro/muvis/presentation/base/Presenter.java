@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2013 Square, Inc.
+ * Copyright 2017 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.presentation.base;
 
-import java.lang.annotation.Retention;
-
-import javax.inject.Scope;
-
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-/**
- * A scoping annotation to permit objects whose lifetime should
- * conform to the life of the activity to be memoized in the
- * correct component.
- */
-@Scope
-@Retention(RUNTIME)
-public @interface PerActivity {}
+public interface Presenter {
+    void initialize();
+    void onResume();
+    void onPause();
+    void onDestroy();
+}

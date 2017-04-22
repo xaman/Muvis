@@ -17,19 +17,42 @@
 package com.martinchamarro.muvis.presentation.views.splash;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 
 import com.martinchamarro.muvis.presentation.base.BaseActivity;
 
+import javax.inject.Inject;
+
 public class SplashActivity extends BaseActivity {
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    @Inject protected SplashPresenter presenter;
+
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         injectDependencies();
+        initializePresenter();
     }
 
     private void injectDependencies() {
         getActivityComponent().inject(this);
+    }
+
+    private void initializePresenter() {
+        presenter.initialize();
+    }
+
+    @Override protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override protected void onPause() {
+        presenter.onPause();
+        super.onPause();
+    }
+
+    @Override protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 }
