@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.splash;
+package com.martinchamarro.muvis.presentation.di;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 
-import com.martinchamarro.muvis.presentation.base.BaseActivity;
+import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
+import com.martinchamarro.muvis.presentation.views.splash.SplashActivity;
 
-public class SplashActivity extends BaseActivity {
+import dagger.Component;
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        injectDependencies();
-    }
-
-    private void injectDependencies() {
-        getActivityComponent().inject(this);
-    }
+@PerActivity
+@Component(
+    dependencies = { ApplicationComponent.class },
+    modules = { ActivityModule.class }
+)
+public interface ActivityComponent {
+    void inject(SplashActivity activity);
 }

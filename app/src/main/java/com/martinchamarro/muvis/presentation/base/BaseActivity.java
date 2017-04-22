@@ -18,5 +18,28 @@ package com.martinchamarro.muvis.presentation.base;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.martinchamarro.muvis.AndroidApplication;
+import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
+import com.martinchamarro.muvis.presentation.di.ActivityComponent;
+import com.martinchamarro.muvis.presentation.di.ActivityModule;
+import com.martinchamarro.muvis.presentation.di.DaggerActivityComponent;
+
 public class BaseActivity extends AppCompatActivity {
+
+    private ActivityComponent activityComponent;
+
+    public ActivityComponent getActivityComponent() {
+        if (activityComponent == null) {
+            activityComponent = DaggerActivityComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(new ActivityModule(this))
+                .build();
+        }
+        return activityComponent;
+    }
+
+    private ApplicationComponent getApplicationComponent() {
+        return ((AndroidApplication) getApplication()).getApplicationComponent();
+    }
+
 }
