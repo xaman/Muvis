@@ -34,7 +34,7 @@ public class AndroidApplication extends Application {
         getApplicationComponent().inject(this);
     }
 
-    private ApplicationComponent getApplicationComponent() {
+    public ApplicationComponent getApplicationComponent() {
         if (component == null) component = DaggerApplicationComponent.create();
         return component;
     }
