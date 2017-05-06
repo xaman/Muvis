@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="strawberry">#F44336</color>
+    <color name="watermelon">#D03D32</color>
+    <color name="yellow_munsell">#EFCA08</color>
+    <color name="charcoal">#363537</color>
+    <color name="concrete">#666666</color>
+    <color name="ash">#9A9A9A</color>
+    <color name="silver">#E5E5E5</color>
+    <color name="lime">#F3F4F0</color>
+
+    <color name="colorPrimary">@color/strawberry</color>
+    <color name="colorPrimaryDark">@color/watermelon</color>
+    <color name="colorAccent">@color/yellow_munsell</color>
+
 </resources>
