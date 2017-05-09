@@ -33,6 +33,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -44,9 +48,12 @@ dependencies {
     provided rootProject.ext.dependencies.autoValue
     annotationProcessor rootProject.ext.dependencies.autoValue
     compile rootProject.ext.dependencies.butterKnife
+    compile rootProject.ext.dependencies.retrolambda
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'me.tatarka.retrolambda'

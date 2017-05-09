@@ -25,7 +25,8 @@ allprojects {
                 dagger        : "com.google.dagger:dagger:${daggerVersion}",
                 daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
                 autoValue     : "com.google.auto.value:auto-value:1.4.1",
-                butterKnife   : "com.jakewharton:butterknife:8.5.1"
+                butterKnife   : "com.jakewharton:butterknife:8.5.1",
+                retrolambda   : "me.tatarka:gradle-retrolambda:3.6.1"
         ]
     }
 }
