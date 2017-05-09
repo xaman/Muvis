@@ -16,19 +16,39 @@
 
 package com.martinchamarro.muvis.presentation.views.splash;
 
+import com.martinchamarro.muvis.globalutils.threads.Delay;
 import com.martinchamarro.muvis.presentation.base.Presenter;
+import com.martinchamarro.muvis.presentation.navigation.Navigator;
 
 import javax.inject.Inject;
 
 
 public class SplashPresenter implements Presenter {
 
-    @Inject public SplashPresenter() {
-        // Empty
+    private static final int SPLASH_DELAY = 1500;
+
+    private Navigator navigator;
+    private View view;
+
+    @Inject public SplashPresenter(Navigator navigator) {
+        this.navigator = navigator;
+    }
+
+    public void setView(View view) {
+        this.view = view;
     }
 
     @Override public void initialize() {
-        // Empty
+        navigateToHomeWithDelay();
+    }
+
+    private void navigateToHomeWithDelay() {
+        new Delay(SPLASH_DELAY, this::navigateToHome).start();
+    }
+
+    private void navigateToHome() {
+        navigator.navigateToHome();
+        view.finish();
     }
 
     @Override public void onResume() {
@@ -40,6 +60,10 @@ public class SplashPresenter implements Presenter {
     }
 
     @Override public void onDestroy() {
-        // Empty
+        this.view = null;
+    }
+
+    public interface View {
+        void finish();
     }
 }

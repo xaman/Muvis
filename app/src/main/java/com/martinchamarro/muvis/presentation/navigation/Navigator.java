@@ -18,6 +18,8 @@ package com.martinchamarro.muvis.presentation.navigation;
 
 import android.app.Activity;
 
+import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
+
 import javax.inject.Inject;
 
 public class Navigator {
@@ -26,6 +28,10 @@ public class Navigator {
 
     @Inject public Navigator(Activity activity) {
         this.activity = activity;
+    }
+
+    public void navigateToHome() {
+        HomeActivity.start(activity);
     }
 
 }

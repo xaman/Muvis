@@ -14,18 +14,28 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.globalutils.threads;
 
-import com.martinchamarro.muvis.presentation.navigation.Navigator;
-import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter;
+public class Delay {
 
-import dagger.Module;
-import dagger.Provides;
+    private long millis;
+    private Callback callback;
 
-@Module public class PresenterModule {
-
-    @Provides SplashPresenter provideSplashPresenter(Navigator navigator) {
-        return new SplashPresenter(navigator);
+    public Delay(long millis, Callback callback) {
+        this.millis = millis;
+        this.callback = callback;
     }
 
+    public void start() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(millis);
+            } catch (InterruptedException e) {}
+            if (callback != null) callback.onDelayFinish();
+        }).start();
+    }
+
+    public interface Callback {
+        void onDelayFinish();
+    }
 }

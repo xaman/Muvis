@@ -29,7 +29,7 @@ import javax.inject.Inject;
 
 import static android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements SplashPresenter.View {
 
     @Inject protected SplashPresenter presenter;
 
@@ -59,6 +59,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void initializePresenter() {
+        presenter.setView(this);
         presenter.initialize();
     }
 
@@ -75,5 +76,9 @@ public class SplashActivity extends BaseActivity {
     @Override protected void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
+    }
+
+    @Override public void finish() {
+        super.finish();
     }
 }

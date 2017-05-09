@@ -14,18 +14,23 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.presentation.views.home;
 
-import com.martinchamarro.muvis.presentation.navigation.Navigator;
-import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
-import dagger.Module;
-import dagger.Provides;
+import com.martinchamarro.muvis.presentation.base.BaseActivity;
 
-@Module public class PresenterModule {
 
-    @Provides SplashPresenter provideSplashPresenter(Navigator navigator) {
-        return new SplashPresenter(navigator);
+public class HomeActivity extends BaseActivity {
+
+    public static void start(Context context) {
+        context.startActivity(new Intent(context, HomeActivity.class));
     }
 
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
