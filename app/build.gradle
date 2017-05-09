@@ -43,6 +43,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies.daggerCompiler
     provided rootProject.ext.dependencies.autoValue
     annotationProcessor rootProject.ext.dependencies.autoValue
+    compile rootProject.ext.dependencies.butterKnife
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
