@@ -16,6 +16,8 @@
 
 package com.martinchamarro.muvis.presentation.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.martinchamarro.muvis.AndroidApplication;
@@ -25,9 +27,16 @@ import com.martinchamarro.muvis.presentation.di.ActivityModule;
 import com.martinchamarro.muvis.presentation.di.DaggerActivityComponent;
 import com.martinchamarro.muvis.presentation.di.PresenterModule;
 
+import butterknife.ButterKnife;
+
 public class BaseActivity extends AppCompatActivity {
 
     private ActivityComponent activityComponent;
+
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        injectViews();
+    }
 
     public ActivityComponent getActivityComponent() {
         if (activityComponent == null) {
@@ -42,6 +51,17 @@ public class BaseActivity extends AppCompatActivity {
 
     private ApplicationComponent getApplicationComponent() {
         return ((AndroidApplication) getApplication()).getApplicationComponent();
+    }
+
+    private void injectViews() {
+        int layoutRes = getLayoutResource();
+        if (layoutRes == 0) return;
+        setContentView(layoutRes);
+        ButterKnife.bind(this);
+    }
+
+    protected int getLayoutResource() {
+        return 0;
     }
 
 }
