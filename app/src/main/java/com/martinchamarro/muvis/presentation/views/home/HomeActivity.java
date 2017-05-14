@@ -27,6 +27,7 @@ import android.view.MenuItem;
 
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.presentation.base.BaseActivity;
+import com.martinchamarro.muvis.presentation.views.utils.MenuVisibilityChanger;
 
 import butterknife.BindView;
 import butterknife.OnPageChange;
@@ -37,6 +38,7 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.toolbar) protected Toolbar toolbar;
     @BindView(R.id.pager) protected ViewPager pager;
     @BindView(R.id.bottom_navigation) protected BottomNavigationView bottomNavigation;
+    private MenuVisibilityChanger menuVisibility;
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, HomeActivity.class));
@@ -45,6 +47,7 @@ public class HomeActivity extends BaseActivity {
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
+        configureToolbar();
         configurePager();
         configureNavigation();
     }
@@ -57,8 +60,10 @@ public class HomeActivity extends BaseActivity {
         getActivityComponent().inject(this);
     }
 
-    public Toolbar getToolbar() {
-        return toolbar;
+    private void configureToolbar() {
+        toolbar.inflateMenu(R.menu.home_menu);
+        toolbar.setOnMenuItemClickListener(this::onToolbarMenuItemClick);
+        menuVisibility = new MenuVisibilityChanger(toolbar.getMenu());
     }
 
     private void configurePager() {
@@ -67,6 +72,7 @@ public class HomeActivity extends BaseActivity {
 
     @OnPageChange(R.id.pager) protected void onPageChange(int position) {
         bottomNavigation.getMenu().getItem(position).setChecked(true);
+        menuVisibility.setVisible(position == 0);
     }
 
     private void configureNavigation() {
@@ -74,11 +80,13 @@ public class HomeActivity extends BaseActivity {
     }
 
     private boolean onNavigationItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.action_films) {
-            pager.setCurrentItem(0);
-        } else {
-            pager.setCurrentItem(1);
-        }
+        int itemId = item.getItemId();
+        pager.setCurrentItem(itemId == R.id.action_films ? 0 : 1);
+        menuVisibility.setVisible(itemId == R.id.action_films);
+        return true;
+    }
+
+    private boolean onToolbarMenuItemClick(MenuItem item) {
         return true;
     }
 }

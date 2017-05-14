@@ -19,14 +19,12 @@ package com.martinchamarro.muvis.presentation.views.films;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.presentation.base.BaseFragment;
-import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,12 +50,6 @@ public class FilmsFragment extends BaseFragment {
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = View.inflate(activity, R.layout.fragment_films, null);
         ButterKnife.bind(this, layout);
-        configureToolbar();
         return layout;
-    }
-
-    private void configureToolbar() {
-        Toolbar toolbar = ((HomeActivity) activity).getToolbar();
-        toolbar.inflateMenu(R.menu.films_menu);
     }
 }
