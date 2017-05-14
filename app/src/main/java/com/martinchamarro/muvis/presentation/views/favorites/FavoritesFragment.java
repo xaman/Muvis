@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.films;
+package com.martinchamarro.muvis.presentation.views.favorites;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -32,12 +33,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class FilmsFragment extends BaseFragment {
+public class FavoritesFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view) protected RecyclerView recyclerView;
 
-    public static FilmsFragment getInstance() {
-        return new FilmsFragment();
+    public static FavoritesFragment getInstance() {
+        return new FavoritesFragment();
     }
 
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class FilmsFragment extends BaseFragment {
     }
 
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = View.inflate(activity, R.layout.fragment_films, null);
+        View layout = View.inflate(activity, R.layout.fragment_favorites, null);
         ButterKnife.bind(this, layout);
         configureToolbar();
         return layout;
@@ -58,6 +59,7 @@ public class FilmsFragment extends BaseFragment {
 
     private void configureToolbar() {
         Toolbar toolbar = ((HomeActivity) activity).getToolbar();
-        toolbar.inflateMenu(R.menu.films_menu);
+        Menu menu = toolbar.getMenu();
+        if (menu != null) menu.clear();
     }
 }
