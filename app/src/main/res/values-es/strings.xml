@@ -18,11 +18,11 @@
     <string name="app_name">Muvis</string>
 
     <!-- Home -->
-    <string name="navigation_films">Films</string>
-    <string name="navigation_favorites">Favorite</string>
+    <string name="navigation_films">Películas</string>
+    <string name="navigation_favorites">Favoritas</string>
 
     <!-- Actions -->
-    <string name="action_search">Search</string>
-    <string name="action_filter">Filter</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_filter">Filtrar</string>
 
 </resources>
