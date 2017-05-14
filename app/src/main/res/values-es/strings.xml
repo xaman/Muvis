@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright 2017 Martin Chamarro (@martinchamarro)
   ~
@@ -24,5 +25,10 @@
     <!-- Actions -->
     <string name="action_search">Buscar</string>
     <string name="action_filter">Filtrar</string>
+
+    <!-- Empty -->
+    <string name="empty_films_explanation">Nada por aquí</string>
+    <string name="empty_favorite_explanation">¿Cuál es tu peli favorita?</string>
+    <string name="empty_search_explanation">¡A ver qué te encuentras!</string>
 
 </resources>

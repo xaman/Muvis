@@ -14,20 +14,12 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+
 <resources>
-    <string name="app_name">Muvis</string>
 
-    <!-- Home -->
-    <string name="navigation_films">Films</string>
-    <string name="navigation_favorites">Favorite</string>
-
-    <!-- Actions -->
-    <string name="action_search">Search</string>
-    <string name="action_filter">Filter</string>
-
-    <!-- Empty -->
-    <string name="empty_films_explanation">Nothing here</string>
-    <string name="empty_favorite_explanation">What is your favorite movie?</string>
-    <string name="empty_search_explanation">Let\'s see what you find!</string>
+    <declare-styleable name="EmptyView">
+        <attr name="ev_icon" format="reference"/>
+        <attr name="ev_text" format="string"/>
+    </declare-styleable>
 
 </resources>
