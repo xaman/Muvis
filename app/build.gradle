@@ -42,12 +42,14 @@ android {
 dependencies {
 
     compile rootProject.ext.dependencies.support
+    compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.gson
     compile rootProject.ext.dependencies.dagger
     annotationProcessor rootProject.ext.dependencies.daggerCompiler
     provided rootProject.ext.dependencies.autoValue
     annotationProcessor rootProject.ext.dependencies.autoValue
     compile rootProject.ext.dependencies.butterKnife
+    annotationProcessor rootProject.ext.dependencies.butterKnifeCompiler
     compile rootProject.ext.dependencies.retrolambda
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

@@ -20,6 +20,7 @@ package com.martinchamarro.muvis.presentation.di;
 import android.app.Activity;
 
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
+import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
 import com.martinchamarro.muvis.presentation.views.splash.SplashActivity;
 
 import dagger.Component;
@@ -32,6 +33,7 @@ import dagger.Component;
 public interface ActivityComponent {
 
     void inject(SplashActivity activity);
+    void inject(HomeActivity activity);
 
     Activity activity();
 

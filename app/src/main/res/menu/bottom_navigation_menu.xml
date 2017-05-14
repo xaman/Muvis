@@ -14,8 +14,16 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
-    <string name="app_name">Muvis</string>
-    <string name="navigation_films">Películas</string>
-    <string name="navigation_favorites">Favoritas</string>
-</resources>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_films"
+        android:enabled="true"
+        android:icon="@drawable/ic_films"
+        android:title="@string/navigation_films"/>
+    <item
+        android:id="@+id/action_favorites"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/navigation_favorites"/>
+</menu>
