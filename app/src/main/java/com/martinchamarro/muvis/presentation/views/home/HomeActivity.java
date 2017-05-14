@@ -23,11 +23,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.presentation.base.BaseActivity;
 
 import butterknife.BindView;
+import butterknife.OnPageChange;
 
 
 public class HomeActivity extends BaseActivity {
@@ -43,6 +45,8 @@ public class HomeActivity extends BaseActivity {
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
+        configurePager();
+        configureNavigation();
     }
 
     @Override protected int getLayoutResource() {
@@ -55,5 +59,26 @@ public class HomeActivity extends BaseActivity {
 
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    private void configurePager() {
+        pager.setAdapter(new HomePagerAdapter(getSupportFragmentManager()));
+    }
+
+    @OnPageChange(R.id.pager) protected void onPageChange(int position) {
+        bottomNavigation.getMenu().getItem(position).setChecked(true);
+    }
+
+    private void configureNavigation() {
+        bottomNavigation.setOnNavigationItemSelectedListener(this::onNavigationItemClick);
+    }
+
+    private boolean onNavigationItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.action_films) {
+            pager.setCurrentItem(0);
+        } else {
+            pager.setCurrentItem(1);
+        }
+        return true;
     }
 }
