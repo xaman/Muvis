@@ -14,20 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.globalutils.di;
+package com.martinchamarro.muvis.domain.di;
 
-import com.martinchamarro.muvis.AndroidApplication;
-import com.martinchamarro.muvis.data.di.DataModule;
-import com.martinchamarro.muvis.domain.di.DomainModule;
+import dagger.Module;
 
-import javax.inject.Singleton;
+@Module public class InteractorModule {
 
-import dagger.Component;
-
-@Singleton
-@Component(
-    modules = { ApplicationModule.class, DataModule.class, DomainModule.class }
-)
-public interface ApplicationComponent {
-    void inject(AndroidApplication application);
 }

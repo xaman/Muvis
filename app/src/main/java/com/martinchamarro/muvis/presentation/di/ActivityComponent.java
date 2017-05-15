@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.presentation.di;
 
 import android.app.Activity;
 
+import com.martinchamarro.muvis.domain.di.InteractorModule;
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment;
 import com.martinchamarro.muvis.presentation.views.movies.MoviesFragment;
@@ -30,7 +31,7 @@ import dagger.Component;
 @PerActivity
 @Component(
     dependencies = { ApplicationComponent.class },
-    modules = { ActivityModule.class, PresenterModule.class }
+    modules = { ActivityModule.class, PresenterModule.class, InteractorModule.class }
 )
 public interface ActivityComponent {
 

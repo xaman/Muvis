@@ -14,20 +14,26 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.globalutils.di;
+package com.martinchamarro.muvis.domain.di;
 
-import com.martinchamarro.muvis.AndroidApplication;
-import com.martinchamarro.muvis.data.di.DataModule;
-import com.martinchamarro.muvis.domain.di.DomainModule;
+import com.martinchamarro.muvis.domain.executor.Executor;
+import com.martinchamarro.muvis.domain.executor.InteractorExecutor;
+import com.martinchamarro.muvis.domain.executor.MainThread;
+import com.martinchamarro.muvis.domain.executor.MainThreadImpl;
 
 import javax.inject.Singleton;
 
-import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
-@Singleton
-@Component(
-    modules = { ApplicationModule.class, DataModule.class, DomainModule.class }
-)
-public interface ApplicationComponent {
-    void inject(AndroidApplication application);
+@Module public class DomainModule {
+
+    @Provides @Singleton static Executor provideExecutor(InteractorExecutor interactorExecutor) {
+        return interactorExecutor;
+    }
+
+    @Provides @Singleton static MainThread provideMainThread(MainThreadImpl mainThreadImpl) {
+        return mainThreadImpl;
+    }
+
 }
