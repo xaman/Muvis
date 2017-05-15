@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.di;
+package com.martinchamarro.muvis.domain.interactor.movies;
 
-import com.martinchamarro.muvis.domain.interactor.movies.GetFeatured;
-import com.martinchamarro.muvis.domain.interactor.movies.GetFeaturedInteractor;
+import com.martinchamarro.muvis.domain.interactor.ErrorCallback;
+import com.martinchamarro.muvis.domain.interactor.SuccessCallback;
+import com.martinchamarro.muvis.domain.model.Movie;
 
-import dagger.Module;
-import dagger.Provides;
+import java.util.List;
 
-@Module public class InteractorModule {
-
-    @Provides static GetFeatured provideGetFeatured(GetFeaturedInteractor interactor) {
-        return interactor;
-    }
-
+public interface GetFeatured {
+    void execute(SuccessCallback<List<Movie>> successCallback, ErrorCallback errorCallback);
 }
