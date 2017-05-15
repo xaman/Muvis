@@ -30,7 +30,7 @@
     <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:ev_icon="@drawable/ic_empty_films"
-        app:ev_text="@string/empty_films_explanation"/>
+        app:ev_icon="@drawable/ic_empty_movies"
+        app:ev_text="@string/empty_movies_explanation"/>
 
 </RelativeLayout>

@@ -19,7 +19,7 @@
     <string name="app_name">Muvis</string>
 
     <!-- Home -->
-    <string name="navigation_films">Películas</string>
+    <string name="navigation_movies">Películas</string>
     <string name="navigation_favorites">Favoritas</string>
 
     <!-- Actions -->
@@ -27,7 +27,7 @@
     <string name="action_filter">Filtrar</string>
 
     <!-- Empty -->
-    <string name="empty_films_explanation">Nada por aquí</string>
+    <string name="empty_movies_explanation">Nada por aquí</string>
     <string name="empty_favorite_explanation">¿Cuál es tu peli favorita?</string>
     <string name="empty_search_explanation">¡A ver qué te encuentras!</string>
 

@@ -17,10 +17,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_films"
+        android:id="@+id/action_movies"
         android:enabled="true"
-        android:icon="@drawable/ic_films"
-        android:title="@string/navigation_films"/>
+        android:icon="@drawable/ic_movies"
+        android:title="@string/navigation_movies"/>
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"

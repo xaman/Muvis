@@ -81,8 +81,8 @@ public class HomeActivity extends BaseActivity {
 
     private boolean onNavigationItemClick(MenuItem item) {
         int itemId = item.getItemId();
-        pager.setCurrentItem(itemId == R.id.action_films ? 0 : 1);
-        menuVisibility.setVisible(itemId == R.id.action_films);
+        pager.setCurrentItem(itemId == R.id.action_movies ? 0 : 1);
+        menuVisibility.setVisible(itemId == R.id.action_movies);
         return true;
     }
 

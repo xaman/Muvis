@@ -18,7 +18,7 @@
     <string name="app_name">Muvis</string>
 
     <!-- Home -->
-    <string name="navigation_films">Films</string>
+    <string name="navigation_movies">Movies</string>
     <string name="navigation_favorites">Favorite</string>
 
     <!-- Actions -->
@@ -26,7 +26,7 @@
     <string name="action_filter">Filter</string>
 
     <!-- Empty -->
-    <string name="empty_films_explanation">Nothing here</string>
+    <string name="empty_movies_explanation">Nothing here</string>
     <string name="empty_favorite_explanation">What is your favorite movie?</string>
     <string name="empty_search_explanation">Let\'s see what you find!</string>
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.films;
+package com.martinchamarro.muvis.presentation.views.movies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,12 +30,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class FilmsFragment extends BaseFragment {
+public class MoviesFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view) protected RecyclerView recyclerView;
 
-    public static FilmsFragment getInstance() {
-        return new FilmsFragment();
+    public static MoviesFragment getInstance() {
+        return new MoviesFragment();
     }
 
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class FilmsFragment extends BaseFragment {
     }
 
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = View.inflate(activity, R.layout.fragment_films, null);
+        View layout = View.inflate(activity, R.layout.fragment_movies, null);
         ButterKnife.bind(this, layout);
         return layout;
     }

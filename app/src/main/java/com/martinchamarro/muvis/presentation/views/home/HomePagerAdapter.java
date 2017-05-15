@@ -21,13 +21,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment;
-import com.martinchamarro.muvis.presentation.views.films.FilmsFragment;
+import com.martinchamarro.muvis.presentation.views.movies.MoviesFragment;
 
 
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
     private static final int NUM_PAGES = 2;
-    private static final int FILMS_POS = 0;
+    private static final int MOVIES_POS = 0;
     private static final int FAVORITES_POS = 1;
 
     public HomePagerAdapter(FragmentManager fm) {
@@ -36,8 +36,8 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     @Override public Fragment getItem(int position) {
         Fragment fragment = null;
-        if (position == FILMS_POS) {
-            fragment = FilmsFragment.getInstance();
+        if (position == MOVIES_POS) {
+            fragment = MoviesFragment.getInstance();
         } else if (position == FAVORITES_POS) {
             fragment = FavoritesFragment.getInstance();
         }
