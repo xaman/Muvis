@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.globalutils.di;
+package com.martinchamarro.muvis.data.di;
 
-import com.martinchamarro.muvis.AndroidApplication;
-import com.martinchamarro.muvis.data.di.DataModule;
+import com.martinchamarro.muvis.data.repository.MoviesRepositoryImpl;
+import com.martinchamarro.muvis.domain.repository.MoviesRepository;
 
-import javax.inject.Singleton;
+import dagger.Module;
+import dagger.Provides;
 
-import dagger.Component;
+@Module public class DataModule {
 
-@Singleton
-@Component(
-    modules = { ApplicationModule.class, DataModule.class }
-)
-public interface ApplicationComponent {
-    void inject(AndroidApplication application);
+    @Provides static MoviesRepository provideMoviesRepository(MoviesRepositoryImpl repository) {
+        return repository;
+    }
+
 }
