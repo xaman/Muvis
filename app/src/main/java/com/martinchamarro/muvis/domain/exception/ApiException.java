@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis;
+package com.martinchamarro.muvis.domain.exception;
 
-public class Config {
+public class ApiException extends RepositoryException {
 
-    public static boolean DEBUG = BuildConfig.DEBUG_MODE;
-    public static final String APP_NAME = "Muvis";
-    public static final String DOMAIN = "https://api.themoviedb.org/3";
-    public static final String API_KEY = BuildConfig.API_KEY;
+    public ApiException() {
+        super();
+    }
 
-    private Config() {
-        // Empty
+    public ApiException(String message) {
+        super(message);
+    }
+
+    public ApiException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ApiException(Throwable cause) {
+        super(cause);
     }
 }

@@ -44,6 +44,7 @@ android {
             versionNameSuffix '-debug-build' + getDate()
             debuggable true
             buildConfigField "boolean", "DEBUG_MODE", "true"
+            buildConfigField "String", "API_KEY", '"3202eb5aa836427005ced3a158c19d0b"'
         }
         release {
             minifyEnabled true
@@ -51,6 +52,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable false
             buildConfigField "boolean", "DEBUG_MODE", "false"
+            buildConfigField "String", "API_KEY", '"<<API_KEY>>"'
             zipAlignEnabled true
             signingConfig signingConfigs.release
         }
@@ -74,6 +76,9 @@ dependencies {
     compile rootProject.ext.dependencies.butterKnife
     annotationProcessor rootProject.ext.dependencies.butterKnifeCompiler
     compile rootProject.ext.dependencies.retrolambda
+    compile rootProject.ext.dependencies.retrofit
+    compile rootProject.ext.dependencies.retrofitGson
+    compile rootProject.ext.dependencies.okhttp3Logging
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

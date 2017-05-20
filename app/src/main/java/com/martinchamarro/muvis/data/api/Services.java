@@ -14,16 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis;
+package com.martinchamarro.muvis.data.api;
 
-public class Config {
+public interface Services {
 
-    public static boolean DEBUG = BuildConfig.DEBUG_MODE;
-    public static final String APP_NAME = "Muvis";
-    public static final String DOMAIN = "https://api.themoviedb.org/3";
-    public static final String API_KEY = BuildConfig.API_KEY;
 
-    private Config() {
-        // Empty
-    }
 }
