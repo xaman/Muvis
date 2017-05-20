@@ -35,7 +35,8 @@ allprojects {
                 retrolambda        : "me.tatarka:gradle-retrolambda:3.6.1",
                 retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
                 retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-                okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+                okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
         ]
     }
 }

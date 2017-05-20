@@ -15,6 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
@@ -79,11 +80,13 @@ dependencies {
     compile rootProject.ext.dependencies.retrofit
     compile rootProject.ext.dependencies.retrofitGson
     compile rootProject.ext.dependencies.okhttp3Logging
+    compile rootProject.ext.dependencies.kotlin
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
 }
 
 def getDate() {
@@ -93,3 +96,6 @@ def getDate() {
 }
 
 apply plugin: 'me.tatarka.retrolambda'
+repositories {
+    mavenCentral()
+}
