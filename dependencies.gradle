@@ -36,7 +36,8 @@ allprojects {
                 retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
                 retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
-                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+                kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
+                stream             : "com.annimon:stream:1.1.6"
         ]
     }
 }

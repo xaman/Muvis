@@ -81,6 +81,7 @@ dependencies {
     compile rootProject.ext.dependencies.retrofitGson
     compile rootProject.ext.dependencies.okhttp3Logging
     compile rootProject.ext.dependencies.kotlin
+    compile rootProject.ext.dependencies.stream
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
