@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.di;
+package com.martinchamarro.muvis.data.api
 
-import com.martinchamarro.muvis.data.api.Api;
-import com.martinchamarro.muvis.data.api.RetrofitApi;
-import com.martinchamarro.muvis.data.repository.MoviesRepositoryImpl;
-import com.martinchamarro.muvis.domain.repository.MoviesRepository;
+import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
+import retrofit2.Call
+import retrofit2.http.Field
+import retrofit2.http.GET
 
-import dagger.Module;
-import dagger.Provides;
+interface Services {
 
-@Module public class DataModule {
+    @GET("/discover/movie")
+    fun getFeaturedMovies(
+            @Field("release_date.gte") releaseDate: String
+    ): Call<FeaturedMoviesResponse>
 
-    @Provides static MoviesRepository provideMoviesRepository(MoviesRepositoryImpl repository) {
-        return repository;
-    }
-
-    @Provides static Api provideApi(RetrofitApi api) {
-        return api;
-    }
 }

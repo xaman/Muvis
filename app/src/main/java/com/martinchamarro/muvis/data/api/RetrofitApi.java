@@ -16,15 +16,43 @@
 
 package com.martinchamarro.muvis.data.api;
 
+import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse;
+import com.martinchamarro.muvis.data.api.responses.ServerResponse;
 import com.martinchamarro.muvis.data.entity.MovieEntity;
 import com.martinchamarro.muvis.domain.exception.ApiException;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class RetrofitApi implements Api {
 
-    @Override public List<MovieEntity> getFeaturedMovies() throws ApiException {
-        return null;
+    private Services services;
+
+    @Inject public RetrofitApi(RetrofitServicesFactory servicesFactory) {
+        services = servicesFactory.create();
     }
 
+    @Override public List<MovieEntity> getFeaturedMovies() throws ApiException {
+        FeaturedMoviesResponse response = execute(services.getFeaturedMovies("2017")).body();
+        return response.getResults();
+    }
+
+    private <T> Response<T> execute(Call<T> call) throws ApiException {
+        try {
+            return call.execute();
+        } catch (IOException e) {
+            throw new ApiException("IOException executing Api call", e);
+        } catch (RuntimeException e) {
+            throw new ApiException("RuntimeException executing Api call", e);
+        }
+    }
+
+    private void checkApiError(ServerResponse response) throws ApiException {
+        if (response.hasError()) throw new ApiException(response.getStatusMessage());
+    }
 }

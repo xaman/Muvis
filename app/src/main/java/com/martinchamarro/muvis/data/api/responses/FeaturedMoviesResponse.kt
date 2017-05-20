@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.api;
+package com.martinchamarro.muvis.data.api.responses
 
-public interface Services {
+import com.google.gson.annotations.SerializedName
+import com.martinchamarro.muvis.data.entity.MovieEntity
 
-
-}
+class FeaturedMoviesResponse(
+        @SerializedName("page") var page: Int,
+        @SerializedName("results") var results: List<MovieEntity>
+) : ServerResponse()

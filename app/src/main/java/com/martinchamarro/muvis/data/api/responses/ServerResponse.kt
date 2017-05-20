@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.di;
+package com.martinchamarro.muvis.data.api.responses
 
-import com.martinchamarro.muvis.data.api.Api;
-import com.martinchamarro.muvis.data.api.RetrofitApi;
-import com.martinchamarro.muvis.data.repository.MoviesRepositoryImpl;
-import com.martinchamarro.muvis.domain.repository.MoviesRepository;
+import com.google.gson.annotations.SerializedName
 
-import dagger.Module;
-import dagger.Provides;
+open class ServerResponse(
+        @SerializedName("status_message") var statusMessage: String = "",
+        @SerializedName("success") var success: Boolean = true,
+        @SerializedName("status_code") var statusCode: Int = 0) {
 
-@Module public class DataModule {
-
-    @Provides static MoviesRepository provideMoviesRepository(MoviesRepositoryImpl repository) {
-        return repository;
-    }
-
-    @Provides static Api provideApi(RetrofitApi api) {
-        return api;
-    }
+    fun hasError(): Boolean = !success
 }
