@@ -16,9 +16,14 @@
 
 package com.martinchamarro.muvis.globalutils.di;
 
+import android.content.Context;
+
 import com.martinchamarro.muvis.AndroidApplication;
 import com.martinchamarro.muvis.data.di.DataModule;
 import com.martinchamarro.muvis.domain.di.DomainModule;
+import com.martinchamarro.muvis.domain.executor.Executor;
+import com.martinchamarro.muvis.domain.executor.MainThread;
+import com.martinchamarro.muvis.domain.repository.MoviesRepository;
 
 import javax.inject.Singleton;
 
@@ -29,5 +34,11 @@ import dagger.Component;
     modules = { ApplicationModule.class, DataModule.class, DomainModule.class }
 )
 public interface ApplicationComponent {
+
     void inject(AndroidApplication application);
+
+    Context context();
+    MainThread mainThread();
+    Executor executor();
+    MoviesRepository moviesRepository();
 }

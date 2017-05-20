@@ -16,6 +16,10 @@
 
 package com.martinchamarro.muvis.data.repository;
 
+import com.annimon.stream.Stream;
+import com.martinchamarro.muvis.data.api.Api;
+import com.martinchamarro.muvis.data.entity.MovieEntity;
+import com.martinchamarro.muvis.data.mapper.MovieEntityMapper;
 import com.martinchamarro.muvis.domain.exception.RepositoryException;
 import com.martinchamarro.muvis.domain.model.Movie;
 import com.martinchamarro.muvis.domain.repository.MoviesRepository;
@@ -28,12 +32,19 @@ import javax.inject.Singleton;
 @Singleton
 public class MoviesRepositoryImpl implements MoviesRepository {
 
-    @Inject public MoviesRepositoryImpl() {
-        // Empty
+    private Api api;
+    private MovieEntityMapper moviesMapper;
+
+    @Inject public MoviesRepositoryImpl(Api api, MovieEntityMapper moviesMapper) {
+        this.api = api;
+        this.moviesMapper = moviesMapper;
     }
 
     @Override public List<Movie> getFeaturedMovies() throws RepositoryException {
-        return null;
+        List<MovieEntity> movies = api.getFeaturedMovies();
+        return Stream.ofNullable(movies)
+            .map(moviesMapper::map)
+            .toList();
     }
 
     @Override public Movie getMovieById(int id) throws RepositoryException {

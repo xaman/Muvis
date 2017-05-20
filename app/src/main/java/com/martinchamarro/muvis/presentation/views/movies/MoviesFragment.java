@@ -26,13 +26,17 @@ import android.view.ViewGroup;
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.presentation.base.BaseFragment;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MoviesFragment extends BaseFragment {
+public class MoviesFragment extends BaseFragment implements MoviesPresenter.View {
 
     @BindView(R.id.recycler_view) protected RecyclerView recyclerView;
+
+    @Inject MoviesPresenter presenter;
 
     public static MoviesFragment getInstance() {
         return new MoviesFragment();
@@ -50,6 +54,35 @@ public class MoviesFragment extends BaseFragment {
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = View.inflate(activity, R.layout.fragment_movies, null);
         ButterKnife.bind(this, layout);
+        initializePresenter();
         return layout;
+    }
+
+    private void initializePresenter() {
+        presenter.setView(this);
+        presenter.initialize();
+    }
+
+    @Override public void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override public void onPause() {
+        presenter.onPause();
+        super.onPause();
+    }
+
+    @Override public void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override public void showProgress() {
+
+    }
+
+    @Override public void hideProgress() {
+
     }
 }

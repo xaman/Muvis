@@ -18,7 +18,10 @@ package com.martinchamarro.muvis;
 
 import android.app.Application;
 
+import com.martinchamarro.muvis.data.di.DataModule;
+import com.martinchamarro.muvis.domain.di.DomainModule;
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
+import com.martinchamarro.muvis.globalutils.di.ApplicationModule;
 import com.martinchamarro.muvis.globalutils.di.DaggerApplicationComponent;
 
 public class AndroidApplication extends Application {
@@ -35,7 +38,11 @@ public class AndroidApplication extends Application {
     }
 
     public ApplicationComponent getApplicationComponent() {
-        if (component == null) component = DaggerApplicationComponent.create();
+        if (component == null) component = DaggerApplicationComponent.builder()
+            .applicationModule(new ApplicationModule(this))
+            .dataModule(new DataModule())
+            .domainModule(new DomainModule())
+            .build();
         return component;
     }
 

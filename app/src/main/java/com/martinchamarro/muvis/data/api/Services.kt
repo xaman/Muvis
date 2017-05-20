@@ -18,14 +18,14 @@ package com.martinchamarro.muvis.data.api
 
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
 import retrofit2.Call
-import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface Services {
 
-    @GET("/discover/movie")
+    @GET("/3/discover/movie")
     fun getFeaturedMovies(
-            @Field("release_date.gte") releaseDate: String
+            @Query("release_date.gte") releaseDate: String
     ): Call<FeaturedMoviesResponse>
 
 }

@@ -20,7 +20,7 @@ public class Config {
 
     public static boolean DEBUG = BuildConfig.DEBUG_MODE;
     public static final String APP_NAME = "Muvis";
-    public static final String DOMAIN = "https://api.themoviedb.org/3";
+    public static final String DOMAIN = "https://api.themoviedb.org/";
     public static final String API_KEY = BuildConfig.API_KEY;
 
     private Config() {
