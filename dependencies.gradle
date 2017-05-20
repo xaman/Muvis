@@ -26,6 +26,7 @@ allprojects {
         dependencies = [
                 support            : "com.android.support:appcompat-v7:${supportVersion}",
                 design             : "com.android.support:design:${supportVersion}",
+                cardView           : "com.android.support:cardview-v7:${supportVersion}",
                 gson               : "com.google.code.gson:gson:2.8.0",
                 dagger             : "com.google.dagger:dagger:${daggerVersion}",
                 daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
@@ -37,7 +38,8 @@ allprojects {
                 retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
-                stream             : "com.annimon:stream:1.1.6"
+                stream             : "com.annimon:stream:1.1.6",
+                picasso            : 'com.squareup.picasso:picasso:2.5.2'
         ]
     }
 }

@@ -30,16 +30,18 @@ class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured) : Presen
         getFeatured.execute(this::onMoviesLoadSuccess, this::onMoviesLoadError)
     }
 
-    fun onMoviesLoadSuccess(movies: List<Movie>?) {
-
+    fun onMoviesLoadSuccess(movies: List<Movie>) {
+        view?.hideProgress()
+        view?.render(movies)
     }
 
     fun onMoviesLoadError(cause: Throwable) {
-
+        view?.hideProgress()
+        view?.showFeaturedError()
     }
 
     override fun onResume() {
-
+        // Empty
     }
 
     override fun onPause() {
@@ -51,7 +53,11 @@ class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured) : Presen
     }
 
     interface View {
+        fun render(movies: List<Movie>)
+        fun showEmptyView()
+        fun hideEmptyView()
         fun showProgress()
         fun hideProgress()
+        fun showFeaturedError()
     }
 }

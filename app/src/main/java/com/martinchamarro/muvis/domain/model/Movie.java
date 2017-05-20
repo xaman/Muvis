@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.domain.model;
 
 import com.google.auto.value.AutoValue;
+import com.martinchamarro.muvis.Config;
 
 @AutoValue public abstract class Movie {
 
@@ -32,6 +33,10 @@ import com.google.auto.value.AutoValue;
     public abstract float votesAverage();
     public abstract String posterPath();
     public abstract String backdropPath();
+
+    public String posterFullPath() {
+        return Config.PICTURE_DOMAIN + posterPath();
+    }
 
     @Override public int hashCode() {
         return id();

@@ -16,6 +16,7 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 25
@@ -40,6 +41,7 @@ android {
     }
 
     buildTypes {
+
         debug {
             applicationIdSuffix '.debug'
             versionNameSuffix '-debug-build' + getDate()
@@ -47,6 +49,7 @@ android {
             buildConfigField "boolean", "DEBUG_MODE", "true"
             buildConfigField "String", "API_KEY", '"3202eb5aa836427005ced3a158c19d0b"'
         }
+
         release {
             minifyEnabled true
             shrinkResources true
@@ -69,6 +72,7 @@ dependencies {
 
     compile rootProject.ext.dependencies.support
     compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.cardView
     compile rootProject.ext.dependencies.gson
     compile rootProject.ext.dependencies.dagger
     annotationProcessor rootProject.ext.dependencies.daggerCompiler
@@ -82,6 +86,7 @@ dependencies {
     compile rootProject.ext.dependencies.okhttp3Logging
     compile rootProject.ext.dependencies.kotlin
     compile rootProject.ext.dependencies.stream
+    compile rootProject.ext.dependencies.picasso
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -97,6 +102,7 @@ def getDate() {
 }
 
 apply plugin: 'me.tatarka.retrolambda'
+
 repositories {
     mavenCentral()
 }

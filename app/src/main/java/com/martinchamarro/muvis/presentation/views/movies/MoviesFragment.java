@@ -18,23 +18,36 @@ package com.martinchamarro.muvis.presentation.views.movies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.martinchamarro.muvis.R;
+import com.martinchamarro.muvis.domain.model.Movie;
 import com.martinchamarro.muvis.presentation.base.BaseFragment;
+import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class MoviesFragment extends BaseFragment implements MoviesPresenter.View {
 
-    @BindView(R.id.recycler_view) protected RecyclerView recyclerView;
+    private static final int NUM_COLUMNS = 3;
+
+    @BindView(R.id.emptyView) protected View emptyView;
+    @BindView(R.id.recyclerView) protected RecyclerView recyclerView;
+    @BindDimen(R.dimen.small_margin) protected int itemOffset;
 
     @Inject MoviesPresenter presenter;
 
@@ -54,8 +67,14 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
     @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = View.inflate(activity, R.layout.fragment_movies, null);
         ButterKnife.bind(this, layout);
+        configureRecyclerView();
         initializePresenter();
         return layout;
+    }
+
+    private void configureRecyclerView() {
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(NUM_COLUMNS, GridLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new ItemOffsetDecorator(itemOffset));
     }
 
     private void initializePresenter() {
@@ -84,5 +103,21 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
 
     @Override public void hideProgress() {
 
+    }
+
+    @Override public void render(@NotNull List<? extends Movie> movies) {
+        recyclerView.setAdapter(new MoviesAdapter(activity, movies));
+    }
+
+    @Override public void showFeaturedError() {
+        
+    }
+
+    @Override public void showEmptyView() {
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    @Override public void hideEmptyView() {
+        emptyView.setVisibility(View.GONE);
     }
 }

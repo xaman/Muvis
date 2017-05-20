@@ -29,4 +29,11 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="AppTheme.Text"/>
+
+    <style name="AppTheme.Text.ItemTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/concrete</item>
+    </style>
+
 </resources>

@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis;
+package com.martinchamarro.muvis.presentation.views.widgets
 
-public class Config {
+import android.graphics.Rect
+import android.support.v7.widget.RecyclerView
+import android.view.View
 
-    public static boolean DEBUG = BuildConfig.DEBUG_MODE;
-    public static final String APP_NAME = "Muvis";
-    public static final String DOMAIN = "https://api.themoviedb.org/";
-    public static final String API_KEY = BuildConfig.API_KEY;
-    public static final String PICTURE_DOMAIN = "https://image.tmdb.org/t/p/w500/";
+class ItemOffsetDecorator(val offset: Int) : RecyclerView.ItemDecoration() {
 
-    private Config() {
-        // Empty
+    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+        super.getItemOffsets(outRect, view, parent, state)
+        outRect?.set(offset, offset, offset, offset)
     }
+
 }
