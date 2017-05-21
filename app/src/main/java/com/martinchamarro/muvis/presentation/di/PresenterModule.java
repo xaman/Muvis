@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.presentation.di;
 
 import com.martinchamarro.muvis.domain.interactor.movies.GetFeatured;
 import com.martinchamarro.muvis.presentation.navigation.Navigator;
+import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter;
 import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter;
 import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter;
 
@@ -30,8 +31,12 @@ import dagger.Provides;
         return new SplashPresenter(navigator);
     }
 
-    @Provides MoviesPresenter provideMoviesPresenter(GetFeatured getFeatured) {
-        return new MoviesPresenter(getFeatured);
+    @Provides MoviesPresenter provideMoviesPresenter(GetFeatured getFeatured, Navigator navigator) {
+        return new MoviesPresenter(getFeatured, navigator);
+    }
+
+    @Provides DetailPresenter provideDetailPresenter() {
+        return new DetailPresenter();
     }
 
 }

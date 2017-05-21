@@ -19,10 +19,42 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="AppTheme.SearchView">
+    <style name="AppTheme.Text"/>
+
+    <style name="AppTheme.Text.ItemTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/concrete</item>
+    </style>
+
+    <style name="AppTheme.Text.EmptyView">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/ash</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Detail -->
+    <style name="AppTheme.Text.AppBarExpanded">
+        <item name="android:textSize">0sp</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.Text.AppBarCollapsed">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Text.DetailTitle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/concrete</item>
+    </style>
+
+    <style name="AppTheme.Text.DetailRating">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/strawberry</item>
+    </style>
+    <style name="AppTheme.Text.DetailInfo">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/ash</item>
     </style>
 
 </resources>

@@ -39,7 +39,8 @@ allprojects {
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
                 stream             : "com.annimon:stream:1.1.6",
-                picasso            : 'com.squareup.picasso:picasso:2.5.2'
+                picasso            : 'com.squareup.picasso:picasso:2.5.2',
+                constraintLayout   : 'com.android.support.constraint:constraint-layout:1.0.2'
         ]
     }
 }

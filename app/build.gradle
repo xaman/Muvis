@@ -66,6 +66,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -87,6 +88,7 @@ dependencies {
     compile rootProject.ext.dependencies.kotlin
     compile rootProject.ext.dependencies.stream
     compile rootProject.ext.dependencies.picasso
+    compile rootProject.ext.dependencies.constraintLayout
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

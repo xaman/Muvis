@@ -38,18 +38,18 @@ public class MovieEntityMapperTest {
     @Test public void testEntityMapping() {
         MovieEntity entity = givenAnEntity();
         Movie movie = mapper.map(entity);
-        assertEquals(entity.getId(), movie.id());
-        assertEquals(entity.getTitle(), movie.title());
-        assertEquals(entity.getOriginalTitle(), movie.originalTitle());
-        assertEquals(entity.getOriginalLanguage(), movie.originalLanguage());
-        assertEquals(entity.getOverview(), movie.overview());
-        assertEquals(entity.isForAdults(), movie.forAdults());
-        assertEquals(entity.getVotesCount(), movie.votesCount());
-        assertEquals(entity.getVotesAverage(), movie.votesAverage(), 0.1f);
-        assertEquals(entity.getPopularity(), movie.popularity(), 0.1f);
-        assertEquals(entity.getReleaseDate(), movie.releaseDate());
-        assertEquals(entity.getPosterPath(), movie.posterPath());
-        assertEquals(entity.getBackdropPath(), movie.backdropPath());
+        assertEquals(entity.getId(), movie.getId());
+        assertEquals(entity.getTitle(), movie.getTitle());
+        assertEquals(entity.getOriginalTitle(), movie.getOriginalTitle());
+        assertEquals(entity.getOriginalLanguage(), movie.getOriginalLanguage());
+        assertEquals(entity.getOverview(), movie.getOverview());
+        assertEquals(entity.isForAdults(), movie.getForAdults());
+        assertEquals(entity.getVotesCount(), movie.getVotesCount());
+        assertEquals(entity.getVotesAverage(), movie.getVotesAverage(), 0.1f);
+        assertEquals(entity.getPopularity(), movie.getPopularity(), 0.1f);
+        assertEquals(entity.getReleaseDate(), movie.getReleaseDate());
+        assertEquals(entity.getPosterPath(), movie.getPosterPath());
+        assertEquals(entity.getBackdropPath(), movie.getBackdropPath());
     }
 
     private MovieEntity givenAnEntity() {

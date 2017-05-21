@@ -14,29 +14,35 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.navigation;
+package com.martinchamarro.muvis.presentation.views.detail
 
-import android.app.Activity;
+import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.presentation.base.Presenter
 
-import com.martinchamarro.muvis.presentation.views.detail.DetailActivity;
-import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
+class DetailPresenter : Presenter {
 
-import javax.inject.Inject;
+    var view : View? = null
 
-public class Navigator {
+    override fun initialize() {
 
-    private Activity activity;
-
-    @Inject public Navigator(Activity activity) {
-        this.activity = activity;
     }
 
-    public void navigateToHome() {
-        HomeActivity.start(activity);
+    override fun onResume() {
+
     }
 
-    public void navigateToDetail(int movieId) {
-        DetailActivity.Companion.start(activity, movieId);
+    override fun onPause() {
+
     }
 
+    override fun onDestroy() {
+
+    }
+
+    interface View {
+        fun getMovieId() : Int
+        fun render(movie: Movie)
+        fun showProgress()
+        fun hideProgress()
+    }
 }

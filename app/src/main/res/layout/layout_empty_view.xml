@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/explanation"
-        style="@style/AppTheme.SearchView"
+        style="@style/AppTheme.Text.EmptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/picture"

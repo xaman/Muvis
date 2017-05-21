@@ -17,6 +17,8 @@
 
 <resources>
 
+    <dimen name="status_bar_height">25dp</dimen>
+
     <dimen name="small_margin">5dp</dimen>
     <dimen name="normal_margin">10dp</dimen>
     <dimen name="big_margin">20dp</dimen>

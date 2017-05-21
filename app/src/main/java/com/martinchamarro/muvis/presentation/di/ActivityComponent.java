@@ -21,6 +21,7 @@ import android.app.Activity;
 
 import com.martinchamarro.muvis.domain.di.InteractorModule;
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent;
+import com.martinchamarro.muvis.presentation.views.detail.DetailActivity;
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment;
 import com.martinchamarro.muvis.presentation.views.movies.MoviesFragment;
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
@@ -37,6 +38,7 @@ public interface ActivityComponent {
 
     void inject(SplashActivity activity);
     void inject(HomeActivity activity);
+    void inject(DetailActivity activity);
 
     void inject(MoviesFragment fragment);
     void inject(FavoritesFragment fragment);
