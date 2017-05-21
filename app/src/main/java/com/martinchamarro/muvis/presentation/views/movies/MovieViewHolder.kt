@@ -18,8 +18,9 @@ package com.martinchamarro.muvis.presentation.views.movies
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.extensions.loadUrl
+import com.martinchamarro.muvis.presentation.extensions.load
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -28,7 +29,7 @@ class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         titleView.text = movie.title
         yearView.text = movie.releaseYear.toString()
         ratingView.text = movie.votesAverage.toString()
-        posterView.loadUrl(movie.posterFullPath)
+        posterView.load(movie.posterFullPath, R.drawable.ic_empty_movie)
     }
 
 }

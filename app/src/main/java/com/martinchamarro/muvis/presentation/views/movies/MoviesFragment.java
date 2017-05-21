@@ -24,6 +24,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.domain.model.Movie;
@@ -39,6 +40,7 @@ import javax.inject.Inject;
 import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kotlin.Unit;
 
 
 public class MoviesFragment extends BaseFragment implements MoviesPresenter.View {
@@ -106,7 +108,12 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
     }
 
     @Override public void render(@NotNull List<Movie> movies) {
-        recyclerView.setAdapter(new MoviesAdapter(activity, movies));
+        recyclerView.setAdapter(new MoviesAdapter(activity, movies, this::onMovieClick));
+    }
+
+    private Unit onMovieClick(Movie movie) {
+        Toast.makeText(activity, movie.getOriginalTitle(), Toast.LENGTH_SHORT).show();
+        return null;
     }
 
     @Override public void showFeaturedError() {

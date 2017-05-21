@@ -23,7 +23,7 @@ import android.view.ViewGroup
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 
-class MoviesAdapter(val context: Context, val movies: List<Movie>) : RecyclerView.Adapter<MovieViewHolder>() {
+class MoviesAdapter(val context: Context, val movies: List<Movie>, val listener : (Movie) -> Unit) : RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder {
         val view = View.inflate(context, R.layout.item_movie, null)
@@ -31,7 +31,8 @@ class MoviesAdapter(val context: Context, val movies: List<Movie>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        holder?.render(movies.get(position))
+        holder?.render(movies[position])
+        holder?.itemView?.setOnClickListener { listener(movies[position]) }
     }
 
     override fun getItemCount(): Int {

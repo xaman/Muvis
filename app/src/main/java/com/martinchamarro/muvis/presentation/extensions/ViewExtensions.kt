@@ -16,20 +16,29 @@
 
 package com.martinchamarro.muvis.presentation.extensions
 
+import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 
 
-fun View.visible() { visibility = View.VISIBLE }
+fun View.visible() {
+    visibility = View.VISIBLE
+}
 
-fun View.invisible() { visibility = View.VISIBLE }
+fun View.invisible() {
+    visibility = View.VISIBLE
+}
 
-fun View.gone() { visibility = View.GONE }
+fun View.gone() {
+    visibility = View.GONE
+}
 
-fun ImageView.loadUrl(url: String?) {
+fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int) {
     Picasso.with(context)
             .load(url)
+            .placeholder(placeholderRes)
+            .error(placeholderRes)
             .into(this)
 }
 

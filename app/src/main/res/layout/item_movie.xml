@@ -22,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
-    tools:layout_height="300dp"
+    tools:layout_height="350dp"
     tools:layout_width="200dp">
 
     <LinearLayout
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:background="@color/silver"
-            tools:src="@drawable/ic_empty_movies"/>
+            android:src="@drawable/ic_empty_movie"/>
 
         <RelativeLayout
             android:id="@+id/infoView"
