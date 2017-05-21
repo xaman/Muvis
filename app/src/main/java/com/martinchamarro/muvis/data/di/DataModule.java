@@ -18,6 +18,8 @@ package com.martinchamarro.muvis.data.di;
 
 import com.martinchamarro.muvis.data.api.Api;
 import com.martinchamarro.muvis.data.api.RetrofitApi;
+import com.martinchamarro.muvis.data.cache.MoviesCache;
+import com.martinchamarro.muvis.data.cache.MoviesCacheImpl;
 import com.martinchamarro.muvis.data.repository.MoviesRepositoryImpl;
 import com.martinchamarro.muvis.domain.repository.MoviesRepository;
 
@@ -32,5 +34,9 @@ import dagger.Provides;
 
     @Provides static Api provideApi(RetrofitApi api) {
         return api;
+    }
+
+    @Provides static MoviesCache provideMoviesCache(MoviesCacheImpl cache) {
+        return cache;
     }
 }
