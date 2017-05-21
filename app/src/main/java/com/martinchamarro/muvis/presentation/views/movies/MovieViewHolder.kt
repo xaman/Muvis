@@ -25,11 +25,11 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
     fun render(movie: Movie) = with(itemView) {
-        titleView.text = movie.title()
-        yearView.text = movie.releaseDate()
-        ratingView.text = movie.votesAverage().toString()
+        titleView.text = movie.title
+        yearView.text = movie.releaseYear.toString()
+        ratingView.text = movie.votesAverage.toString()
         Picasso.with(itemView.context)
-            .load(movie.posterFullPath())
+            .load(movie.posterFullPath)
             .into(itemView.posterView)
     }
 

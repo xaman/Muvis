@@ -105,7 +105,7 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
 
     }
 
-    @Override public void render(@NotNull List<? extends Movie> movies) {
+    @Override public void render(@NotNull List<Movie> movies) {
         recyclerView.setAdapter(new MoviesAdapter(activity, movies));
     }
 

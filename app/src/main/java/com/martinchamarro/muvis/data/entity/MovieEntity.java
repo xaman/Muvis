@@ -18,6 +18,12 @@ package com.martinchamarro.muvis.data.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 public class MovieEntity {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -77,6 +83,16 @@ public class MovieEntity {
 
     public String getReleaseDate() {
         return releaseDate;
+    }
+
+    public Calendar getReleaseCalendar() {
+        Calendar calendar = null;
+        try {
+            SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+            calendar = new GregorianCalendar();
+            calendar.setTime(format.parse(releaseDate));
+        } catch (ParseException e) {}
+        return calendar;
     }
 
     public void setReleaseDate(String releaseDate) {
