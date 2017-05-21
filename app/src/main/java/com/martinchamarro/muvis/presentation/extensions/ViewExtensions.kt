@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.movies
+package com.martinchamarro.muvis.presentation.extensions
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.extensions.loadUrl
-import kotlinx.android.synthetic.main.item_movie.view.*
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
-class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-    fun render(movie: Movie) = with(itemView) {
-        titleView.text = movie.title
-        yearView.text = movie.releaseYear.toString()
-        ratingView.text = movie.votesAverage.toString()
-        posterView.loadUrl(movie.posterFullPath)
-    }
+fun View.visible() { visibility = View.VISIBLE }
 
+fun View.invisible() { visibility = View.VISIBLE }
+
+fun View.gone() { visibility = View.GONE }
+
+fun ImageView.loadUrl(url: String?) {
+    Picasso.with(context)
+            .load(url)
+            .into(this)
 }
+
