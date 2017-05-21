@@ -22,14 +22,6 @@
     android:layout_height="match_parent"
     android:background="@color/lime">
 
-    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
-        android:id="@+id/emptyView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:ev_icon="@drawable/ic_empty_movies"
-        app:ev_text="@string/empty_movies_explanation"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -37,5 +29,13 @@
         android:clipToPadding="false"
         android:padding="@dimen/small_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    
+    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:ev_icon="@drawable/ic_empty_movies"
+        app:ev_text="@string/empty_movies_explanation"/>
 
 </RelativeLayout>

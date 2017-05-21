@@ -32,7 +32,7 @@ class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured) : Presen
 
     fun onMoviesLoadSuccess(movies: List<Movie>) {
         view?.hideProgress()
-        view?.render(movies)
+        if (movies.isNotEmpty()) view?.render(movies) else view?.showEmptyView()
     }
 
     fun onMoviesLoadError(cause: Throwable) {
