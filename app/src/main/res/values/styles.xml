@@ -33,6 +33,10 @@
     </style>
 
     <!-- Detail -->
+    <style name="AppTheme.Detail" parent="AppTheme.NoActionBar">
+        <!-- Empty for SDK_INT < 21-->
+    </style>
+
     <style name="AppTheme.Text.AppBarExpanded">
         <item name="android:textSize">0sp</item>
         <item name="android:textColor">@android:color/transparent</item>

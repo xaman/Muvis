@@ -23,11 +23,14 @@ import android.os.Bundle
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.base.BaseActivity
+import com.martinchamarro.muvis.presentation.extensions.fullScreen
+import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
 class DetailActivity : BaseActivity(), DetailPresenter.View {
 
     @Inject lateinit var presenter: DetailPresenter
+    private lateinit var renderer: DetailRenderer
 
     companion object {
         val EXTRA_MOVIE_ID = "movie_id"
@@ -39,6 +42,7 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         injectDependencies()
@@ -64,7 +68,8 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
     }
 
     override fun render(movie: Movie) {
-
+        renderer = DetailRenderer(rootView)
+        renderer.render(movie)
     }
 
     override fun showProgress() {

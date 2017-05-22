@@ -29,4 +29,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <!-- Detail -->
+    <style name="AppTheme.Detail" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/black10</item>
+    </style>
+
 </resources>

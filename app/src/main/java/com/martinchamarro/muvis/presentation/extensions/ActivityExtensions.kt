@@ -16,30 +16,10 @@
 
 package com.martinchamarro.muvis.presentation.extensions
 
-import android.support.annotation.DrawableRes
+import android.app.Activity
 import android.view.View
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
 
 
-fun View.visible() {
-    visibility = View.VISIBLE
+fun Activity.fullScreen() {
+    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 }
-
-fun View.invisible() {
-    visibility = View.VISIBLE
-}
-
-fun View.gone() {
-    visibility = View.GONE
-}
-
-fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
-    val request = Picasso.with(context).load(url)
-    if (placeholderRes != -1) {
-        request.placeholder(placeholderRes)
-        request.error(placeholderRes)
-    }
-    request.into(this)
-}
-

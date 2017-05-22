@@ -14,11 +14,24 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.base;
+package com.martinchamarro.muvis.presentation.base
 
-public interface Presenter {
-    void initialize();
-    void onResume();
-    void onPause();
-    void onDestroy();
+interface Presenter {
+
+    fun initialize() {
+        // Default empty implementation
+    }
+
+    fun onResume() {
+        // Default empty implementation
+    }
+
+    fun onPause() {
+        // Default empty implementation
+    }
+
+    fun onDestroy() {
+        // Default empty implementation
+    }
+
 }

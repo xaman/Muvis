@@ -18,6 +18,8 @@ package com.martinchamarro.muvis.domain.di;
 
 import com.martinchamarro.muvis.domain.interactor.movies.GetFeatured;
 import com.martinchamarro.muvis.domain.interactor.movies.GetFeaturedInteractor;
+import com.martinchamarro.muvis.domain.interactor.movies.GetMovie;
+import com.martinchamarro.muvis.domain.interactor.movies.GetMovieInteractor;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,6 +27,10 @@ import dagger.Provides;
 @Module public class InteractorModule {
 
     @Provides static GetFeatured provideGetFeatured(GetFeaturedInteractor interactor) {
+        return interactor;
+    }
+
+    @Provides static GetMovie provideGetMovie(GetMovieInteractor interactor) {
         return interactor;
     }
 

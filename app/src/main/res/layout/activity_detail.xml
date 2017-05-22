@@ -19,9 +19,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lime"
+    android:background="@color/white"
     android:clipToPadding="false"
     android:transitionGroup="true"
     tools:context="com.martinchamarro.muvis.presentation.views.detail.DetailActivity">
@@ -39,6 +40,15 @@
             app:contentScrim="@color/strawberry"
             app:expandedTitleTextAppearance="@style/AppTheme.Text.AppBarExpanded"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/backdropView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_backdrop_height"
+                android:background="@color/silver"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                tools:src="@drawable/ic_empty_movie"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

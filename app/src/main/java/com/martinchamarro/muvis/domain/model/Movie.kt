@@ -33,11 +33,14 @@ data class Movie(
     val posterPath: String,
     val backdropPath: String) {
 
-    val releaseYear: Int
-        get() = releaseDate[Calendar.YEAR]
+    val releaseYear: String
+        get() = releaseDate[Calendar.YEAR].toString()
 
     val posterFullPath: String
         get() = Config.PICTURE_DOMAIN + posterPath
+
+    val backdropFullPath: String
+        get() = Config.PICTURE_DOMAIN + backdropPath
 
     override fun hashCode(): Int {
         return id

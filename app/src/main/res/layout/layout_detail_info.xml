@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/posterView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/detail_poster_width"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:background="@color/silver"
         android:src="@drawable/ic_empty_movie"/>
@@ -43,7 +43,6 @@
             style="@style/AppTheme.Text.DetailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             tools:text="La Guerra de las Galaxias"/>
 
         <TextView
@@ -52,8 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
-            android:drawablePadding="@dimen/small_padding"
             android:drawableLeft="@drawable/ic_detail_rating"
+            android:drawablePadding="@dimen/small_padding"
             tools:text="7.9"/>
 
         <TextView

@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".presentation.views.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.Detail"/>
     </application>
 
 </manifest>

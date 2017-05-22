@@ -16,31 +16,36 @@
 
 package com.martinchamarro.muvis.presentation.views.detail
 
+import com.martinchamarro.muvis.domain.interactor.movies.GetMovie
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.base.Presenter
+import javax.inject.Inject
 
-class DetailPresenter : Presenter {
+class DetailPresenter @Inject constructor(private val getMovie: GetMovie) : Presenter {
 
-    var view : View? = null
+    var view: View? = null
 
     override fun initialize() {
-
+        view?.showProgress()
+        val movieId = view?.getMovieId() ?: -1
+        getMovie.execute(movieId, this::onMovieLoadSuccess, this::onMovieLoadError)
     }
 
-    override fun onResume() {
-
+    private fun onMovieLoadSuccess(movie: Movie) {
+        view?.hideProgress()
+        view?.render(movie)
     }
 
-    override fun onPause() {
-
+    private fun onMovieLoadError(cause: Throwable) {
+        view?.hideProgress()
     }
 
     override fun onDestroy() {
-
+        this.view = null
     }
 
     interface View {
-        fun getMovieId() : Int
+        fun getMovieId(): Int?
         fun render(movie: Movie)
         fun showProgress()
         fun hideProgress()
