@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.domain.model.Movie;
 import com.martinchamarro.muvis.presentation.base.BaseFragment;
+import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator;
 
 import org.jetbrains.annotations.NotNull;
@@ -99,11 +100,11 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
     }
 
     @Override public void showProgress() {
-
+        ((HomeActivity) activity).showToolbarProgress();
     }
 
     @Override public void hideProgress() {
-
+        ((HomeActivity) activity).hideToolbarProgress();
     }
 
     @Override public void render(@NotNull List<Movie> movies) {

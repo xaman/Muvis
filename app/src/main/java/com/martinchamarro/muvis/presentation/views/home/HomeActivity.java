@@ -24,6 +24,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.martinchamarro.muvis.R;
 import com.martinchamarro.muvis.presentation.base.BaseActivity;
@@ -36,6 +38,7 @@ import butterknife.OnPageChange;
 public class HomeActivity extends BaseActivity {
 
     @BindView(R.id.toolbar) protected Toolbar toolbar;
+    @BindView(R.id.toolbarProgress) protected ProgressBar progress;
     @BindView(R.id.pager) protected ViewPager pager;
     @BindView(R.id.bottom_navigation) protected BottomNavigationView bottomNavigation;
     private MenuVisibilityChanger menuVisibility;
@@ -64,6 +67,14 @@ public class HomeActivity extends BaseActivity {
         toolbar.inflateMenu(R.menu.home_menu);
         toolbar.setOnMenuItemClickListener(this::onToolbarMenuItemClick);
         menuVisibility = new MenuVisibilityChanger(toolbar.getMenu());
+    }
+
+    public void showToolbarProgress() {
+        progress.setVisibility(View.VISIBLE);
+    }
+
+    public void hideToolbarProgress() {
+        progress.setVisibility(View.GONE);
     }
 
     private void configurePager() {

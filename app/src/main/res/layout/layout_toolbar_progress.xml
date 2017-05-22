@@ -15,20 +15,13 @@
   ~ limitations under the License.
   -->
 
-<resources>
-
-    <dimen name="status_bar_height">25dp</dimen>
-    <dimen name="indeterminate_progress_size">32dp</dimen>
-
-    <dimen name="small_margin">5dp</dimen>
-    <dimen name="normal_margin">10dp</dimen>
-    <dimen name="big_margin">20dp</dimen>
-
-    <dimen name="small_padding">5dp</dimen>
-    <dimen name="normal_padding">10dp</dimen>
-    <dimen name="big_padding">20dp</dimen>
-
-    <dimen name="detail_poster_width">120dp</dimen>
-    <dimen name="detail_backdrop_height">200dp</dimen>
-
-</resources>
+<ProgressBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarProgress"
+    android:layout_width="@dimen/indeterminate_progress_size"
+    android:layout_height="@dimen/indeterminate_progress_size"
+    android:layout_gravity="right"
+    android:indeterminate="true"
+    android:indeterminateTint="@color/white"
+    android:indeterminateTintMode="src_in"
+    android:visibility="gone"/>
