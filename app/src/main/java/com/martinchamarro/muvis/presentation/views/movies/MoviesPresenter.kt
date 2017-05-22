@@ -41,14 +41,6 @@ class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured, val navi
         view?.showFeaturedError()
     }
 
-    override fun onResume() {
-        // Empty
-    }
-
-    override fun onPause() {
-        // Empty
-    }
-
     override fun onDestroy() {
         view = null
     }
