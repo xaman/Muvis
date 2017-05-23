@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.data.api;
 
+import com.martinchamarro.muvis.data.entity.DetailEntity;
 import com.martinchamarro.muvis.data.entity.MovieEntity;
 import com.martinchamarro.muvis.domain.exception.ApiException;
 
@@ -23,4 +24,5 @@ import java.util.List;
 
 public interface Api {
     List<MovieEntity> getFeaturedMovies() throws ApiException;
+    DetailEntity getMovieDetail(int id) throws ApiException;
 }

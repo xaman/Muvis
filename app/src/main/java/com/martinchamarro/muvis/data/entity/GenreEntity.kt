@@ -14,25 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.api
+package com.martinchamarro.muvis.data.entity
 
-import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
-import com.martinchamarro.muvis.data.entity.DetailEntity
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
-
-interface Services {
-
-    @GET("/3/discover/movie")
-    fun getFeaturedMovies(
-            @Query("release_date.gte") releaseDate: String
-    ): Call<FeaturedMoviesResponse>
-
-    @GET("/3/movie/{movie_id}")
-    fun getMovieDetail(
-            @Path("movie_id") id: Int
-    ): Call<DetailEntity>
-
-}
+data class GenreEntity(
+        var id: Int,
+        var name: String)

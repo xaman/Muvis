@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.data.api;
 
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse;
 import com.martinchamarro.muvis.data.api.responses.ServerResponse;
+import com.martinchamarro.muvis.data.entity.DetailEntity;
 import com.martinchamarro.muvis.data.entity.MovieEntity;
 import com.martinchamarro.muvis.domain.exception.ApiException;
 
@@ -40,6 +41,11 @@ public class RetrofitApi implements Api {
     @Override public List<MovieEntity> getFeaturedMovies() throws ApiException {
         FeaturedMoviesResponse response = execute(services.getFeaturedMovies("2017")).body();
         return response.getResults();
+    }
+
+    @Override public DetailEntity getMovieDetail(int id) throws ApiException {
+        DetailEntity entity = execute(services.getMovieDetail(id)).body();
+        return entity;
     }
 
     private <T> Response<T> execute(Call<T> call) throws ApiException {
