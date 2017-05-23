@@ -31,4 +31,7 @@
     <string name="empty_favorite_explanation">¿Cuál es tu peli favorita?</string>
     <string name="empty_search_explanation">¡A ver qué te encuentras!</string>
 
+    <!-- Detail -->
+    <string name="runtime_value">%s mins.</string>
+
 </resources>

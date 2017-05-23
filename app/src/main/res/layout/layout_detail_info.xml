@@ -19,9 +19,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:layout_height="200dp">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/posterView"
@@ -33,9 +33,8 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/normal_margin"
-        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
@@ -64,7 +63,7 @@
             tools:text="1980"/>
 
         <TextView
-            android:id="@+id/durationView"
+            android:id="@+id/runtimeView"
             style="@style/AppTheme.Text.DetailInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,11 +79,12 @@
             tools:text="EEUU"/>
 
         <TextView
-            android:id="@+id/categoriesView"
+            android:id="@+id/genresView"
             style="@style/AppTheme.Text.DetailInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
+            android:maxLines="1"
             android:textStyle="italic"
             tools:text="Ciencia-Ficción, Espacio"/>
 

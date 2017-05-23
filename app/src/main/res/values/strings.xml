@@ -30,4 +30,7 @@
     <string name="empty_favorite_explanation">What is your favorite movie?</string>
     <string name="empty_search_explanation">Let\'s see what you find!</string>
 
+    <!-- Detail -->
+    <string name="runtime_value">%s mins.</string>
+
 </resources>

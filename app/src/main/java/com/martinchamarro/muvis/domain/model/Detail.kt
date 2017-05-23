@@ -23,5 +23,6 @@ data class Detail (
         val originalLanguage: String,
         val originalTitle: String,
         val overview: String,
+        val runtime: Int,
         val genres: List<Genre>,
         val countries: List<Country>)

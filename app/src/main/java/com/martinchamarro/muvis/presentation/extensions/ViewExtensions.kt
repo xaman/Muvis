@@ -16,11 +16,14 @@
 
 package com.martinchamarro.muvis.presentation.extensions
 
+import android.content.Context
 import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 
+val View.ctx: Context
+    get() = context
 
 fun View.visible() {
     visibility = View.VISIBLE

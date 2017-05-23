@@ -37,7 +37,7 @@ public class MovieEntityMapperTest {
 
     @Test public void testEntityMapping() {
         MovieEntity entity = givenAnEntity();
-        Movie movie = mapper.map(entity);
+        Movie movie = mapper.invoke(entity);
         assertEquals(entity.getId(), movie.getId());
         assertEquals(entity.getTitle(), movie.getTitle());
         assertEquals(entity.getOriginalTitle(), movie.getOriginalTitle());

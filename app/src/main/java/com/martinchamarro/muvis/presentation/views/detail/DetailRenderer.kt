@@ -17,11 +17,17 @@
 package com.martinchamarro.muvis.presentation.views.detail
 
 import android.view.View
+import com.martinchamarro.muvis.R
+import com.martinchamarro.muvis.domain.model.Country
+import com.martinchamarro.muvis.domain.model.Detail
+import com.martinchamarro.muvis.domain.model.Genre
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.presentation.extensions.ctx
 import com.martinchamarro.muvis.presentation.extensions.load
 import com.martinchamarro.muvis.presentation.extensions.visible
 import kotlinx.android.synthetic.main.activity_detail.view.*
 import kotlinx.android.synthetic.main.layout_detail_info.view.*
+import java.util.*
 
 class DetailRenderer(val view: View) {
 
@@ -34,4 +40,21 @@ class DetailRenderer(val view: View) {
         view.visible()
     }
 
+    fun render(detail: Detail) = with(view) {
+        runtimeView.text = String.format(ctx.getString(R.string.runtime_value), detail.runtime)
+        countryView.text = translateCountryName(detail.countries[0])
+        genresView.text = formatGenres(detail.genres)
+        descriptionView.text = detail.overview
+    }
+
+    private fun translateCountryName(country: Country): String {
+        return Locale("", country.iso).displayCountry
+    }
+
+    private fun formatGenres(genres: List<Genre>): String {
+        return genres.foldIndexed("") { index, text, genre ->
+            val comma = if (index > 0) "," else ""
+            "$text$comma ${genre.name}"
+        }
+    }
 }

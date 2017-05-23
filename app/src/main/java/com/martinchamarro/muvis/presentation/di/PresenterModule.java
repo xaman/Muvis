@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.presentation.di;
 
+import com.martinchamarro.muvis.domain.interactor.movies.GetDetail;
 import com.martinchamarro.muvis.domain.interactor.movies.GetFeatured;
 import com.martinchamarro.muvis.domain.interactor.movies.GetMovie;
 import com.martinchamarro.muvis.presentation.navigation.Navigator;
@@ -36,8 +37,8 @@ import dagger.Provides;
         return new MoviesPresenter(getFeatured, navigator);
     }
 
-    @Provides DetailPresenter provideDetailPresenter(GetMovie getMovie) {
-        return new DetailPresenter(getMovie);
+    @Provides DetailPresenter provideDetailPresenter(GetMovie getMovie, GetDetail getDetail) {
+        return new DetailPresenter(getMovie, getDetail);
     }
 
 }

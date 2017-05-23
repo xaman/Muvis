@@ -16,12 +16,21 @@
 
 package com.martinchamarro.muvis.presentation.views.detail
 
+import com.martinchamarro.muvis.domain.interactor.movies.GetDetail
 import com.martinchamarro.muvis.domain.interactor.movies.GetMovie
+import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.base.Presenter
 import javax.inject.Inject
 
-class DetailPresenter @Inject constructor(private val getMovie: GetMovie) : Presenter {
+class DetailPresenter @Inject constructor(
+        private val getMovie: GetMovie,
+        private val getDetail: GetDetail) : Presenter {
+
+    companion object {
+        val TAG = DetailPresenter::class.java.simpleName
+    }
 
     var view: View? = null
 
@@ -29,6 +38,7 @@ class DetailPresenter @Inject constructor(private val getMovie: GetMovie) : Pres
         view?.showProgress()
         val movieId = view?.getMovieId() ?: -1
         getMovie.execute(movieId, this::onMovieLoadSuccess, this::onMovieLoadError)
+        getDetail.execute(movieId, this::onDetailLoadSuccess, this::onDetailLoadError)
     }
 
     private fun onMovieLoadSuccess(movie: Movie) {
@@ -37,7 +47,17 @@ class DetailPresenter @Inject constructor(private val getMovie: GetMovie) : Pres
     }
 
     private fun onMovieLoadError(cause: Throwable) {
-        view?.hideProgress()
+        Logger.e(TAG, "Error loading movie: ${cause.message}")
+        view?.finish()
+    }
+
+    private fun onDetailLoadSuccess(detail: Detail) {
+        view?.render(detail)
+    }
+
+    private fun onDetailLoadError(cause: Throwable) {
+        Logger.e(TAG, "Error loading detail: ${cause.message}")
+        view?.finish()
     }
 
     override fun onDestroy() {
@@ -47,7 +67,9 @@ class DetailPresenter @Inject constructor(private val getMovie: GetMovie) : Pres
     interface View {
         fun getMovieId(): Int?
         fun render(movie: Movie)
+        fun render(detail: Detail)
         fun showProgress()
         fun hideProgress()
+        fun finish()
     }
 }

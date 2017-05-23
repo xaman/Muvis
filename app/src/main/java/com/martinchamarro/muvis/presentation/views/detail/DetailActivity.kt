@@ -21,6 +21,7 @@ import android.content.Intent
 import android.os.Bundle
 
 import com.martinchamarro.muvis.R
+import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.base.BaseActivity
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
@@ -46,11 +47,16 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         injectDependencies()
+        initializeRenderer()
         initializePresenter()
     }
 
     fun injectDependencies() {
         activityComponent.inject(this)
+    }
+
+    fun initializeRenderer() {
+        renderer = DetailRenderer(rootView)
     }
 
     fun initializePresenter() {
@@ -67,10 +73,9 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
         return intent.getIntExtra(EXTRA_MOVIE_ID, -1)
     }
 
-    override fun render(movie: Movie) {
-        renderer = DetailRenderer(rootView)
-        renderer.render(movie)
-    }
+    override fun render(movie: Movie) = renderer.render(movie)
+
+    override fun render(detail: Detail) = renderer.render(detail)
 
     override fun showProgress() {
 

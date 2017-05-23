@@ -26,5 +26,6 @@ data class DetailEntity(
         @SerializedName("original_language") var originalLanguage: String,
         @SerializedName("original_title") var originalTitle: String,
         @SerializedName("overview") var overview: String,
+        @SerializedName("runtime") var runtime: Int,
         @SerializedName("genres") var genres: List<GenreEntity>,
         @SerializedName("production_countries") var countries: List<CountryEntity>) : ServerResponse()

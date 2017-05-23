@@ -32,6 +32,7 @@ class DetailEntityMapper @Inject constructor(
                 originalLanguage = entity.originalLanguage,
                 originalTitle = entity.originalTitle,
                 overview = entity.overview,
+                runtime = entity.runtime,
                 genres = entity.genres.map { genreMapper(it) }.toList(),
                 countries = entity.countries.map { countryMapper(it) }.toList()
         )
