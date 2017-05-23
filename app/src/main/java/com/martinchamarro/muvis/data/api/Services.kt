@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.data.api
 
+import com.martinchamarro.muvis.data.api.responses.CreditsResponse
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
 import com.martinchamarro.muvis.data.entity.DetailEntity
 import retrofit2.Call
@@ -34,5 +35,10 @@ interface Services {
     fun getMovieDetail(
             @Path("movie_id") id: Int
     ): Call<DetailEntity>
+
+    @GET("/3/movie/{movie_id}/credits")
+    fun getCredits(
+            @Path("movie_id") id: Int
+    ): Call<CreditsResponse>
 
 }

@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.entity
+package com.martinchamarro.muvis.domain.exception
 
-import com.google.gson.annotations.SerializedName
-
-data class GenreEntity(
-        @SerializedName("id") var id: Int,
-        @SerializedName("name") var name: String)
+class CreditsNotFoundException : RepositoryException()

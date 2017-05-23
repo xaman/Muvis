@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.domain.repository
 
 import com.martinchamarro.muvis.domain.exception.RepositoryException
+import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 
@@ -29,4 +30,7 @@ interface MoviesRepository {
 
     @Throws(RepositoryException::class)
     fun getMovieDetail(id: Int): Detail
+
+    @Throws(RepositoryException::class)
+    fun getCredits(id: Int): List<Cast>
 }

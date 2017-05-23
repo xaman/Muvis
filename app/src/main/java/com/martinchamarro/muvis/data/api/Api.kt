@@ -14,10 +14,21 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.entity
+package com.martinchamarro.muvis.data.api
 
-import com.google.gson.annotations.SerializedName
+import com.martinchamarro.muvis.data.entity.CastEntity
+import com.martinchamarro.muvis.data.entity.DetailEntity
+import com.martinchamarro.muvis.data.entity.MovieEntity
+import com.martinchamarro.muvis.domain.exception.ApiException
 
-data class GenreEntity(
-        @SerializedName("id") var id: Int,
-        @SerializedName("name") var name: String)
+interface Api {
+
+    @Throws(ApiException::class)
+    fun getFeaturedMovies(): List<MovieEntity>?
+
+    @Throws(ApiException::class)
+    fun getMovieDetail(id: Int): DetailEntity?
+
+    @Throws(ApiException::class)
+    fun getCredits(id: Int): List<CastEntity>?
+}

@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class GenreEntity(
-        @SerializedName("id") var id: Int,
-        @SerializedName("name") var name: String)
+data class CastEntity(
+        @SerializedName("character") var character: String,
+        @SerializedName("name") var name: String,
+        @SerializedName("profile_path") var profilePath: String)

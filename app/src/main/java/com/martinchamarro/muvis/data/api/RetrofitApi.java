@@ -16,8 +16,10 @@
 
 package com.martinchamarro.muvis.data.api;
 
+import com.martinchamarro.muvis.data.api.responses.CreditsResponse;
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse;
 import com.martinchamarro.muvis.data.api.responses.ServerResponse;
+import com.martinchamarro.muvis.data.entity.CastEntity;
 import com.martinchamarro.muvis.data.entity.DetailEntity;
 import com.martinchamarro.muvis.data.entity.MovieEntity;
 import com.martinchamarro.muvis.domain.exception.ApiException;
@@ -46,6 +48,11 @@ public class RetrofitApi implements Api {
     @Override public DetailEntity getMovieDetail(int id) throws ApiException {
         DetailEntity entity = execute(services.getMovieDetail(id)).body();
         return entity;
+    }
+
+    @Override public List<CastEntity> getCredits(int id) throws ApiException {
+        CreditsResponse response = execute(services.getCredits(id)).body();
+        return response.getCast();
     }
 
     private <T> Response<T> execute(Call<T> call) throws ApiException {

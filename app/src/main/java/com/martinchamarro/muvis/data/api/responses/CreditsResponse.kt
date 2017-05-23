@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.entity
+package com.martinchamarro.muvis.data.api.responses
 
 import com.google.gson.annotations.SerializedName
+import com.martinchamarro.muvis.data.entity.CastEntity
 
-data class GenreEntity(
-        @SerializedName("id") var id: Int,
-        @SerializedName("name") var name: String)
+class CreditsResponse(@SerializedName("cast") var cast: List<CastEntity>)

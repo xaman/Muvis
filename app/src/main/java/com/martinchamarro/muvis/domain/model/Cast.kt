@@ -14,15 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.api;
+package com.martinchamarro.muvis.domain.model
 
-import com.martinchamarro.muvis.data.entity.DetailEntity;
-import com.martinchamarro.muvis.data.entity.MovieEntity;
-import com.martinchamarro.muvis.domain.exception.ApiException;
 
-import java.util.List;
-
-public interface Api {
-    List<MovieEntity> getFeaturedMovies() throws ApiException;
-    DetailEntity getMovieDetail(int id) throws ApiException;
-}
+data class Cast(val character: String,
+           val name: String,
+           val profilePath: String?)
