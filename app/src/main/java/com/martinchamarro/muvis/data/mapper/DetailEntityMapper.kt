@@ -16,26 +16,24 @@
 
 package com.martinchamarro.muvis.data.mapper
 
-import com.martinchamarro.muvis.data.entity.MovieEntity
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.data.entity.DetailEntity
+import com.martinchamarro.muvis.domain.model.Detail
 import javax.inject.Inject
 
-class MovieEntityMapper @Inject constructor() {
+class DetailEntityMapper @Inject constructor(
+        val genreMapper: GenreEntityMapper,
+        val countryMapper: CountryEntityMapper) {
 
-    operator fun invoke(entity: MovieEntity): Movie {
-        return Movie(
-                id = entity.id,
-                title = entity.title,
-                originalTitle = entity.originalTitle,
+    operator fun invoke(entity: DetailEntity): Detail {
+        return Detail(
+                budget = entity.budget,
+                homepage = entity.homepage,
+                imdbId = entity.imdbId,
                 originalLanguage = entity.originalLanguage,
+                originalTitle = entity.originalTitle,
                 overview = entity.overview,
-                releaseDate = entity.releaseCalendar,
-                forAdults = entity.isForAdults,
-                popularity = entity.popularity,
-                votesCount = entity.votesCount,
-                votesAverage = entity.votesAverage,
-                posterPath = entity.posterPath,
-                backdropPath = entity.backdropPath)
+                genres = entity.genres.map { genreMapper(it) }.toList(),
+                countries = entity.countries.map { countryMapper(it) }.toList()
+        )
     }
-
 }

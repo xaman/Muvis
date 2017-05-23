@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.domain.interactor.movies
 
+import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
 import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.executor.Executor
 import com.martinchamarro.muvis.domain.executor.MainThread
@@ -40,9 +41,13 @@ class GetMovieInteractor @Inject constructor(private var executor: Executor, pri
     override fun run() {
         try {
             val movie = repository.getMovieById(id)
-            mainThread.post { successCallback(movie) }
+            if (movie != null) notifySuccess(movie) else notifyError(MovieNotFoundException())
         } catch (e: RepositoryException) {
-            mainThread.post { errorCallback(e) }
+            notifyError(e)
         }
     }
+
+    fun notifySuccess(movie: Movie) = mainThread.post { successCallback(movie) }
+
+    fun notifyError(cause: Throwable) = mainThread.post { errorCallback(cause) }
 }

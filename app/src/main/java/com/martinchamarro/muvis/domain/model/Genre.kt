@@ -14,14 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.repository;
+package com.martinchamarro.muvis.domain.model
 
-import com.martinchamarro.muvis.domain.exception.RepositoryException;
-import com.martinchamarro.muvis.domain.model.Movie;
-
-import java.util.List;
-
-public interface MoviesRepository {
-    List<Movie> getFeaturedMovies() throws RepositoryException;
-    Movie getMovieById(int id) throws RepositoryException;
-}
+data class Genre (
+        val id: Int,
+        val name: String)

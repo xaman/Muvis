@@ -18,8 +18,10 @@ package com.martinchamarro.muvis.data.repository
 
 import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
+import com.martinchamarro.muvis.data.mapper.DetailEntityMapper
 import com.martinchamarro.muvis.data.mapper.MovieEntityMapper
 import com.martinchamarro.muvis.domain.exception.RepositoryException
+import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
@@ -29,17 +31,25 @@ import javax.inject.Singleton
 class MoviesRepositoryImpl @Inject constructor(
         private val api: Api,
         private val cache: MoviesCache,
-        private val moviesMapper: MovieEntityMapper) : MoviesRepository {
+        private val moviesMapper: MovieEntityMapper,
+        private val detailMapper: DetailEntityMapper) : MoviesRepository {
 
     @Throws(RepositoryException::class)
-    override fun getFeaturedMovies(): List<Movie?> {
+    override fun getFeaturedMovies(): List<Movie> {
         val movies = api.featuredMovies
         cache.putAll(movies)
-        return movies.map { moviesMapper.map(it) }.toList()
+        return movies.map { moviesMapper(it) }.toList()
     }
 
     @Throws(RepositoryException::class)
     override fun getMovieById(id: Int): Movie? {
-        return moviesMapper.map(cache.get(id))
+        val entity = cache.get(id)
+        return if (entity != null) moviesMapper(entity) else null
+    }
+
+    @Throws(RepositoryException::class)
+    override fun getMovieDetail(id: Int): Detail? {
+        val entity = api.getMovieDetail(id)
+        return if (entity != null) detailMapper(entity) else null
     }
 }
