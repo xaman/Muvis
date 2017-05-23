@@ -20,17 +20,20 @@ import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.executor.Executor
 import com.martinchamarro.muvis.domain.executor.MainThread
 import com.martinchamarro.muvis.domain.interactor.Interactor
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
 
-class GetMovieInteractor @Inject constructor(private var executor: Executor, private var mainThread: MainThread, private var repository: MoviesRepository) : Interactor, GetMovie {
+class GetDetailInteractor @Inject constructor(
+        val executor: Executor,
+        val mainThread: MainThread,
+        val repository: MoviesRepository) : Interactor, GetDetail {
 
     private var id: Int = -1
-    private lateinit var successCallback: (Movie) -> Unit
+    private lateinit var successCallback: (Detail) -> Unit
     private lateinit var errorCallback: (Throwable) -> Unit
 
-    override fun execute(id: Int, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit) {
+    override fun execute(id: Int, successCallback: (Detail) -> Unit, errorCallback: (Throwable) -> Unit) {
         this.id = id
         this.successCallback = successCallback
         this.errorCallback = errorCallback
@@ -39,8 +42,8 @@ class GetMovieInteractor @Inject constructor(private var executor: Executor, pri
 
     override fun run() {
         try {
-            val movie = repository.getMovieById(id)
-            mainThread.post { successCallback(movie) }
+            val detail = repository.getMovieDetail(id)
+            mainThread.post { successCallback(detail) }
         } catch (e: RepositoryException) {
             mainThread.post { errorCallback(e) }
         }

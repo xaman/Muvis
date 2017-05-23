@@ -14,19 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.repository
+package com.martinchamarro.muvis.domain.interactor.movies
 
-import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.Detail
-import com.martinchamarro.muvis.domain.model.Movie
 
-interface MoviesRepository {
-    @Throws(RepositoryException::class)
-    fun getFeaturedMovies(): List<Movie>
-
-    @Throws(RepositoryException::class)
-    fun getMovieById(id: Int): Movie
-
-    @Throws(RepositoryException::class)
-    fun getMovieDetail(id: Int): Detail
+interface GetDetail {
+    fun execute(id: Int, successCallback: (Detail) -> Unit, errorCallback: (Throwable) -> Unit)
 }
