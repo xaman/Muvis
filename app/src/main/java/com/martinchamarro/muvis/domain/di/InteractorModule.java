@@ -35,4 +35,8 @@ import dagger.Provides;
         return interactor;
     }
 
+    @Provides static GetCredits provideGetCredits(GetCreditsInteractor interactor) {
+        return interactor;
+    }
+
 }
