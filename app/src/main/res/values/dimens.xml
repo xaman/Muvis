@@ -30,5 +30,7 @@
 
     <dimen name="detail_poster_width">120dp</dimen>
     <dimen name="detail_backdrop_height">200dp</dimen>
+    <dimen name="detail_fab_margin">20dp</dimen>
+    <dimen name="detail_fab_elevation">5dp</dimen>
 
 </resources>

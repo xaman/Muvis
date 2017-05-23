@@ -32,9 +32,10 @@ import java.util.*
 class DetailRenderer(val view: View) {
 
     fun render(movie: Movie) = with(view) {
+        toolbar.title = movie.title
+        titleView.text = movie.title
         posterView.load(movie.posterFullPath)
         backdropView.load(movie.backdropFullPath)
-        titleView.text = movie.title
         ratingView.text = movie.votesAverage.toString()
         yearView.text = movie.releaseYear
         view.visible()

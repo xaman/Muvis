@@ -92,4 +92,16 @@
 
     </android.support.v4.widget.NestedScrollView>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="@dimen/detail_fab_margin"
+        android:src="@drawable/ic_fab_fav"
+        app:backgroundTint="@color/strawberry"
+        app:elevation="@dimen/detail_fab_elevation"
+        app:fabSize="normal"
+        app:useCompatPadding="true"/>
+
 </android.support.design.widget.CoordinatorLayout>
