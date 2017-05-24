@@ -64,13 +64,13 @@
         <item name="android:ellipsize">end</item>
     </style>
     <style name="AppTheme.Text.CastName">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/concrete</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
     <style name="AppTheme.Text.CastCharacter">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/ash</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>

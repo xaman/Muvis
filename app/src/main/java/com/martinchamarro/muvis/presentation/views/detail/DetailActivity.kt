@@ -48,12 +48,18 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         injectDependencies()
+        configureToolbar()
         initializeRenderer()
         initializePresenter()
     }
 
     fun injectDependencies() {
         activityComponent.inject(this)
+    }
+
+    fun configureToolbar() {
+        toolbar.inflateMenu(R.menu.detail_menu)
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     fun initializeRenderer() {

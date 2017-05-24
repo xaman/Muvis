@@ -55,6 +55,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="@dimen/status_bar_height"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_back"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>

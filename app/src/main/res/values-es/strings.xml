@@ -25,6 +25,7 @@
     <!-- Actions -->
     <string name="action_search">Buscar</string>
     <string name="action_filter">Filtrar</string>
+    <string name="action_share">Compartir</string>
 
     <!-- Empty -->
     <string name="empty_movies_explanation">Nada por aquí</string>

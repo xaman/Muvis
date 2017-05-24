@@ -24,6 +24,7 @@
     <!-- Actions -->
     <string name="action_search">Search</string>
     <string name="action_filter">Filter</string>
+    <string name="action_share">Share</string>
 
     <!-- Empty -->
     <string name="empty_movies_explanation">Nothing here</string>
