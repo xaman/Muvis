@@ -32,8 +32,8 @@ import butterknife.ButterKnife;
 
 public class EmptyView extends RelativeLayout {
 
-    @BindView(R.id.picture) protected ImageView picture;
-    @BindView(R.id.explanation) protected TextView explanation;
+    @BindView(R.id.pictureView) protected ImageView picture;
+    @BindView(R.id.explanationView) protected TextView explanation;
 
     public EmptyView(Context context) {
         super(context);

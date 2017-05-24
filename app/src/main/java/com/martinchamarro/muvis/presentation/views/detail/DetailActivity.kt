@@ -21,6 +21,7 @@ import android.content.Intent
 import android.os.Bundle
 
 import com.martinchamarro.muvis.R
+import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.base.BaseActivity
@@ -77,13 +78,11 @@ class DetailActivity : BaseActivity(), DetailPresenter.View {
 
     override fun render(detail: Detail) = renderer.render(detail)
 
-    override fun showProgress() {
+    override fun render(credits: List<Cast>) = renderer.render(credits)
 
-    }
+    override fun showProgress() {}
 
-    override fun hideProgress() {
-
-    }
+    override fun hideProgress() {}
 
     override fun onPause() {
         presenter.onPause()

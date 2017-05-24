@@ -22,7 +22,7 @@ public class Config {
     public static final String APP_NAME = "Muvis";
     public static final String DOMAIN = "https://api.themoviedb.org/";
     public static final String API_KEY = BuildConfig.API_KEY;
-    public static final String PICTURE_DOMAIN = "https://image.tmdb.org/t/p/w500/";
+    public static final String PICTURE_DOMAIN = "https://image.tmdb.org/t/p/";
 
     private Config() {
         // Empty

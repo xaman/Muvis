@@ -71,22 +71,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/normal_margin"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_detail_info"/>
+            <include
+                layout="@layout/layout_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"/>
 
             <TextView
                 android:id="@+id/descriptionView"
                 style="@style/AppTheme.Text.DetailDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/normal_margin"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_marginRight="@dimen/normal_margin"
                 android:fadingEdgeLength="10dp"
                 android:maxLines="10"
                 android:requiresFadingEdge="vertical"
                 tools:text="My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/creditsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:clipToPadding="false"
+                android:padding="@dimen/small_padding"/>
 
         </LinearLayout>
 

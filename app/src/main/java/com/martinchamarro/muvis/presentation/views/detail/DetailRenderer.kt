@@ -18,24 +18,33 @@ package com.martinchamarro.muvis.presentation.views.detail
 
 import android.view.View
 import com.martinchamarro.muvis.R
-import com.martinchamarro.muvis.domain.model.Country
-import com.martinchamarro.muvis.domain.model.Detail
-import com.martinchamarro.muvis.domain.model.Genre
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.*
+import com.martinchamarro.muvis.domain.model.pictures.Picture
 import com.martinchamarro.muvis.presentation.extensions.ctx
+import com.martinchamarro.muvis.presentation.extensions.dimen
 import com.martinchamarro.muvis.presentation.extensions.load
 import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.views.widgets.HorizontalLayoutManager
+import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.activity_detail.view.*
 import kotlinx.android.synthetic.main.layout_detail_info.view.*
 import java.util.*
 
 class DetailRenderer(val view: View) {
 
+    init {
+        with(view) {
+            creditsView.layoutManager = HorizontalLayoutManager(ctx)
+            val itemOffset = ctx.dimen(R.dimen.small_padding)
+            creditsView.addItemDecoration(ItemOffsetDecorator(itemOffset))
+        }
+    }
+
     fun render(movie: Movie) = with(view) {
         toolbar.title = movie.title
         titleView.text = movie.title
-        posterView.load(movie.posterFullPath)
-        backdropView.load(movie.backdropFullPath)
+        posterView.load(Picture.POSTER.url(movie.posterPath))
+        backdropView.load(Picture.BACKDROP.url(movie.backdropPath))
         ratingView.text = movie.votesAverage.toString()
         yearView.text = movie.releaseYear
         view.visible()
@@ -46,6 +55,10 @@ class DetailRenderer(val view: View) {
         countryView.text = translateCountryName(detail.countries[0])
         genresView.text = formatGenres(detail.genres)
         descriptionView.text = detail.overview
+    }
+
+    fun render(credits: List<Cast>) = with(view) {
+        creditsView.adapter = CreditsAdapter(ctx, credits)
     }
 
     private fun translateCountryName(country: Country): String {

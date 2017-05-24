@@ -19,18 +19,27 @@
 
     <dimen name="status_bar_height">25dp</dimen>
     <dimen name="indeterminate_progress_size">32dp</dimen>
+    <dimen name="corner_radius">5dp</dimen>
 
     <dimen name="small_margin">5dp</dimen>
-    <dimen name="normal_margin">10dp</dimen>
-    <dimen name="big_margin">20dp</dimen>
+    <dimen name="normal_margin">15dp</dimen>
+    <dimen name="big_margin">30dp</dimen>
 
     <dimen name="small_padding">5dp</dimen>
-    <dimen name="normal_padding">10dp</dimen>
-    <dimen name="big_padding">20dp</dimen>
+    <dimen name="normal_padding">15dp</dimen>
+    <dimen name="big_padding">30dp</dimen>
+
+    <dimen name="movies_grid_spacing">5dp</dimen>
+    <dimen name="item_movie_padding">10dp</dimen>
 
     <dimen name="detail_poster_width">120dp</dimen>
     <dimen name="detail_backdrop_height">200dp</dimen>
     <dimen name="detail_fab_margin">20dp</dimen>
     <dimen name="detail_fab_elevation">5dp</dimen>
+
+    <dimen name="detail_credits_spacing">10dp</dimen>
+    <dimen name="item_cast_width">100dp</dimen>
+    <dimen name="item_cast_height">160dp</dimen>
+    <dimen name="item_cast_text_margin">4dp</dimen>
 
 </resources>

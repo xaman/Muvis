@@ -21,6 +21,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/corner_radius"
     app:cardUseCompatPadding="true"
     tools:layout_height="350dp"
     tools:layout_width="200dp">
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="@dimen/normal_padding">
+            android:padding="@dimen/item_movie_padding">
 
             <TextView
                 android:id="@+id/titleView"

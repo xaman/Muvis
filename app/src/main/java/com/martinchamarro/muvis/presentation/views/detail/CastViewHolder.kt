@@ -14,23 +14,21 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.movies
+package com.martinchamarro.muvis.presentation.views.detail
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.martinchamarro.muvis.R
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.pictures.Picture
 import com.martinchamarro.muvis.presentation.extensions.load
-import kotlinx.android.synthetic.main.item_movie.view.*
+import kotlinx.android.synthetic.main.item_cast.view.*
 
-class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+class CastViewHolder(itemView: View?): RecyclerView.ViewHolder(itemView) {
 
-    fun bind(movie: Movie) = with(itemView) {
-        titleView.text = movie.title
-        yearView.text = movie.releaseYear
-        ratingView.text = movie.votesAverage.toString()
-        posterView.load(Picture.POSTER.url(movie.posterPath), R.drawable.ic_empty_movie)
+    fun bind(cast: Cast) = with(itemView) {
+        pictureView.load(Picture.PROFILE.url(cast.profilePath))
+        nameView.text = cast.name
+        characterView.text = cast.character
     }
 
 }

@@ -14,8 +14,16 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.model
+package com.martinchamarro.muvis.domain.model.pictures
 
-data class Cast(val character: String,
-                val name: String,
-                val profilePath: String?)
+import com.martinchamarro.muvis.Config
+
+enum class Picture(val size: String) {
+    POSTER("w154"),
+    BACKDROP("w342"),
+    PROFILE("w185");
+
+    fun url(path: String?): String? {
+        return if (path != null) Config.PICTURE_DOMAIN + size + path else null
+    }
+}

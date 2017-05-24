@@ -49,7 +49,7 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
 
     @BindView(R.id.emptyView) protected View emptyView;
     @BindView(R.id.recyclerView) protected RecyclerView recyclerView;
-    @BindDimen(R.dimen.small_margin) protected int itemOffset;
+    @BindDimen(R.dimen.movies_grid_spacing) protected int itemsSpacing;
 
     @Inject MoviesPresenter presenter;
 
@@ -76,7 +76,7 @@ public class MoviesFragment extends BaseFragment implements MoviesPresenter.View
 
     private void configureRecyclerView() {
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(NUM_COLUMNS, GridLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new ItemOffsetDecorator(itemOffset));
+        recyclerView.addItemDecoration(new ItemOffsetDecorator(itemsSpacing));
     }
 
     private void initializePresenter() {

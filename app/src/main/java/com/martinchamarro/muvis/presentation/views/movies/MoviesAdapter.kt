@@ -31,7 +31,7 @@ class MoviesAdapter(val context: Context, val movies: List<Movie>, val listener 
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        holder?.render(movies[position])
+        holder?.bind(movies[position])
         holder?.itemView?.setOnClickListener { listener(movies[position]) }
     }
 

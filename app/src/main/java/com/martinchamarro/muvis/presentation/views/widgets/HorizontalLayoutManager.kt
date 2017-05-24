@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.model
+package com.martinchamarro.muvis.presentation.views.widgets
 
-data class Cast(val character: String,
-                val name: String,
-                val profilePath: String?)
+import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
+
+class HorizontalLayoutManager(context: Context) : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

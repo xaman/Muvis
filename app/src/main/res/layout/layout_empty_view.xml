@@ -23,18 +23,18 @@
     android:background="@color/lime">
 
     <ImageView
-        android:id="@+id/picture"
+        android:id="@+id/pictureView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         tools:src="@drawable/ic_empty_favorite"/>
 
     <TextView
-        android:id="@+id/explanation"
+        android:id="@+id/explanationView"
         style="@style/AppTheme.Text.EmptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/picture"
+        android:layout_below="@+id/pictureView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/normal_margin"
         tools:text="@string/empty_favorite_explanation"/>

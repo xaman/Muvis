@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.model
+package com.martinchamarro.muvis.presentation.extensions
 
-data class Cast(val character: String,
-                val name: String,
-                val profilePath: String?)
+import android.content.Context
+import android.support.annotation.DimenRes
+
+fun Context.dimen(@DimenRes dimenRes: Int) = resources.getDimensionPixelSize(dimenRes)
