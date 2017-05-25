@@ -29,7 +29,7 @@
     <dimen name="normal_padding">15dp</dimen>
     <dimen name="big_padding">30dp</dimen>
 
-    <dimen name="movies_grid_spacing">5dp</dimen>
+    <dimen name="movies_grid_spacing">2dp</dimen>
     <dimen name="item_movie_padding">10dp</dimen>
 
     <dimen name="detail_poster_width">120dp</dimen>
