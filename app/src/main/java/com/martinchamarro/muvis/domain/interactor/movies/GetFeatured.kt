@@ -14,30 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.executor;
+package com.martinchamarro.muvis.domain.interactor.movies
 
-import android.os.Handler;
-import android.os.Looper;
+import com.martinchamarro.muvis.domain.model.Movie
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-/**
- *
- * Class used to notify to the callback of the interactor in the main thread.
- * It is not possible to modify views from another thread.
- *
- */
-@Singleton public class MainThreadImpl implements MainThread {
-
-    private Handler handler;
-
-    @Inject public MainThreadImpl() {
-        this.handler = new Handler(Looper.getMainLooper());
-    }
-
-    @Override public void post(Runnable runnable) {
-        this.handler.post(runnable);
-    }
-
+interface GetFeatured {
+    fun execute(successCallback: (List<Movie>) -> Unit, errorCallback: (Throwable) -> Unit)
 }

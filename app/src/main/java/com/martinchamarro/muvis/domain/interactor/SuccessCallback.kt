@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.interactor;
+package com.martinchamarro.muvis.domain.interactor
 
-public interface ErrorCallback {
-    void onError(Throwable cause);
+interface SuccessCallback<T> {
+    fun onSuccess(result: T)
 }

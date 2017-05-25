@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.executor;
+package com.martinchamarro.muvis.domain.executor
 
-import com.martinchamarro.muvis.domain.interactor.Interactor;
-
-public interface Executor {
-    void execute(Interactor interactor);
+interface MainThread {
+    fun post(runnable: () -> Unit)
 }

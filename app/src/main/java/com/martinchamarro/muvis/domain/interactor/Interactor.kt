@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.executor;
+package com.martinchamarro.muvis.domain.interactor
 
-public interface MainThread {
-    void post(Runnable runnable);
+interface Interactor : Runnable {
+    override fun run()
 }

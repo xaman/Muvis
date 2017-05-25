@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.interactor;
+package com.martinchamarro.muvis.domain.executor
 
-public interface Interactor extends Runnable {
-	@Override void run();
+import com.martinchamarro.muvis.domain.interactor.Interactor
+
+interface Executor {
+    fun execute(interactor: Interactor?)
 }

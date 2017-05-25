@@ -14,14 +14,8 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.interactor.movies;
+package com.martinchamarro.muvis.domain.interactor
 
-import com.martinchamarro.muvis.domain.interactor.ErrorCallback;
-import com.martinchamarro.muvis.domain.interactor.SuccessCallback;
-import com.martinchamarro.muvis.domain.model.Movie;
-
-import java.util.List;
-
-public interface GetFeatured {
-    void execute(SuccessCallback<List<Movie>> successCallback, ErrorCallback errorCallback);
+interface ErrorCallback {
+    fun onError(cause: Throwable)
 }
