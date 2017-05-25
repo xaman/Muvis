@@ -16,25 +16,24 @@
 
 package com.martinchamarro.muvis.domain.model
 
-import com.martinchamarro.muvis.Config
 import java.util.*
 
 data class Movie(
-    val id: Int,
-    val title: String,
-    val originalTitle: String,
-    val originalLanguage: String,
-    val overview: String,
-    val releaseDate: Calendar,
-    val forAdults: Boolean,
-    val popularity: Float,
-    val votesCount: Int,
-    val votesAverage: Float,
-    val posterPath: String,
-    val backdropPath: String) {
+        val id: Int,
+        val title: String,
+        val originalTitle: String,
+        val originalLanguage: String,
+        val overview: String,
+        val releaseDate: Calendar?,
+        val forAdults: Boolean,
+        val popularity: Float,
+        val votesCount: Int,
+        val votesAverage: Float,
+        val posterPath: String,
+        val backdropPath: String) {
 
-    val releaseYear: String
-        get() = releaseDate[Calendar.YEAR].toString()
+    val releaseYear: String?
+        get() = releaseDate?.get(Calendar.YEAR).toString()
 
     override fun hashCode(): Int {
         return id

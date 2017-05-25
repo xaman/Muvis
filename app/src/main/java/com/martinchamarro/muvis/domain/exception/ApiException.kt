@@ -14,23 +14,11 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.exception;
+package com.martinchamarro.muvis.domain.exception
 
-public class RepositoryException extends Exception {
-
-	public RepositoryException() {
-		super();
-	}
-
-	public RepositoryException(String message) {
-		super(message);
-	}
-
-	public RepositoryException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public RepositoryException(Throwable cause) {
-		super(cause);
-	}
+class ApiException : RepositoryException {
+    constructor() : super()
+    constructor(message: String) : super(message)
+    constructor(message: String, cause: Throwable) : super(message, cause)
+    constructor(cause: Throwable) : super(cause)
 }
