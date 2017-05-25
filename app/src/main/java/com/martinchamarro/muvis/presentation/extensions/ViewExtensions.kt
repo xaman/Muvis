@@ -30,7 +30,7 @@ fun View.visible() {
 }
 
 fun View.invisible() {
-    visibility = View.VISIBLE
+    visibility = View.INVISIBLE
 }
 
 fun View.gone() {
