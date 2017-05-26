@@ -24,11 +24,11 @@ import com.martinchamarro.muvis.domain.exception.ApiException
 interface Api {
 
     @Throws(ApiException::class)
-    fun getFeaturedMovies(): List<MovieEntity>?
+    fun getFeaturedMovies(): List<MovieEntity>
 
     @Throws(ApiException::class)
-    fun getMovieDetail(id: Int): DetailEntity?
+    fun getMovieDetail(id: Int): DetailEntity
 
     @Throws(ApiException::class)
-    fun getCredits(id: Int): List<CastEntity>?
+    fun getCredits(id: Int): List<CastEntity>
 }

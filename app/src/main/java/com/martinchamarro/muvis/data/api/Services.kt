@@ -27,18 +27,12 @@ import retrofit2.http.Query
 interface Services {
 
     @GET("/3/discover/movie")
-    fun getFeaturedMovies(
-            @Query("release_date.gte") releaseDate: String
-    ): Call<FeaturedMoviesResponse>
+    fun getFeaturedMovies(@Query("release_date.gte") release: String): Call<FeaturedMoviesResponse>
 
     @GET("/3/movie/{movie_id}")
-    fun getMovieDetail(
-            @Path("movie_id") id: Int
-    ): Call<DetailEntity>
+    fun getMovieDetail(@Path("movie_id") id: Int): Call<DetailEntity>
 
     @GET("/3/movie/{movie_id}/credits")
-    fun getCredits(
-            @Path("movie_id") id: Int
-    ): Call<CreditsResponse>
+    fun getCredits(@Path("movie_id") id: Int): Call<CreditsResponse>
 
 }

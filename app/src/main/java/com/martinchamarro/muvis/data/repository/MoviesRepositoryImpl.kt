@@ -18,16 +18,10 @@ package com.martinchamarro.muvis.data.repository
 
 import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
-import com.martinchamarro.muvis.data.mapper.CastEntityMapper
-import com.martinchamarro.muvis.data.mapper.DetailEntityMapper
-import com.martinchamarro.muvis.data.mapper.MovieEntityMapper
-import com.martinchamarro.muvis.domain.exception.CreditsNotFoundException
-import com.martinchamarro.muvis.domain.exception.DetailNotFoundException
+import com.martinchamarro.muvis.data.mapper.*
 import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
 import com.martinchamarro.muvis.domain.exception.RepositoryException
-import com.martinchamarro.muvis.domain.model.Cast
-import com.martinchamarro.muvis.domain.model.Detail
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.*
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -42,7 +36,7 @@ class MoviesRepositoryImpl @Inject constructor(
 
     @Throws(RepositoryException::class)
     override fun getFeaturedMovies(): List<Movie> {
-        val movies = api.getFeaturedMovies() ?: throw RepositoryException()
+        val movies = api.getFeaturedMovies()
         cache.putAll(movies)
         return movies.map { moviesMapper(it) }.toList()
     }
@@ -55,13 +49,13 @@ class MoviesRepositoryImpl @Inject constructor(
 
     @Throws(RepositoryException::class)
     override fun getMovieDetail(id: Int): Detail {
-        val entity = api.getMovieDetail(id) ?: throw DetailNotFoundException()
+        val entity = api.getMovieDetail(id)
         return detailMapper(entity)
     }
 
     @Throws(RepositoryException::class)
     override fun getCredits(id: Int): List<Cast> {
-        val credits = api.getCredits(id) ?: throw CreditsNotFoundException()
+        val credits = api.getCredits(id)
         return credits.map { castMapper(it) }.toList()
     }
 }

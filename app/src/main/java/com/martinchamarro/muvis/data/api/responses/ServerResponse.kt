@@ -18,10 +18,10 @@ package com.martinchamarro.muvis.data.api.responses
 
 import com.google.gson.annotations.SerializedName
 
-open class ServerResponse(
-        @SerializedName("status_message") var statusMessage: String = "",
-        @SerializedName("success") var success: Boolean = true,
-        @SerializedName("status_code") var statusCode: Int = 0) {
+open class ServerResponse {
+    @SerializedName("status_message") var statusMessage: String = ""
+    @SerializedName("success") var success: Boolean = true
+    @SerializedName("status_code") var statusCode: Int = 0
 
     fun hasError(): Boolean = !success
 }

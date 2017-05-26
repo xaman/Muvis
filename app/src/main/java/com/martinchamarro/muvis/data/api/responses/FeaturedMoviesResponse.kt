@@ -20,6 +20,5 @@ import com.google.gson.annotations.SerializedName
 import com.martinchamarro.muvis.data.entity.MovieEntity
 
 class FeaturedMoviesResponse(
-        @SerializedName("page") var page: Int,
-        @SerializedName("results") var results: List<MovieEntity>
-) : ServerResponse()
+        @SerializedName("page") var page: Int?,
+        @SerializedName("results") var results: List<MovieEntity>?) : ServerResponse()
