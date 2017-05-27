@@ -14,17 +14,12 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis;
+package com.martinchamarro.muvis
 
-public class Config {
-
-    public static boolean DEBUG = BuildConfig.DEBUG_MODE;
-    public static final String APP_NAME = "Muvis";
-    public static final String DOMAIN = "https://api.themoviedb.org/";
-    public static final String API_KEY = BuildConfig.API_KEY;
-    public static final String PICTURE_DOMAIN = "https://image.tmdb.org/t/p/";
-
-    private Config() {
-        // Empty
-    }
+object Config {
+    var DEBUG = BuildConfig.DEBUG_MODE
+    val APP_NAME = "Muvis"
+    val DOMAIN = "https://api.themoviedb.org/"
+    val API_KEY = BuildConfig.API_KEY
+    val PICTURE_DOMAIN = "https://image.tmdb.org/t/p/"
 }

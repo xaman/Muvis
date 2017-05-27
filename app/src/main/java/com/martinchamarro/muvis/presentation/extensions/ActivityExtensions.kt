@@ -18,8 +18,20 @@ package com.martinchamarro.muvis.presentation.extensions
 
 import android.app.Activity
 import android.view.View
+import com.martinchamarro.muvis.AndroidApplication
+import com.martinchamarro.muvis.presentation.di.ActivityComponent
+import com.martinchamarro.muvis.presentation.di.ActivityModule
+import com.martinchamarro.muvis.presentation.di.DaggerActivityComponent
+import com.martinchamarro.muvis.presentation.di.PresenterModule
 
 
 fun Activity.fullScreen() {
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 }
+
+val Activity.activityComponent: ActivityComponent
+    get() = DaggerActivityComponent.builder()
+            .applicationComponent((application as AndroidApplication).applicationComponent)
+            .activityModule(ActivityModule(this))
+            .presenterModule(PresenterModule())
+            .build()

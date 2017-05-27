@@ -69,6 +69,10 @@ android {
 
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
 
     compile rootProject.ext.dependencies.support
@@ -77,10 +81,10 @@ dependencies {
     compile rootProject.ext.dependencies.gson
     compile rootProject.ext.dependencies.dagger
     annotationProcessor rootProject.ext.dependencies.daggerCompiler
-    provided rootProject.ext.dependencies.autoValue
-    annotationProcessor rootProject.ext.dependencies.autoValue
+    kapt rootProject.ext.dependencies.daggerCompiler
     compile rootProject.ext.dependencies.butterKnife
     annotationProcessor rootProject.ext.dependencies.butterKnifeCompiler
+    kapt rootProject.ext.dependencies.butterKnifeCompiler
     compile rootProject.ext.dependencies.retrolambda
     compile rootProject.ext.dependencies.retrofit
     compile rootProject.ext.dependencies.retrofitGson

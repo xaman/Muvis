@@ -30,7 +30,6 @@ allprojects {
                 gson               : "com.google.code.gson:gson:2.8.0",
                 dagger             : "com.google.dagger:dagger:${daggerVersion}",
                 daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
-                autoValue          : "com.google.auto.value:auto-value:1.4.1",
                 butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
                 butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
                 retrolambda        : "me.tatarka:gradle-retrolambda:3.6.1",
