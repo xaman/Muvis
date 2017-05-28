@@ -39,7 +39,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
         if (position == MOVIES_POS) {
             fragment = MoviesFragment.getInstance();
         } else if (position == FAVORITES_POS) {
-            fragment = FavoritesFragment.getInstance();
+            fragment = FavoritesFragment.Companion.getInstance();
         }
         return fragment;
     }
