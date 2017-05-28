@@ -55,18 +55,14 @@ class DetailPresenter @Inject constructor(
         view?.finish()
     }
 
-    private fun onDetailLoadSuccess(detail: Detail) {
-        view?.render(detail)
-    }
+    private fun onDetailLoadSuccess(detail: Detail) = view?.render(detail)
 
     private fun onDetailLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading detail: ${cause.message}")
         view?.finish()
     }
 
-    private fun onCreditsLoadSuccess(credits: List<Cast>) {
-        view?.render(credits)
-    }
+    private fun onCreditsLoadSuccess(credits: List<Cast>) = view?.render(credits)
 
     private fun onCreditsLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading credits: ${cause.message}")

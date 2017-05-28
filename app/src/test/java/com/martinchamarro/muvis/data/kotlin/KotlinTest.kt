@@ -14,14 +14,25 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.api.responses
+package com.martinchamarro.muvis.data.kotlin
 
-import com.google.gson.annotations.SerializedName
+import com.martinchamarro.muvis.data.entity.MovieEntity
+import com.martinchamarro.muvis.data.entity.MovieEntityBuilder
+import org.junit.Assert.assertFalse
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+import org.junit.Assert.assertTrue
 
-open class ServerResponse {
-    @SerializedName("status_message") var statusMessage: String = ""
-    @SerializedName("success") var success: Boolean = true
-    @SerializedName("status_code") var statusCode: Int = 0
+@RunWith(JUnit4::class)
+class KotlinTest {
 
-    fun hasError(): Boolean = !success
+    @Test fun testIsOperator() {
+        var a: MovieEntity? = null
+        assertFalse(a is MovieEntity)
+        assertFalse(null is MovieEntity)
+        a = MovieEntityBuilder.build()
+        assertTrue(a is MovieEntity)
+    }
+
 }

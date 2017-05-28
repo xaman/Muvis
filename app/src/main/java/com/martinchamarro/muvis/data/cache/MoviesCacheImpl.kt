@@ -23,23 +23,13 @@ class MoviesCacheImpl @Inject constructor() : MoviesCache {
 
     val values = HashMap<Int, MovieEntity>()
 
-    override fun getAll(): List<MovieEntity> {
-        return values.map { it.value }.toList()
-    }
+    override fun getAll(): List<MovieEntity> = values.map { it.value }.toList()
 
-    override fun get(id: Int): MovieEntity? {
-        return values[id]
-    }
+    override fun get(id: Int): MovieEntity? = values[id]
 
-    override fun put(movie: MovieEntity) {
-        values.put(movie.id, movie)
-    }
+    override fun put(movie: MovieEntity): Unit { values.put(movie.id, movie) }
 
-    override fun putAll(movies: List<MovieEntity>) {
-        movies.forEach { put(it) }
-    }
+    override fun putAll(movies: List<MovieEntity>) = movies.forEach { put(it) }
 
-    override fun clear() {
-        values.clear()
-    }
+    override fun clear() = values.clear()
 }

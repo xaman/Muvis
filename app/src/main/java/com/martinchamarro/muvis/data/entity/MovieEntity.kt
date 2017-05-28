@@ -54,11 +54,7 @@ data class MovieEntity(
             }
         }
 
-    override fun equals(other: Any?): Boolean {
-        return other != null && other is MovieEntity && other.id == id
-    }
+    override fun equals(other: Any?) = other != null && other is MovieEntity && other.id == id
 
-    override fun hashCode(): Int {
-        return id
-    }
+    override fun hashCode() = id
 }

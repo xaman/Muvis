@@ -40,9 +40,7 @@ class EmptyView : RelativeLayout {
         loadAttributes(context, attrs)
     }
 
-    private fun initialize() {
-        View.inflate(context, R.layout.layout_empty_view, this)
-    }
+    private fun initialize() = View.inflate(context, R.layout.layout_empty_view, this)
 
     private fun loadAttributes(context: Context, attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.EmptyView)

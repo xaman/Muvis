@@ -17,7 +17,6 @@
 package com.martinchamarro.muvis.data.entity
 
 import com.google.gson.annotations.SerializedName
-import com.martinchamarro.muvis.data.api.responses.ServerResponse
 
 data class DetailEntity(
         @SerializedName("budget") var budget: Long,
@@ -28,4 +27,4 @@ data class DetailEntity(
         @SerializedName("overview") var overview: String,
         @SerializedName("runtime") var runtime: Int,
         @SerializedName("genres") var genres: List<GenreEntity>,
-        @SerializedName("production_countries") var countries: List<CountryEntity>) : ServerResponse()
+        @SerializedName("production_countries") var countries: List<CountryEntity>)

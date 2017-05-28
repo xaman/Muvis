@@ -20,10 +20,7 @@ import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.*
 import com.martinchamarro.muvis.domain.model.pictures.Picture
-import com.martinchamarro.muvis.presentation.extensions.ctx
-import com.martinchamarro.muvis.presentation.extensions.dimen
-import com.martinchamarro.muvis.presentation.extensions.load
-import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.views.widgets.HorizontalLayoutManager
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.activity_detail.view.*
@@ -51,7 +48,7 @@ class DetailRenderer(val view: View) {
     }
 
     fun render(detail: Detail) = with(view) {
-        runtimeView.text = String.format(ctx.getString(R.string.runtime_value), detail.runtime)
+        runtimeView.text = String.format(ctx.string(R.string.runtime_value), detail.runtime)
         countryView.text = translateCountryName(detail.countries[0])
         genresView.text = formatGenres(detail.genres)
         descriptionView.text = detail.overview
@@ -61,9 +58,7 @@ class DetailRenderer(val view: View) {
         creditsView.adapter = CreditsAdapter(ctx, credits)
     }
 
-    private fun translateCountryName(country: Country): String {
-        return Locale("", country.iso).displayCountry
-    }
+    private fun translateCountryName(country: Country) = Locale("", country.iso).displayCountry
 
     private fun formatGenres(genres: List<Genre>): String {
         return genres.foldIndexed("") { index, text, genre ->

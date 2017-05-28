@@ -23,7 +23,7 @@ import javax.inject.Inject
 
 class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) : Api {
 
-    private val services: Services = servicesFactory.create()
+    private val services = servicesFactory.create()
 
     @Throws(ApiException::class)
     override fun getFeaturedMovies(): List<MovieEntity> {

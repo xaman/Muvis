@@ -45,9 +45,7 @@ class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured, val navi
         view = null
     }
 
-    fun showMovieDetail(movieId: Int) {
-        navigator.navigateToDetail(movieId)
-    }
+    fun showMovieDetail(movieId: Int) = navigator.navigateToDetail(movieId)
 
     interface View {
         fun render(movies: List<Movie>)

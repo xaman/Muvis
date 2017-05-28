@@ -65,9 +65,9 @@ class HomeActivity : AppCompatActivity() {
 
     fun hideToolbarProgress() = toolbarProgress.gone()
 
-    @OnPageChange(R.id.pager) fun onPageChange(position: Int) {
-        bottomNav.menu.getItem(position).isChecked = true
-        bottomNav.menu.setVisible(position == 0)
+    @OnPageChange(R.id.pager) fun onPageChange(position: Int) = with(bottomNav.menu) {
+        getItem(position).isChecked = true
+        setVisible(position == 0)
     }
 
 }

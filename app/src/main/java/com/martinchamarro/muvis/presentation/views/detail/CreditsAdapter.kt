@@ -26,8 +26,8 @@ import com.martinchamarro.muvis.presentation.extensions.dimen
 
 class CreditsAdapter(val ctx: Context, val credits: List<Cast>) : RecyclerView.Adapter<CastViewHolder>() {
 
-    val itemWidth = ctx.dimen(R.dimen.item_cast_width)
-    val itemHeight = ctx.dimen(R.dimen.item_cast_height)
+    private val itemWidth = ctx.dimen(R.dimen.item_cast_width)
+    private val itemHeight = ctx.dimen(R.dimen.item_cast_height)
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CastViewHolder {
         val view = View.inflate(ctx, R.layout.item_cast, null)
@@ -39,5 +39,5 @@ class CreditsAdapter(val ctx: Context, val credits: List<Cast>) : RecyclerView.A
         holder?.bind(credits[position])
     }
 
-    override fun getItemCount(): Int = credits.size
+    override fun getItemCount() = credits.size
 }

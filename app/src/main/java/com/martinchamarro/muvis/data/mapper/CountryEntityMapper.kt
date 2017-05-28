@@ -22,10 +22,8 @@ import javax.inject.Inject
 
 class CountryEntityMapper @Inject constructor() {
 
-    operator fun invoke(entity: CountryEntity): Country {
-        return Country(
-                iso = entity.iso,
-                name = entity.name)
+    operator fun invoke(entity: CountryEntity) = with(entity) {
+        Country(iso = iso, name = name)
     }
 
 }

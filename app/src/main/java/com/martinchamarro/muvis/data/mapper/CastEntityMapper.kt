@@ -22,11 +22,10 @@ import javax.inject.Inject
 
 class CastEntityMapper @Inject constructor() {
 
-    operator fun invoke(entity: CastEntity): Cast {
-        return Cast(
-                character = entity.character,
-                name = entity.name,
-                profilePath = entity.profilePath)
+    operator fun invoke(entity: CastEntity) = with(entity) {
+        Cast(character = character,
+            name = name,
+            profilePath = profilePath)
     }
 
 }

@@ -22,7 +22,6 @@ import com.martinchamarro.muvis.AndroidApplication
 import com.martinchamarro.muvis.presentation.di.ActivityComponent
 import com.martinchamarro.muvis.presentation.di.ActivityModule
 import com.martinchamarro.muvis.presentation.di.DaggerActivityComponent
-import com.martinchamarro.muvis.presentation.di.PresenterModule
 
 
 fun Activity.fullScreen() {
@@ -33,5 +32,4 @@ val Activity.activityComponent: ActivityComponent
     get() = DaggerActivityComponent.builder()
             .applicationComponent((application as AndroidApplication).applicationComponent)
             .activityModule(ActivityModule(this))
-            .presenterModule(PresenterModule())
             .build()

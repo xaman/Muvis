@@ -16,14 +16,12 @@
 
 package com.martinchamarro.muvis.domain.model.pictures
 
-import com.martinchamarro.muvis.Config
+import com.martinchamarro.muvis.Config.PICTURE_DOMAIN
 
 enum class Picture(val size: String) {
     POSTER("w154"),
     BACKDROP("w342"),
     PROFILE("w185");
 
-    fun url(path: String?): String? {
-        return if (path != null) Config.PICTURE_DOMAIN + size + path else null
-    }
+    fun url(path: String?) = if (path != null) PICTURE_DOMAIN + size + path else ""
 }

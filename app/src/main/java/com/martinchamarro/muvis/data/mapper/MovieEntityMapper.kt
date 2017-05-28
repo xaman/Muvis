@@ -22,20 +22,20 @@ import javax.inject.Inject
 
 class MovieEntityMapper @Inject constructor() {
 
-    operator fun invoke(entity: MovieEntity): Movie {
-        return Movie(
-                id = entity.id,
-                title = entity.title,
-                originalTitle = entity.originalTitle,
-                originalLanguage = entity.originalLanguage,
-                overview = entity.overview,
-                releaseDate = entity.releaseCalendar,
-                forAdults = entity.isForAdults,
-                popularity = entity.popularity,
-                votesCount = entity.votesCount,
-                votesAverage = entity.votesAverage,
-                posterPath = entity.posterPath,
-                backdropPath = entity.backdropPath)
+    operator fun invoke(entity: MovieEntity) = with(entity) {
+        Movie(
+            id = id,
+            title = title,
+            originalTitle = originalTitle,
+            originalLanguage = originalLanguage,
+            overview = overview,
+            releaseDate = releaseCalendar,
+            forAdults = isForAdults,
+            popularity = popularity,
+            votesCount = votesCount,
+            votesAverage = votesAverage,
+            posterPath = posterPath,
+            backdropPath = backdropPath)
     }
 
 }

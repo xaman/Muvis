@@ -54,9 +54,7 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
         initializePresenter()
     }
 
-    fun injectDependencies() {
-        activityComponent.inject(this)
-    }
+    fun injectDependencies() = activityComponent.inject(this)
 
     fun configureToolbar() {
         toolbar.inflateMenu(R.menu.detail_menu)
@@ -77,9 +75,7 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
         presenter.onResume()
     }
 
-    override fun getMovieId(): Int {
-        return intent.getIntExtra(EXTRA_MOVIE_ID, -1)
-    }
+    override fun getMovieId() = intent.getIntExtra(EXTRA_MOVIE_ID, -1)
 
     override fun render(movie: Movie) = renderer.render(movie)
 

@@ -35,12 +35,8 @@ data class Movie(
     val releaseYear: String?
         get() = releaseDate?.get(Calendar.YEAR).toString()
 
-    override fun hashCode(): Int {
-        return id
-    }
+    override fun hashCode() = id
 
-    override fun equals(other: Any?): Boolean {
-        return other is Movie && other.id == id
-    }
+    override fun equals(other: Any?) = other is Movie && other.id == id
 
 }

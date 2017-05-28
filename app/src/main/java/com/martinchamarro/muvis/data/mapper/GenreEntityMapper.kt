@@ -22,10 +22,8 @@ import javax.inject.Inject
 
 class GenreEntityMapper @Inject constructor() {
 
-    operator fun invoke(entity: GenreEntity): Genre {
-        return Genre(
-                id = entity.id,
-                name = entity.name)
+    operator fun invoke(entity: GenreEntity) = with(entity) {
+        Genre(id = id, name = name)
     }
 
 }
