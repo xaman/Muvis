@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.presentation.di
 
-import java.lang.annotation.Retention;
-
-import javax.inject.Scope;
-
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import javax.inject.Scope
 
 /**
  * A scoping annotation to permit objects whose lifetime should
@@ -28,5 +24,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * correct component.
  */
 @Scope
-@Retention(RUNTIME)
-public @interface PerActivity {}
+@kotlin.annotation.Retention
+annotation class PerActivity

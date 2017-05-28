@@ -14,29 +14,23 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.di;
+package com.martinchamarro.muvis.domain.di
 
-import android.app.Activity;
+import com.martinchamarro.muvis.domain.executor.*
 
-import com.martinchamarro.muvis.presentation.navigation.Navigator;
+import javax.inject.Singleton
 
-import dagger.Module;
-import dagger.Provides;
+import dagger.Module
+import dagger.Provides
 
-@Module public class ActivityModule {
+@Module class DomainModule {
 
-    private Activity activity;
-
-    public ActivityModule(Activity activity) {
-        this.activity = activity;
+    @Provides @Singleton fun provideExecutor(interactorExecutor: InteractorExecutor): Executor {
+        return interactorExecutor
     }
 
-    @Provides @PerActivity Activity provideActivity() {
-        return activity;
-    }
-
-    @Provides @PerActivity public Navigator provideNavigator(Activity activity) {
-        return new Navigator(activity);
+    @Provides @Singleton fun provideMainThread(mainThreadImpl: MainThreadImpl): MainThread {
+        return mainThreadImpl
     }
 
 }

@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.globalutils.di;
+package com.martinchamarro.muvis.globalutils.di
 
-import android.app.Application;
-import android.content.Context;
+import android.app.Application
+import android.content.Context
 
-import javax.inject.Singleton;
+import javax.inject.Singleton
 
-import dagger.Module;
-import dagger.Provides;
+import dagger.Module
+import dagger.Provides
 
-@Module public class ApplicationModule {
+@Module class ApplicationModule(private val application: Application) {
 
-    private Application application;
+    @Provides @Singleton internal fun provideApplicationContext(): Context = application
 
-    public ApplicationModule(Application application) {
-        this.application = application;
-    }
-
-    @Provides @Singleton Context provideApplicationContext() {
-        return this.application;
-    }
 }
