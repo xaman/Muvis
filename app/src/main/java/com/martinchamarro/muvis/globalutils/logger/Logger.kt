@@ -17,38 +17,39 @@
 package com.martinchamarro.muvis.globalutils.logger
 
 import android.util.Log
-import com.martinchamarro.muvis.Config
+import com.martinchamarro.muvis.Config.APP_NAME
+import com.martinchamarro.muvis.Config.DEBUG
 
 object Logger {
 
     private val MESSAGE_LIMIT = 3 * 1024
 
     fun i(tag: String? = null, msg: String? = null) {
-        if (Config.DEBUG) Log.i(Config.APP_NAME, getText(tag, msg))
+        if (DEBUG) Log.i(APP_NAME, getText(tag, msg))
     }
 
     fun e(tag: String? = null, msg: String? = null) {
-        Log.e(Config.APP_NAME, getText(tag, msg))
+        Log.e(APP_NAME, getText(tag, msg))
     }
 
     fun d(tag: String? = null, msg: String? = null) {
-        if (Config.DEBUG) Log.d(Config.APP_NAME, getText(tag, msg))
+        if (DEBUG) Log.d(APP_NAME, getText(tag, msg))
     }
 
     fun v(tag: String? = null, msg: String? = null) {
-        if (Config.DEBUG) Log.v(Config.APP_NAME, getText(tag, msg))
+        if (DEBUG) Log.v(APP_NAME, getText(tag, msg))
     }
 
     fun w(tag: String? = null, msg: String? = null) {
-        if (Config.DEBUG) Log.w(Config.APP_NAME, getText(tag, msg))
+        if (DEBUG) Log.w(APP_NAME, getText(tag, msg))
     }
 
     fun wtf(tag: String? = null, msg: String? = null) {
-        if (Config.DEBUG) Log.wtf(Config.APP_NAME, getText(tag, msg))
+        if (DEBUG) Log.wtf(APP_NAME, getText(tag, msg))
     }
 
     fun l(tag: String? = null, msg: String? = null) {
-        if (!Config.DEBUG) return
+        if (!DEBUG) return
         var msg = msg
         while (!msg.isNullOrEmpty() && msg!!.length > MESSAGE_LIMIT) {
             d(tag, msg.substring(0, MESSAGE_LIMIT))
