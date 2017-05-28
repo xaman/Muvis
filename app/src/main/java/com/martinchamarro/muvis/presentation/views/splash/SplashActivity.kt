@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity(), SplashPresenter.View {
     }
 
     private fun initializePresenter() {
-        presenter.setView(this)
+        presenter.view = this
         presenter.initialize()
     }
 
