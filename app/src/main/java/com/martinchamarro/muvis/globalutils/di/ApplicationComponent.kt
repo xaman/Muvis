@@ -18,7 +18,6 @@ package com.martinchamarro.muvis.globalutils.di
 
 import android.content.Context
 
-import com.martinchamarro.muvis.AndroidApplication
 import com.martinchamarro.muvis.data.di.DataModule
 import com.martinchamarro.muvis.domain.di.DomainModule
 import com.martinchamarro.muvis.domain.executor.Executor
@@ -32,8 +31,6 @@ import dagger.Component
 @Singleton
 @Component(modules = arrayOf(ApplicationModule::class, DataModule::class, DomainModule::class))
 interface ApplicationComponent {
-
-    fun inject(application: AndroidApplication)
 
     fun context(): Context
     fun mainThread(): MainThread
