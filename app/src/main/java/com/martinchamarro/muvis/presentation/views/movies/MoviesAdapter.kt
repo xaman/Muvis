@@ -35,7 +35,5 @@ class MoviesAdapter(val context: Context, val movies: List<Movie>, val listener 
         holder?.itemView?.setOnClickListener { listener(movies[position]) }
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
-    }
+    override fun getItemCount() = movies.size
 }

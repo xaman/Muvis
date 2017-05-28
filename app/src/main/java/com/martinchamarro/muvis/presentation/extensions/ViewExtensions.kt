@@ -45,4 +45,3 @@ fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
     }
     request.into(this)
 }
-

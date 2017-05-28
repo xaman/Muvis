@@ -16,8 +16,11 @@
 
 package com.martinchamarro.muvis.presentation.extensions
 
+import android.support.annotation.DimenRes
 import android.support.v4.app.Fragment
 import com.martinchamarro.muvis.presentation.di.ActivityComponent
 
 val Fragment.activityComponent: ActivityComponent
     get() = activity.activityComponent
+
+fun Fragment.dimen(@DimenRes dimenRes: Int) = context.dimen(dimenRes)

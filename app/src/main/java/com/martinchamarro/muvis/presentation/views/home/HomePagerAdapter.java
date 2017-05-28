@@ -37,7 +37,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     @Override public Fragment getItem(int position) {
         Fragment fragment = null;
         if (position == MOVIES_POS) {
-            fragment = MoviesFragment.getInstance();
+            fragment = MoviesFragment.Companion.getInstance();
         } else if (position == FAVORITES_POS) {
             fragment = FavoritesFragment.Companion.getInstance();
         }
