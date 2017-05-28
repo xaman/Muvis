@@ -19,17 +19,18 @@ package com.martinchamarro.muvis.presentation.views.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.base.BaseActivity
+import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
-class DetailActivity : BaseActivity(), DetailPresenter.View {
+class DetailActivity : AppCompatActivity(), DetailPresenter.View {
 
     @Inject lateinit var presenter: DetailPresenter
     private lateinit var renderer: DetailRenderer

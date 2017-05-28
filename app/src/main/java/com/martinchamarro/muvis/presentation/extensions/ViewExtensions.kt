@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.presentation.extensions
 
 import android.content.Context
 import android.support.annotation.DrawableRes
+import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
@@ -44,4 +45,8 @@ fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
         request.error(placeholderRes)
     }
     request.into(this)
+}
+
+fun Menu.setVisible(visible: Boolean) {
+    for (i in 0..size() - 1) getItem(i).isVisible = visible
 }

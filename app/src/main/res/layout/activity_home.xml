@@ -48,11 +48,11 @@
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottom_navigation"
+                android:layout_above="@+id/bottomNav"
                 android:layout_below="@+id/toolbar"/>
 
             <android.support.design.widget.BottomNavigationView
-                android:id="@+id/bottom_navigation"
+                android:id="@+id/bottomNav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
