@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.data.mapper;
 
 import com.martinchamarro.muvis.data.entity.MovieEntity;
+import com.martinchamarro.muvis.data.entity.MovieEntityBuilder;
 import com.martinchamarro.muvis.domain.model.Movie;
 
 import static org.junit.Assert.*;
@@ -36,7 +37,7 @@ public class MovieEntityMapperTest {
     }
 
     @Test public void testEntityMapping() {
-        MovieEntity entity = givenAnEntity();
+        MovieEntity entity = MovieEntityBuilder.Companion.build();
         Movie movie = mapper.invoke(entity);
         assertEquals(entity.getId(), movie.getId());
         assertEquals(entity.getTitle(), movie.getTitle());
@@ -47,26 +48,7 @@ public class MovieEntityMapperTest {
         assertEquals(entity.getVotesCount(), movie.getVotesCount());
         assertEquals(entity.getVotesAverage(), movie.getVotesAverage(), 0.1f);
         assertEquals(entity.getPopularity(), movie.getPopularity(), 0.1f);
-        assertEquals(entity.getReleaseDate(), movie.getReleaseDate());
         assertEquals(entity.getPosterPath(), movie.getPosterPath());
         assertEquals(entity.getBackdropPath(), movie.getBackdropPath());
     }
-
-    private MovieEntity givenAnEntity() {
-        MovieEntity entity = new MovieEntity();
-        entity.setId(1);
-        entity.setTitle("Logan");
-        entity.setOriginalTitle("Logan");
-        entity.setOriginalLanguage("en");
-        entity.setOverview("Sin sus poderes, por primera vez, Wolverine es verdaderamente vulnerable. Después de una vida de dolor y angustia, sin rumbo y perdido en el mundo donde los X-Men son leyenda, su mentor Charles Xavier lo convence de asumir una última misión: proteger a una joven que será la única esperanza para la raza mutante. Tercera y última película protagonizada por Hugh Jackman en el papel de Lobezno.");
-        entity.setForAdults(false);
-        entity.setVotesCount(1234);
-        entity.setVotesAverage(7.5f);
-        entity.setPopularity(10.123324f);
-        entity.setReleaseDate("2017-01-01");
-        entity.setPosterPath("/4b6bc23af9.png");
-        entity.setBackdropPath("/a34b4bc45.png");
-        return entity;
-    }
-
 }

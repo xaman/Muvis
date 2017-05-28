@@ -44,15 +44,15 @@ public class MovieEntityTest {
             "    }";
 
     @Test public void testTwoMoviesAreEqualIfSameId() {
-        MovieEntity movie = new MovieEntity();
+        MovieEntity movie = MovieEntityBuilder.Companion.build();
         movie.setId(ANY_ID);
-        MovieEntity otherMovie = new MovieEntity();
+        MovieEntity otherMovie = MovieEntityBuilder.Companion.build();
         otherMovie.setId(ANY_ID);
         assertEquals(movie, otherMovie);
     }
 
     @Test public void testHashCodeIsEqualThanId() {
-        MovieEntity movie = new MovieEntity();
+        MovieEntity movie = MovieEntityBuilder.Companion.build();
         movie.setId(ANY_ID);
         assertEquals(movie.getId(), movie.hashCode());
     }
