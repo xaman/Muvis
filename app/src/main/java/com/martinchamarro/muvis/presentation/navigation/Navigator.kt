@@ -14,29 +14,19 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.navigation;
+package com.martinchamarro.muvis.presentation.navigation
 
-import android.app.Activity;
+import android.app.Activity
 
-import com.martinchamarro.muvis.presentation.views.detail.DetailActivity;
-import com.martinchamarro.muvis.presentation.views.home.HomeActivity;
+import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
+import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 
-import javax.inject.Inject;
+import javax.inject.Inject
 
-public class Navigator {
+class Navigator @Inject constructor(private val activity: Activity) {
 
-    private Activity activity;
+    fun navigateToHome() = HomeActivity.start(activity)
 
-    @Inject public Navigator(Activity activity) {
-        this.activity = activity;
-    }
-
-    public void navigateToHome() {
-        HomeActivity.start(activity);
-    }
-
-    public void navigateToDetail(int movieId) {
-        DetailActivity.Companion.start(activity, movieId);
-    }
+    fun navigateToDetail(movieId: Int) = DetailActivity.start(activity, movieId)
 
 }
