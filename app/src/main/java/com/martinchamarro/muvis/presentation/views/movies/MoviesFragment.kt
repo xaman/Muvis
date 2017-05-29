@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.presentation.views.movies
 
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager.VERTICAL
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -29,9 +30,11 @@ import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.dimen
 import com.martinchamarro.muvis.presentation.extensions.gone
 import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.android.synthetic.main.item_movie.view.*
 import javax.inject.Inject
 
 class MoviesFragment : Fragment(), MoviesPresenter.View {
@@ -75,7 +78,13 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
     }
 
     override fun render(movies: List<Movie>) {
-        recyclerView.adapter = MoviesAdapter(activity, movies) { presenter.showMovieDetail(it.id) }
+        recyclerView.adapter = MoviesAdapter(activity, movies, this::onMovieClick)
+    }
+
+    private fun onMovieClick(movie: Movie, view: View) {
+        val transitionName = getString(R.string.transition_picture)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view.posterView, transitionName)
+        startActivity(DetailActivity.createIntent(context, movie.id), options.toBundle())
     }
 
     override fun showEmptyView() = emptyView.visible()

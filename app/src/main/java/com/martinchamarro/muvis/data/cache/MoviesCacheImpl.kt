@@ -27,7 +27,7 @@ class MoviesCacheImpl @Inject constructor() : MoviesCache {
 
     override fun get(id: Int): MovieEntity? = values[id]
 
-    override fun put(movie: MovieEntity): Unit { values.put(movie.id, movie) }
+    override fun put(movie: MovieEntity) { values.put(movie.id, movie) }
 
     override fun putAll(movies: List<MovieEntity>) = movies.forEach { put(it) }
 

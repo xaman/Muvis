@@ -38,9 +38,12 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     companion object {
         val EXTRA_MOVIE_ID = "movie_id"
         fun start(context: Context, movieId: Int) {
-            val intent = Intent(context, DetailActivity::class.java)
+            context.startActivity(createIntent(context, movieId))
+        }
+        fun createIntent(ctx: Context, movieId: Int): Intent {
+            val intent = Intent(ctx, DetailActivity::class.java)
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
-            context.startActivity(intent)
+            return intent
         }
     }
 

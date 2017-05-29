@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:background="@color/silver"
-            android:src="@drawable/ic_empty_movie"/>
+            android:src="@drawable/ic_empty_movie"
+            android:transitionName="@string/transition_picture"/>
 
         <RelativeLayout
             android:id="@+id/infoView"
