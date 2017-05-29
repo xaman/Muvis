@@ -39,6 +39,7 @@ fun View.gone() {
 }
 
 fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
+    if (url.isNullOrBlank()) return
     val request = Picasso.with(context).load(url)
     if (placeholderRes != -1) {
         request.placeholder(placeholderRes)
