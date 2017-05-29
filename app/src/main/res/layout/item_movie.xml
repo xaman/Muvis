@@ -33,7 +33,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
+        <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
             android:id="@+id/posterView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
