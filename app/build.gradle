@@ -80,17 +80,13 @@ dependencies {
     compile rootProject.ext.dependencies.cardView
     compile rootProject.ext.dependencies.gson
     compile rootProject.ext.dependencies.dagger
-    annotationProcessor rootProject.ext.dependencies.daggerCompiler
     kapt rootProject.ext.dependencies.daggerCompiler
     compile rootProject.ext.dependencies.butterKnife
-    annotationProcessor rootProject.ext.dependencies.butterKnifeCompiler
     kapt rootProject.ext.dependencies.butterKnifeCompiler
-    compile rootProject.ext.dependencies.retrolambda
     compile rootProject.ext.dependencies.retrofit
     compile rootProject.ext.dependencies.retrofitGson
     compile rootProject.ext.dependencies.okhttp3Logging
     compile rootProject.ext.dependencies.kotlin
-    compile rootProject.ext.dependencies.stream
     compile rootProject.ext.dependencies.picasso
     compile rootProject.ext.dependencies.constraintLayout
     compile rootProject.ext.dependencies.adjustableImageView

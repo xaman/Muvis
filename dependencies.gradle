@@ -32,12 +32,10 @@ allprojects {
                 daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
                 butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
                 butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
-                retrolambda        : "me.tatarka:gradle-retrolambda:3.6.1",
                 retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
                 retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
-                stream             : "com.annimon:stream:1.1.6",
                 picasso            : 'com.squareup.picasso:picasso:2.5.2',
                 constraintLayout   : 'com.android.support.constraint:constraint-layout:1.0.2',
                 adjustableImageView: 'com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1'
