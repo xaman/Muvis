@@ -19,9 +19,9 @@ package com.martinchamarro.muvis.globalutils.di
 import android.content.Context
 
 import com.martinchamarro.muvis.data.di.DataModule
-import com.martinchamarro.muvis.domain.di.DomainModule
-import com.martinchamarro.muvis.domain.executor.Executor
-import com.martinchamarro.muvis.domain.executor.MainThread
+import com.martinchamarro.muvis.threading.di.ThreadingModule
+import com.martinchamarro.muvis.threading.Executor
+import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 
 import javax.inject.Singleton
@@ -29,7 +29,7 @@ import javax.inject.Singleton
 import dagger.Component
 
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class, DataModule::class, DomainModule::class))
+@Component(modules = arrayOf(ApplicationModule::class, DataModule::class, ThreadingModule::class))
 interface ApplicationComponent {
 
     fun context(): Context

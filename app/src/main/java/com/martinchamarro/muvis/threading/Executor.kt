@@ -14,23 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.di
+package com.martinchamarro.muvis.threading
 
-import com.martinchamarro.muvis.domain.executor.*
+import com.martinchamarro.muvis.domain.interactor.Interactor
 
-import javax.inject.Singleton
-
-import dagger.Module
-import dagger.Provides
-
-@Module class DomainModule {
-
-    @Provides @Singleton fun provideExecutor(interactorExecutor: InteractorExecutor): Executor {
-        return interactorExecutor
-    }
-
-    @Provides @Singleton fun provideMainThread(mainThreadImpl: MainThreadImpl): MainThread {
-        return mainThreadImpl
-    }
-
+interface Executor {
+    fun execute(interactor: Interactor?)
 }

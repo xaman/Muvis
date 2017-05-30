@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.executor
+package com.martinchamarro.muvis.threading
 
 import com.martinchamarro.muvis.domain.interactor.Interactor
 

@@ -29,7 +29,6 @@ class AndroidApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeInjection()
-
     }
 
     private fun initializeInjection() {

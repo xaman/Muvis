@@ -14,8 +14,26 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.executor
+package com.martinchamarro.muvis.threading
 
-interface MainThread {
-    fun post(runnable: () -> Unit)
+import android.os.Handler
+import android.os.Looper
+
+import javax.inject.Inject
+import javax.inject.Singleton
+
+/**
+
+ * Class used to notify to the callback of the interactor in the main thread.
+ * It is not possible to modify views from another thread.
+
+ */
+@Singleton class MainThreadImpl @Inject constructor() : MainThread {
+
+    private val handler: Handler = Handler(Looper.getMainLooper())
+
+    override fun post(runnable: () -> Unit) {
+        this.handler.post(runnable)
+    }
+
 }

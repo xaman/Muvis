@@ -17,8 +17,8 @@
 package com.martinchamarro.muvis.domain.interactor.movies
 
 import com.martinchamarro.muvis.domain.exception.RepositoryException
-import com.martinchamarro.muvis.domain.executor.Executor
-import com.martinchamarro.muvis.domain.executor.MainThread
+import com.martinchamarro.muvis.threading.Executor
+import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.interactor.Interactor
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
