@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.data.api
 
+import android.content.Context
 import com.google.gson.GsonBuilder
 import com.martinchamarro.muvis.Config
 import com.martinchamarro.muvis.globalutils.logger.Logger
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import javax.inject.Inject
 
-class RetrofitServicesFactory @Inject constructor() {
+class RetrofitServicesFactory @Inject constructor(val context: Context) {
 
     private companion object {
         val PARAM_API_KEY = "api_key"
@@ -52,7 +53,7 @@ class RetrofitServicesFactory @Inject constructor() {
         return Retrofit.Builder()
                 .baseUrl(Config.DOMAIN)
                 .addConverterFactory(getGsonConverter())
-                .client(getClient())
+                .client(createClient())
                 .build()
     }
 
@@ -65,14 +66,16 @@ class RetrofitServicesFactory @Inject constructor() {
         return GsonConverterFactory.create(gson)
     }
 
-    private fun getClient(): OkHttpClient {
+    private fun createClient(): OkHttpClient {
         return OkHttpClient.Builder()
+                .cache(CacheFactory.create(context))
+                .addInterceptor(OfflineCacheInterceptor(context))
+                .addInterceptor(createLoggingInterceptor())
                 .addInterceptor(COMMON_PARAMS_INTERCEPTOR)
-                .addInterceptor(getLoggingInterceptor())
                 .build()
     }
 
-    private fun getLoggingInterceptor(): HttpLoggingInterceptor {
+    private fun createLoggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { Logger.l(it) })
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
@@ -82,6 +85,4 @@ class RetrofitServicesFactory @Inject constructor() {
         builder.addQueryParameter(PARAM_API_KEY, Config.API_KEY)
         builder.addQueryParameter(PARAM_LANGUAGE, Locale.getDefault().language)
     }
-
-
 }

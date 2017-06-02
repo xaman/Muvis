@@ -21,17 +21,25 @@ import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
 import com.martinchamarro.muvis.data.entity.DetailEntity
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Services {
 
+    companion object {
+        const val HEADER_CACHE = "Cache-Control: public, max-age=3600"
+    }
+
+    @Headers(HEADER_CACHE)
     @GET("/3/discover/movie")
     fun getFeaturedMovies(@Query("release_date.gte") release: String): Call<FeaturedMoviesResponse>
 
+    @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}")
     fun getMovieDetail(@Path("movie_id") id: Int): Call<DetailEntity>
 
+    @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}/credits")
     fun getCredits(@Path("movie_id") id: Int): Call<CreditsResponse>
 
