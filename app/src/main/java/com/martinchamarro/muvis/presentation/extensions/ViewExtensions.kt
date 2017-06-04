@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.presentation.extensions
 
 import android.content.Context
 import android.support.annotation.DrawableRes
+import android.support.annotation.IntegerRes
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
@@ -30,13 +31,11 @@ fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun View.invisible() {
-    visibility = View.INVISIBLE
-}
-
 fun View.gone() {
     visibility = View.GONE
 }
+
+fun View.integer(@IntegerRes integerRes: Int) = ctx.integer(integerRes)
 
 fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
     if (url.isNullOrBlank()) return

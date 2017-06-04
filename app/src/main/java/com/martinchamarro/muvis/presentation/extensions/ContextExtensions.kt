@@ -18,8 +18,11 @@ package com.martinchamarro.muvis.presentation.extensions
 
 import android.content.Context
 import android.support.annotation.DimenRes
+import android.support.annotation.IntegerRes
 import android.support.annotation.StringRes
 
 fun Context.string(@StringRes stringRes: Int): String = getString(stringRes)
 
 fun Context.dimen(@DimenRes dimenRes: Int) = resources.getDimensionPixelSize(dimenRes)
+
+fun Context.integer(@IntegerRes integerRes: Int) = resources.getInteger(integerRes)

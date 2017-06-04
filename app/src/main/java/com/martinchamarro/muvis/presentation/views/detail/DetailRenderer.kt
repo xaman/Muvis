@@ -52,10 +52,16 @@ class DetailRenderer(val view: View) {
         countryView.text = translateCountryName(detail.countries[0])
         genresView.text = formatGenres(detail.genres)
         descriptionView.text = detail.overview
+        descriptionView.setOnClickListener(this@DetailRenderer::onDescriptionClick)
     }
 
     fun render(credits: List<Cast>) = with(view) {
         creditsView.adapter = CreditsAdapter(ctx, credits)
+    }
+
+    fun onDescriptionClick(v: View) = with(view.descriptionView) {
+        val descMaxLines = integer(R.integer.desc_max_lines)
+        maxLines = if (maxLines == descMaxLines) Int.MAX_VALUE else descMaxLines
     }
 
     private fun translateCountryName(country: Country) = Locale("", country.iso).displayCountry
