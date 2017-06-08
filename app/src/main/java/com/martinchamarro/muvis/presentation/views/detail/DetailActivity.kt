@@ -26,7 +26,6 @@ import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
-import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
@@ -48,7 +47,6 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        fullScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         injectDependencies()

@@ -38,7 +38,7 @@ class DetailRenderer(val view: View) {
     }
 
     fun render(movie: Movie) = with(view) {
-        toolbar.title = movie.title
+        collapsingToolbar.title = movie.title
         titleView.text = movie.title
         posterView.load(Picture.POSTER.url(movie.posterPath))
         backdropView.load(Picture.BACKDROP.url(movie.backdropPath))
