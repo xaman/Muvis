@@ -24,18 +24,19 @@ class MovieEntityMapper @Inject constructor() {
 
     operator fun invoke(entity: MovieEntity) = with(entity) {
         Movie(
-            id = id,
-            title = title,
-            originalTitle = originalTitle,
-            originalLanguage = originalLanguage,
-            overview = overview,
-            releaseDate = releaseCalendar,
-            forAdults = isForAdults,
-            popularity = popularity,
-            votesCount = votesCount,
-            votesAverage = votesAverage,
-            posterPath = posterPath,
-            backdropPath = backdropPath)
+                id = id,
+                title = title,
+                originalTitle = originalTitle,
+                originalLanguage = originalLanguage,
+                overview = overview,
+                releaseDate = releaseCalendar,
+                forAdults = isForAdults,
+                popularity = popularity,
+                votesCount = votesCount,
+                votesAverage = votesAverage,
+                posterPath = posterPath,
+                backdropPath = backdropPath,
+                isFavorite = isFavorite)
     }
 
 }

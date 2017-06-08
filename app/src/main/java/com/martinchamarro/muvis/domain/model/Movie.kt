@@ -23,14 +23,15 @@ data class Movie(
         val title: String,
         val originalTitle: String,
         val originalLanguage: String,
-        val overview: String,
+        val overview: String?,
         val releaseDate: Calendar?,
         val forAdults: Boolean,
         val popularity: Float,
         val votesCount: Int,
         val votesAverage: Float,
-        val posterPath: String,
-        val backdropPath: String) {
+        val posterPath: String?,
+        val backdropPath: String?,
+        val isFavorite: Boolean) {
 
     val releaseYear: String?
         get() = releaseDate?.get(Calendar.YEAR).toString()

@@ -29,14 +29,14 @@ data class MovieEntity(
         @SerializedName("title") var title: String,
         @SerializedName("original_title") var originalTitle: String,
         @SerializedName("original_language") var originalLanguage: String,
-        @SerializedName("overview") var overview: String,
+        @SerializedName("overview") var overview: String?,
         @SerializedName("release_date") var releaseDate: String,
         @SerializedName("adult") var isForAdults: Boolean,
         @SerializedName("popularity") var popularity: Float,
         @SerializedName("vote_count") var votesCount: Int,
         @SerializedName("vote_average") var votesAverage: Float,
-        @SerializedName("poster_path") var posterPath: String,
-        @SerializedName("backdrop_path") var backdropPath: String) {
+        @SerializedName("poster_path") var posterPath: String?,
+        @SerializedName("backdrop_path") var backdropPath: String?) {
 
     companion object {
         val DATE_FORMAT = "yyyy-MM-dd"
@@ -53,6 +53,8 @@ data class MovieEntity(
                 return null
             }
         }
+
+    var isFavorite: Boolean = false
 
     override fun equals(other: Any?) = other != null && other is MovieEntity && other.id == id
 
