@@ -60,6 +60,10 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     fun configureToolbar() {
         toolbar.inflateMenu(R.menu.detail_menu)
         toolbar.setNavigationOnClickListener { finish() }
+        // FIX: there's a bug that cuts the appbar title
+        // https://stackoverflow.com/a/43676163/2271287
+        // https://issuetracker.google.com/issues/37140811
+        collapsingToolbar.post { collapsingToolbar.requestLayout() }
     }
 
     fun initializeRenderer() {
