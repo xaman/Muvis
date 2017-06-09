@@ -33,4 +33,7 @@ interface MoviesRepository {
 
     @Throws(RepositoryException::class)
     fun getCredits(id: Int): List<Cast>
+
+    @Throws(RepositoryException::class)
+    fun setFavorite(id: Int, isFavorite: Boolean): Movie
 }

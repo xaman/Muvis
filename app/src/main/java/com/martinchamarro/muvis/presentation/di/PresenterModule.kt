@@ -35,8 +35,8 @@ import dagger.Provides
         return MoviesPresenter(getFeatured, navigator)
     }
 
-    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits): DetailPresenter {
-        return DetailPresenter(getMovie, getDetail, getCredits)
+    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailPresenter {
+        return DetailPresenter(getMovie, getDetail, getCredits, setFavorite)
     }
 
 }

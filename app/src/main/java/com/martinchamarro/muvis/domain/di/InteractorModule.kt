@@ -31,4 +31,6 @@ import dagger.Provides
 
     @Provides fun provideGetCredits(interactor: GetCreditsInteractor): GetCredits = interactor
 
+    @Provides fun provideSetFavorite(interactor: SetFavoriteInteractor): SetFavorite = interactor
+
 }

@@ -58,4 +58,12 @@ class MoviesRepositoryImpl @Inject constructor(
         val credits = api.getCredits(id)
         return credits.map { castMapper(it) }.toList()
     }
+
+    @Throws(RepositoryException::class)
+    override fun setFavorite(id: Int, isFavorite: Boolean): Movie {
+        // TODO: replace with a persistent implementation
+        val entity = cache.get(id) ?: throw MovieNotFoundException()
+        entity.isFavorite = isFavorite
+        return moviesMapper(entity)
+    }
 }

@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.presentation.views.detail
 import com.martinchamarro.muvis.domain.interactor.movies.GetCredits
 import com.martinchamarro.muvis.domain.interactor.movies.GetDetail
 import com.martinchamarro.muvis.domain.interactor.movies.GetMovie
+import com.martinchamarro.muvis.domain.interactor.movies.SetFavorite
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
@@ -29,13 +30,15 @@ import javax.inject.Inject
 class DetailPresenter @Inject constructor(
         private val getMovie: GetMovie,
         private val getDetail: GetDetail,
-        private val getCredits: GetCredits) : Presenter {
+        private val getCredits: GetCredits,
+        private val setFavorite: SetFavorite) : Presenter {
 
     companion object {
         val TAG: String = DetailPresenter::class.java.simpleName
     }
 
     var view: View? = null
+    var movie: Movie? = null
 
     override fun initialize() {
         view?.showProgress()
@@ -46,6 +49,7 @@ class DetailPresenter @Inject constructor(
     }
 
     private fun onMovieLoadSuccess(movie: Movie) {
+        this.movie = movie
         view?.hideProgress()
         view?.render(movie)
     }
