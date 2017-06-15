@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.interactor.movies
+package com.martinchamarro.muvis.data.database
 
-import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.data.entity.MovieEntity
 
-interface SetFavorite {
-    fun execute(id: Int, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit)
+interface Database {
+    fun save(movie: MovieEntity)
+    fun load(id: Int): MovieEntity?
+    fun loadAll(): List<MovieEntity>
+    fun contains(id: Int): Boolean
+    fun delete(id: Int)
+    fun invalidate()
 }

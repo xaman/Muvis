@@ -18,6 +18,8 @@ package com.martinchamarro.muvis.data.di
 
 import com.martinchamarro.muvis.data.api.*
 import com.martinchamarro.muvis.data.cache.*
+import com.martinchamarro.muvis.data.database.Database
+import com.martinchamarro.muvis.data.database.LazyDatabase
 import com.martinchamarro.muvis.data.repository.MoviesRepositoryImpl
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 
@@ -31,4 +33,6 @@ import dagger.Provides
     @Provides fun provideApi(api: RetrofitApi): Api = api
 
     @Provides fun provideCache(cache: MoviesCacheImpl): MoviesCache = cache
+
+    @Provides fun provideDatabase(db: LazyDatabase): Database = db
 }

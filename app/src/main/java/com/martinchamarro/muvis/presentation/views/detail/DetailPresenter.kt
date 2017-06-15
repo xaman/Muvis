@@ -38,7 +38,7 @@ class DetailPresenter @Inject constructor(
     }
 
     var view: View? = null
-    var movie: Movie? = null
+    lateinit var movie: Movie
 
     override fun initialize() {
         view?.showProgress()
@@ -74,6 +74,19 @@ class DetailPresenter @Inject constructor(
 
     private fun onCreditsLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading credits: ${cause.message}")
+    }
+
+    fun setFavorite() {
+        setFavorite.execute(movie.id, this::onSetFavoriteSuccess, this::onSetFavoriteError)
+    }
+
+    fun onSetFavoriteSuccess(movie: Movie) {
+        this.movie = movie
+        view?.render(movie)
+    }
+
+    fun onSetFavoriteError(cause: Throwable) {
+        Logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
     }
 
     override fun onDestroy() {

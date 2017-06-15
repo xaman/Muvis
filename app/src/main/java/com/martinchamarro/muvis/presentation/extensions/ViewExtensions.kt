@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.presentation.extensions
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.support.annotation.IntegerRes
 import android.view.Menu
@@ -34,6 +35,8 @@ fun View.visible() {
 fun View.gone() {
     visibility = View.GONE
 }
+
+fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.getDrawable(drawableRes)
 
 fun View.integer(@IntegerRes integerRes: Int) = ctx.integer(integerRes)
 

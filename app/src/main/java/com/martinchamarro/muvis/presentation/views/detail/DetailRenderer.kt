@@ -44,7 +44,14 @@ class DetailRenderer(val view: View) {
         backdropView.load(Picture.BACKDROP.url(movie.backdropPath))
         ratingView.text = movie.votesAverage.toString()
         yearView.text = movie.releaseYear
+        renderFab(movie)
         view.visible()
+    }
+
+    private fun renderFab(movie: Movie) = with(view.fabView) {
+        var fabIconRes = R.drawable.ic_fab_fav
+        if (movie.isFavorite) fabIconRes = R.drawable.ic_fab_unfav
+        setImageResource(fabIconRes)
     }
 
     fun render(detail: Detail) = with(view) {

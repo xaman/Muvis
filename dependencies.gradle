@@ -36,9 +36,10 @@ allprojects {
                 retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
-                picasso            : 'com.squareup.picasso:picasso:2.5.2',
-                constraintLayout   : 'com.android.support.constraint:constraint-layout:1.0.2',
-                adjustableImageView: 'com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1'
+                picasso            : "com.squareup.picasso:picasso:2.5.2",
+                constraintLayout   : "com.android.support.constraint:constraint-layout:1.0.2",
+                adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1",
+                lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0"
         ]
     }
 }

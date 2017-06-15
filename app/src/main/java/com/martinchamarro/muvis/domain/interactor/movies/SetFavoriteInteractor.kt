@@ -29,13 +29,11 @@ class SetFavoriteInteractor @Inject constructor(
         val repository: MoviesRepository) : Interactor, SetFavorite {
 
     private var id = -1
-    private var isFavorite = false
     private lateinit var successCallback: (Movie) -> Unit
     private lateinit var errorCallback: (Throwable) -> Unit
 
-    override fun execute(id: Int, isFavorite: Boolean, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit) {
+    override fun execute(id: Int, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit) {
         this.id = id
-        this.isFavorite = isFavorite
         this.successCallback = successCallback
         this.errorCallback = errorCallback
         executor.execute(this)
@@ -43,8 +41,8 @@ class SetFavoriteInteractor @Inject constructor(
 
     override fun run() {
         try {
-            val movie = repository.setFavorite(id, isFavorite)
-            successCallback(movie)
+            val movie = repository.setFavorite(id)
+            mainThread.post { successCallback(movie) }
         } catch(e: Exception) {
             mainThread.post { errorCallback(e) }
         }

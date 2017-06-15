@@ -55,6 +55,7 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
         configureToolbar()
         initializeRenderer()
         initializePresenter()
+        setListeners()
     }
 
     fun injectDependencies() = activityComponent.inject(this)
@@ -75,6 +76,10 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     fun initializePresenter() {
         presenter.view = this
         presenter.initialize()
+    }
+
+    fun setListeners() {
+        fabView.setOnClickListener { presenter.setFavorite() }
     }
 
     override fun onResume() {

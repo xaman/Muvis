@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.data.repository
 
 import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
+import com.martinchamarro.muvis.data.database.Database
 import com.martinchamarro.muvis.data.mapper.*
 import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
 import com.martinchamarro.muvis.domain.exception.RepositoryException
@@ -30,6 +31,7 @@ import javax.inject.Singleton
 class MoviesRepositoryImpl @Inject constructor(
         private val api: Api,
         private val cache: MoviesCache,
+        private val db: Database,
         private val moviesMapper: MovieEntityMapper,
         private val detailMapper: DetailEntityMapper,
         private val castMapper: CastEntityMapper) : MoviesRepository {
@@ -44,6 +46,7 @@ class MoviesRepositoryImpl @Inject constructor(
     @Throws(RepositoryException::class)
     override fun getMovieById(id: Int): Movie {
         val entity = cache.get(id) ?: throw MovieNotFoundException()
+        entity.isFavorite = db.contains(id)
         return moviesMapper(entity)
     }
 
@@ -60,10 +63,10 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     @Throws(RepositoryException::class)
-    override fun setFavorite(id: Int, isFavorite: Boolean): Movie {
-        // TODO: replace with a persistent implementation
+    override fun setFavorite(id: Int): Movie {
         val entity = cache.get(id) ?: throw MovieNotFoundException()
-        entity.isFavorite = isFavorite
+        entity.isFavorite = !db.contains(id)
+        if (entity.isFavorite) db.save(entity) else db.delete(id)
         return moviesMapper(entity)
     }
 }
