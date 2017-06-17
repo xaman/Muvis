@@ -16,6 +16,7 @@
 
 package com.martinchamarro.muvis.presentation.views.detail
 
+import com.martinchamarro.muvis.Config
 import com.martinchamarro.muvis.domain.interactor.movies.GetCredits
 import com.martinchamarro.muvis.domain.interactor.movies.GetDetail
 import com.martinchamarro.muvis.domain.interactor.movies.GetMovie
@@ -39,6 +40,7 @@ class DetailPresenter @Inject constructor(
 
     var view: View? = null
     lateinit var movie: Movie
+    lateinit var detail: Detail
 
     override fun initialize() {
         view?.showProgress()
@@ -89,9 +91,9 @@ class DetailPresenter @Inject constructor(
         Logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
     }
 
-    override fun onDestroy() {
-        this.view = null
-    }
+    fun shareMovie() = view?.shareMovie(Config.MOVIE_URL + movie.id)
+
+    override fun onDestroy() { this.view = null }
 
     interface View {
         fun getMovieId(): Int?
@@ -100,6 +102,7 @@ class DetailPresenter @Inject constructor(
         fun render(credits: List<Cast>)
         fun showProgress()
         fun hideProgress()
+        fun shareMovie(url: String)
         fun finish()
     }
 }

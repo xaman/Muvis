@@ -51,7 +51,7 @@ class RetrofitServicesFactory @Inject constructor(val context: Context) {
 
     private fun getHttpAdapter(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(Config.DOMAIN)
+                .baseUrl(Config.API_DOMAIN)
                 .addConverterFactory(getGsonConverter())
                 .client(createClient())
                 .build()

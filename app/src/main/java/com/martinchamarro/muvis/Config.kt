@@ -19,7 +19,8 @@ package com.martinchamarro.muvis
 object Config {
     var DEBUG = BuildConfig.DEBUG_MODE
     val APP_NAME = "Muvis"
-    val DOMAIN = "https://api.themoviedb.org/"
+    val API_DOMAIN = "https://api.themoviedb.org/"
     val API_KEY = BuildConfig.API_KEY
-    val PICTURE_DOMAIN = "https://image.tmdb.org/t/p/"
+    val PICTURE_URL = "https://image.tmdb.org/t/p/"
+    val MOVIE_URL = "https://www.themoviedb.org/movie/"
 }

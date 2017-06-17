@@ -28,6 +28,7 @@ import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.share
 import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity(), DetailPresenter.View {
@@ -53,27 +54,28 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
         setListeners()
     }
 
-    fun injectDependencies() = activityComponent.inject(this)
+    private fun injectDependencies() = activityComponent.inject(this)
 
-    fun configureToolbar() {
+    private fun configureToolbar() {
         toolbar.inflateMenu(R.menu.detail_menu)
         toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setOnMenuItemClickListener { presenter.shareMovie(); true }
         // FIX: there's a bug that cuts the appbar title
         // https://stackoverflow.com/a/43676163/2271287
         // https://issuetracker.google.com/issues/37140811
         collapsingToolbar.post { collapsingToolbar.requestLayout() }
     }
 
-    fun initializeRenderer() {
+    private fun initializeRenderer() {
         renderer = DetailRenderer(rootView)
     }
 
-    fun initializePresenter() {
+    private fun initializePresenter() {
         presenter.view = this
         presenter.initialize()
     }
 
-    fun setListeners() {
+    private fun setListeners() {
         fabView.setOnClickListener { presenter.setFavorite() }
     }
 
@@ -93,6 +95,8 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     override fun showProgress() {}
 
     override fun hideProgress() {}
+
+    override fun shareMovie(url: String) { share(url) }
 
     override fun onPause() {
         presenter.onPause()
