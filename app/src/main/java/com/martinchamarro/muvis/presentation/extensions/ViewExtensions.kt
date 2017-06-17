@@ -36,11 +36,12 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.getDrawable(drawableRes)
+fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.resources.getDrawable(drawableRes)
 
 fun View.integer(@IntegerRes integerRes: Int) = ctx.integer(integerRes)
 
 fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
+    if (placeholderRes != -1) setImageResource(placeholderRes)
     if (url.isNullOrBlank()) return
     val request = Picasso.with(context).load(url)
     if (placeholderRes != -1) {
