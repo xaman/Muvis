@@ -22,6 +22,7 @@ allprojects {
         butterKnifeVersion = '8.5.1'
         retrofitVersion = "2.3.0"
         okhttpVersion = "3.8.0"
+        ankoVersion = "0.10.1"
 
         dependencies = [
                 support            : "com.android.support:appcompat-v7:${supportVersion}",
@@ -39,7 +40,8 @@ allprojects {
                 picasso            : "com.squareup.picasso:picasso:2.5.2",
                 constraintLayout   : "com.android.support.constraint:constraint-layout:1.0.2",
                 adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1",
-                lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0"
+                lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0",
+                anko               : "org.jetbrains.anko:anko:$ankoVersion"
         ]
     }
 }

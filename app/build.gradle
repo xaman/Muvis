@@ -85,6 +85,7 @@ dependencies {
     compile rootProject.ext.dependencies.constraintLayout
     compile rootProject.ext.dependencies.adjustableImageView
     compile rootProject.ext.dependencies.lazyStorage
+    compile rootProject.ext.dependencies.anko
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
