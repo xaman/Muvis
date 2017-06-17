@@ -18,15 +18,14 @@ package com.martinchamarro.muvis.presentation.navigation
 
 import android.app.Activity
 
-import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
+import org.jetbrains.anko.intentFor
 
 import javax.inject.Inject
 
 class Navigator @Inject constructor(private val activity: Activity) {
 
-    fun navigateToHome() = HomeActivity.start(activity)
-
-    fun navigateToDetail(movieId: Int) = DetailActivity.start(activity, movieId)
-
+    fun navigateToHome() = with(activity) {
+        startActivity(intentFor<HomeActivity>())
+    }
 }

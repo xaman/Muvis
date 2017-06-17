@@ -35,6 +35,7 @@ import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.item_movie.view.*
+import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
 class MoviesFragment : Fragment(), MoviesPresenter.View {
@@ -84,7 +85,7 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
     private fun onMovieClick(movie: Movie, view: View) {
         val transitionName = getString(R.string.transition_picture)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view.posterView, transitionName)
-        startActivity(DetailActivity.createIntent(context, movie.id), options.toBundle())
+        startActivity(DetailActivity.createIntent(ctx, movie.id), options.toBundle())
     }
 
     override fun showEmptyView() = emptyView.visible()

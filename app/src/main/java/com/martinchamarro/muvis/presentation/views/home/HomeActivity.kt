@@ -16,8 +16,6 @@
 
 package com.martinchamarro.muvis.presentation.views.home
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import butterknife.ButterKnife
@@ -31,10 +29,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_toolbar_progress.*
 
 class HomeActivity : AppCompatActivity() {
-
-    companion object {
-        fun start(ctx: Context) = ctx.startActivity(Intent(ctx, HomeActivity::class.java))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

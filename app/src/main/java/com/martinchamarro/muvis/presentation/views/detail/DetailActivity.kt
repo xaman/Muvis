@@ -20,7 +20,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
@@ -28,6 +27,7 @@ import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
+import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity(), DetailPresenter.View {
@@ -36,14 +36,9 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
     private lateinit var renderer: DetailRenderer
 
     companion object {
-        val EXTRA_MOVIE_ID = "movie_id"
-        fun start(context: Context, movieId: Int) {
-            context.startActivity(createIntent(context, movieId))
-        }
+        val MOVIE_ID = "movie_id"
         fun createIntent(ctx: Context, movieId: Int): Intent {
-            val intent = Intent(ctx, DetailActivity::class.java)
-            intent.putExtra(EXTRA_MOVIE_ID, movieId)
-            return intent
+            return ctx.intentFor<DetailActivity>(MOVIE_ID to movieId)
         }
     }
 
@@ -87,7 +82,7 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
         presenter.onResume()
     }
 
-    override fun getMovieId() = intent.getIntExtra(EXTRA_MOVIE_ID, -1)
+    override fun getMovieId() = intent.getIntExtra(MOVIE_ID, -1)
 
     override fun render(movie: Movie) = renderer.render(movie)
 
