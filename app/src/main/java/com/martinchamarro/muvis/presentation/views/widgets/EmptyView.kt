@@ -26,9 +26,7 @@ import kotlinx.android.synthetic.main.layout_empty_view.view.*
 
 class EmptyView : RelativeLayout {
 
-    constructor(context: Context) : super(context) {
-        initialize()
-    }
+    constructor(context: Context) : super(context) { initialize() }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initialize()

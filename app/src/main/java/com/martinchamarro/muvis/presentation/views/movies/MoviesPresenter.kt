@@ -40,9 +40,7 @@ class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) 
         view?.showFeaturedError()
     }
 
-    override fun onDestroy() {
-        view = null
-    }
+    override fun onDestroy() { view = null }
 
     interface View {
         fun render(movies: List<Movie>)

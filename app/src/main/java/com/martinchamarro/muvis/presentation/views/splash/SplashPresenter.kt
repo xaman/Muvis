@@ -42,9 +42,7 @@ class SplashPresenter @Inject constructor(private val navigator: Navigator) : Pr
         view?.finish()
     }
 
-    override fun onDestroy() {
-        view = null
-    }
+    override fun onDestroy() { view = null }
 
     interface View {
         fun finish()

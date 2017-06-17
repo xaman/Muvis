@@ -59,7 +59,7 @@ class DetailRenderer(val view: View) {
         countryView.text = translateCountryName(detail.countries[0])
         genresView.text = formatGenres(detail.genres)
         descriptionView.text = detail.overview
-        descriptionView.setOnClickListener(this@DetailRenderer::onDescriptionClick)
+        descriptionView.setOnClickListener { onDescriptionClick(it) }
     }
 
     fun render(credits: List<Cast>) = with(view) {

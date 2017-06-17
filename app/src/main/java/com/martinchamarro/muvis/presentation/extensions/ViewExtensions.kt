@@ -28,13 +28,9 @@ import com.squareup.picasso.Picasso
 val View.ctx: Context
     get() = context
 
-fun View.visible() {
-    visibility = View.VISIBLE
-}
+fun View.visible() { visibility = View.VISIBLE }
 
-fun View.gone() {
-    visibility = View.GONE
-}
+fun View.gone() { visibility = View.GONE }
 
 fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.resources.getDrawable(drawableRes)
 
