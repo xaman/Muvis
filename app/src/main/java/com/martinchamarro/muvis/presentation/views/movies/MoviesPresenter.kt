@@ -19,10 +19,9 @@ package com.martinchamarro.muvis.presentation.views.movies
 import com.martinchamarro.muvis.domain.interactor.movies.GetFeatured
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.base.Presenter
-import com.martinchamarro.muvis.presentation.navigation.Navigator
 import javax.inject.Inject
 
-class MoviesPresenter @Inject constructor(val getFeatured: GetFeatured, val navigator: Navigator) : Presenter {
+class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) : Presenter {
 
     var view: View? = null
 

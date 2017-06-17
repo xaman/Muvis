@@ -27,13 +27,9 @@ import dagger.Provides
 
 @Module class PresenterModule {
 
-    @Provides fun provideSplashPresenter(navigator: Navigator): SplashPresenter {
-        return SplashPresenter(navigator)
-    }
+    @Provides fun provideSplashPresenter(navigator: Navigator) = SplashPresenter(navigator)
 
-    @Provides fun provideMoviesPresenter(getFeatured: GetFeatured, navigator: Navigator): MoviesPresenter {
-        return MoviesPresenter(getFeatured, navigator)
-    }
+    @Provides fun provideMoviesPresenter(getFeatured: GetFeatured) = MoviesPresenter(getFeatured)
 
     @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailPresenter {
         return DetailPresenter(getMovie, getDetail, getCredits, setFavorite)
