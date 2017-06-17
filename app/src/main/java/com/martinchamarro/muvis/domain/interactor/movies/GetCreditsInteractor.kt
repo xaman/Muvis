@@ -25,27 +25,27 @@ import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
 
 class GetCreditsInteractor @Inject constructor(
-        val executor: Executor,
-        val mainThread: MainThread,
-        val repository: MoviesRepository) : Interactor, GetCredits {
+        private val executor: Executor,
+        private val mainThread: MainThread,
+        private val repository: MoviesRepository) : Interactor, GetCredits {
 
     private var id = -1
-    private lateinit var successCallback: (List<Cast>) -> Unit
-    private lateinit var errorCallback: (Throwable) -> Unit
+    private lateinit var onSuccess: (List<Cast>) -> Unit
+    private lateinit var onError: (Throwable) -> Unit
 
-    override fun execute(id: Int, successCallback: (List<Cast>) -> Unit, errorCallback: (Throwable) -> Unit) {
+    override fun execute(id: Int, onSuccess: (List<Cast>) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
-        this.successCallback = successCallback
-        this.errorCallback = errorCallback
+        this.onSuccess = onSuccess
+        this.onError = onError
         executor.execute(this)
     }
 
     override fun run() {
         try {
             val credits = repository.getCredits(id)
-            mainThread.post { successCallback(credits) }
+            mainThread.post { onSuccess(credits) }
         } catch (e: RepositoryException) {
-            mainThread.post { errorCallback(e) }
+            mainThread.post { onError(e) }
         }
     }
 

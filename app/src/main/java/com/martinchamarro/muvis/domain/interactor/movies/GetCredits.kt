@@ -19,5 +19,5 @@ package com.martinchamarro.muvis.domain.interactor.movies
 import com.martinchamarro.muvis.domain.model.Cast
 
 interface GetCredits {
-    fun execute(id: Int, successCallback: (List<Cast>) -> Unit, errorCallback: (Throwable) -> Unit)
+    fun execute(id: Int, onSuccess: (List<Cast>) -> Unit, onError: (Throwable) -> Unit)
 }

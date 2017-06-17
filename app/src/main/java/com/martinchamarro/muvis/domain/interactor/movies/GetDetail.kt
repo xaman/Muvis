@@ -19,5 +19,5 @@ package com.martinchamarro.muvis.domain.interactor.movies
 import com.martinchamarro.muvis.domain.model.Detail
 
 interface GetDetail {
-    fun execute(id: Int, successCallback: (Detail) -> Unit, errorCallback: (Throwable) -> Unit)
+    fun execute(id: Int, onSuccess: (Detail) -> Unit, onError: (Throwable) -> Unit)
 }

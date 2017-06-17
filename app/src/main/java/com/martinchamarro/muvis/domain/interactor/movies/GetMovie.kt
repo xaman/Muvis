@@ -19,5 +19,5 @@ package com.martinchamarro.muvis.domain.interactor.movies
 import com.martinchamarro.muvis.domain.model.Movie
 
 interface GetMovie {
-    fun execute(id: Int, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit)
+    fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit)
 }

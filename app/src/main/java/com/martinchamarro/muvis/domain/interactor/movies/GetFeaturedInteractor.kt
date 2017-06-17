@@ -29,21 +29,21 @@ class GetFeaturedInteractor @Inject constructor(
         private val mainThread: MainThread,
         private val repository: MoviesRepository) : Interactor, GetFeatured {
 
-    private lateinit var successCallback: (List<Movie>) -> Unit
-    private lateinit var errorCallback: (Throwable) -> Unit
+    private lateinit var onSuccess: (List<Movie>) -> Unit
+    private lateinit var onError: (Throwable) -> Unit
 
-    override fun execute(successCallback: (List<Movie>) -> Unit, errorCallback: (Throwable) -> Unit) {
-        this.successCallback = successCallback
-        this.errorCallback = errorCallback
+    override fun execute(onSuccess: (List<Movie>) -> Unit, onError: (Throwable) -> Unit) {
+        this.onSuccess = onSuccess
+        this.onError = onError
         executor.execute(this)
     }
 
     override fun run() {
         try {
             val movies = repository.getFeaturedMovies()
-            mainThread.post { successCallback(movies) }
+            mainThread.post { onSuccess(movies) }
         } catch (e: RepositoryException) {
-            mainThread.post { errorCallback(e) }
+            mainThread.post { onError(e) }
         }
 
     }

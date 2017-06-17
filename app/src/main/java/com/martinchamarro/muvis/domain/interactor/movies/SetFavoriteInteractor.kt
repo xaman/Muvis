@@ -24,27 +24,27 @@ import com.martinchamarro.muvis.threading.MainThread
 import javax.inject.Inject
 
 class SetFavoriteInteractor @Inject constructor(
-        val executor: Executor,
-        val mainThread: MainThread,
-        val repository: MoviesRepository) : Interactor, SetFavorite {
+        private val executor: Executor,
+        private val mainThread: MainThread,
+        private val repository: MoviesRepository) : Interactor, SetFavorite {
 
     private var id = -1
-    private lateinit var successCallback: (Movie) -> Unit
-    private lateinit var errorCallback: (Throwable) -> Unit
+    private lateinit var onSuccess: (Movie) -> Unit
+    private lateinit var onError: (Throwable) -> Unit
 
-    override fun execute(id: Int, successCallback: (Movie) -> Unit, errorCallback: (Throwable) -> Unit) {
+    override fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
-        this.successCallback = successCallback
-        this.errorCallback = errorCallback
+        this.onSuccess = onSuccess
+        this.onError = onError
         executor.execute(this)
     }
 
     override fun run() {
         try {
             val movie = repository.setFavorite(id)
-            mainThread.post { successCallback(movie) }
+            mainThread.post { onSuccess(movie) }
         } catch(e: Exception) {
-            mainThread.post { errorCallback(e) }
+            mainThread.post { onError(e) }
         }
     }
 }

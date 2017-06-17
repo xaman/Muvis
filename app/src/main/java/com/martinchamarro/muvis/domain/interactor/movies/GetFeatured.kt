@@ -19,5 +19,5 @@ package com.martinchamarro.muvis.domain.interactor.movies
 import com.martinchamarro.muvis.domain.model.Movie
 
 interface GetFeatured {
-    fun execute(successCallback: (List<Movie>) -> Unit, errorCallback: (Throwable) -> Unit)
+    fun execute(onSuccess: (List<Movie>) -> Unit, onError: (Throwable) -> Unit)
 }

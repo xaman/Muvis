@@ -25,27 +25,27 @@ import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
 
 class GetDetailInteractor @Inject constructor(
-        val executor: Executor,
-        val mainThread: MainThread,
-        val repository: MoviesRepository) : Interactor, GetDetail {
+        private val executor: Executor,
+        private val mainThread: MainThread,
+        private val repository: MoviesRepository) : Interactor, GetDetail {
 
     private var id: Int = -1
-    private lateinit var successCallback: (Detail) -> Unit
-    private lateinit var errorCallback: (Throwable) -> Unit
+    private lateinit var onSuccess: (Detail) -> Unit
+    private lateinit var onError: (Throwable) -> Unit
 
-    override fun execute(id: Int, successCallback: (Detail) -> Unit, errorCallback: (Throwable) -> Unit) {
+    override fun execute(id: Int, onSuccess: (Detail) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
-        this.successCallback = successCallback
-        this.errorCallback = errorCallback
+        this.onSuccess = onSuccess
+        this.onError = onError
         executor.execute(this)
     }
 
     override fun run() {
         try {
             val detail = repository.getMovieDetail(id)
-            mainThread.post { successCallback(detail) }
+            mainThread.post { onSuccess(detail) }
         } catch (e: RepositoryException) {
-            mainThread.post { errorCallback(e) }
+            mainThread.post { onError(e) }
         }
     }
 }
