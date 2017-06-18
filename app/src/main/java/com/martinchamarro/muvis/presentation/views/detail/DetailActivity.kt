@@ -58,7 +58,7 @@ class DetailActivity : AppCompatActivity(), DetailPresenter.View {
 
     private fun configureToolbar() {
         toolbar.inflateMenu(R.menu.detail_menu)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
         toolbar.setOnMenuItemClickListener { presenter.shareMovie(); true }
         // FIX: there's a bug that cuts the appbar title
         // https://stackoverflow.com/a/43676163/2271287
