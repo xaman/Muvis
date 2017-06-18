@@ -36,7 +36,8 @@ data class MovieEntity(
         @SerializedName("vote_count") var votesCount: Int,
         @SerializedName("vote_average") var votesAverage: Float,
         @SerializedName("poster_path") var posterPath: String?,
-        @SerializedName("backdrop_path") var backdropPath: String?) {
+        @SerializedName("backdrop_path") var backdropPath: String?,
+        var detail: DetailEntity?) {
 
     companion object {
         val DATE_FORMAT = "yyyy-MM-dd"

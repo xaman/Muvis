@@ -20,7 +20,8 @@ import com.martinchamarro.muvis.data.entity.MovieEntity
 import com.martinchamarro.muvis.domain.model.Movie
 import javax.inject.Inject
 
-class MovieEntityMapper @Inject constructor() {
+class MovieEntityMapper @Inject constructor(
+        private val detailMapper: DetailEntityMapper) {
 
     operator fun invoke(entity: MovieEntity) = with(entity) {
         Movie(
@@ -36,7 +37,8 @@ class MovieEntityMapper @Inject constructor() {
                 votesAverage = votesAverage,
                 posterPath = posterPath,
                 backdropPath = backdropPath,
-                isFavorite = isFavorite)
+                isFavorite = isFavorite,
+                detail = detailMapper(detail))
     }
 
 }

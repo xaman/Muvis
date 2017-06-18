@@ -24,17 +24,17 @@ class DetailEntityMapper @Inject constructor(
         val genreMapper: GenreEntityMapper,
         val countryMapper: CountryEntityMapper) {
 
-    operator fun invoke(entity: DetailEntity) = with(entity) {
-        Detail(
-            budget = budget,
-            homepage = homepage,
-            imdbId = imdbId,
-            originalLanguage = originalLanguage,
-            originalTitle = originalTitle,
-            overview = overview,
-            runtime = runtime,
-            genres = genres.map { genreMapper(it) }.toList(),
-            countries = countries.map { countryMapper(it) }.toList()
-        )
+    operator fun invoke(entity: DetailEntity?): Detail? {
+        return if (entity != null) Detail(
+            budget = entity.budget,
+            homepage = entity.homepage,
+            imdbId = entity.imdbId,
+            originalLanguage = entity.originalLanguage,
+            originalTitle = entity.originalTitle,
+            overview = entity.overview,
+            runtime = entity.runtime,
+            genres = entity.genres.map { genreMapper(it) }.toList(),
+            countries = entity.countries.map { countryMapper(it) }.toList()
+        ) else null
     }
 }

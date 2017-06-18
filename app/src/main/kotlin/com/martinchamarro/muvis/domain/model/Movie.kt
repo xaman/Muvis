@@ -31,7 +31,8 @@ data class Movie(
         val votesAverage: Float,
         val posterPath: String?,
         val backdropPath: String?,
-        val isFavorite: Boolean) {
+        val isFavorite: Boolean,
+        val detail: Detail?) {
 
     val releaseYear: String?
         get() = releaseDate?.get(Calendar.YEAR).toString()

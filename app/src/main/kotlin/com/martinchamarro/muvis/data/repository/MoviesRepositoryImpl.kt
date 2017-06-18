@@ -20,6 +20,7 @@ import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
 import com.martinchamarro.muvis.data.database.Database
 import com.martinchamarro.muvis.data.mapper.*
+import com.martinchamarro.muvis.domain.exception.DetailNotFoundException
 import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
 import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.*
@@ -52,8 +53,11 @@ class MoviesRepositoryImpl @Inject constructor(
 
     @Throws(RepositoryException::class)
     override fun getMovieDetail(id: Int): Detail {
-        val entity = api.getMovieDetail(id)
-        return detailMapper(entity)
+        val movieEntity = cache.get(id)
+        val detailEntity = movieEntity?.detail ?: api.getMovieDetail(id)
+        movieEntity?.detail = detailEntity
+        val detail = detailMapper(detailEntity)
+        return detail ?: throw DetailNotFoundException()
     }
 
     @Throws(RepositoryException::class)
