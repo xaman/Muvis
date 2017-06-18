@@ -18,7 +18,7 @@ package com.martinchamarro.muvis.presentation.views.splash
 
 import com.martinchamarro.muvis.presentation.base.Presenter
 import com.martinchamarro.muvis.presentation.navigation.Navigator
-
+import com.martinchamarro.muvis.threading.async
 import javax.inject.Inject
 
 
@@ -31,18 +31,15 @@ class SplashPresenter @Inject constructor(private val navigator: Navigator) : Pr
     var view: View? = null
 
     override fun initialize() {
-        Thread({
-            Thread.sleep(SPLASH_DELAY)
-            navigateToHome()
-        }).start()
+        async(SPLASH_DELAY) {
+            navigator.navigateToHome()
+            view?.finish()
+        }
     }
 
-    private fun navigateToHome() {
-        navigator.navigateToHome()
-        view?.finish()
+    override fun onDestroy() {
+        view = null
     }
-
-    override fun onDestroy() { view = null }
 
     interface View {
         fun finish()
