@@ -36,4 +36,6 @@ interface MoviesRepository {
 
     @Throws(RepositoryException::class)
     fun setFavorite(id: Int): Movie
+
+    fun getFavorites(): List<Movie>
 }

@@ -69,4 +69,8 @@ class MoviesRepositoryImpl @Inject constructor(
         if (entity.isFavorite) db.save(entity) else db.delete(id)
         return moviesMapper(entity)
     }
+
+    override fun getFavorites(): List<Movie> {
+        return db.loadAll().map { moviesMapper(it) }
+    }
 }

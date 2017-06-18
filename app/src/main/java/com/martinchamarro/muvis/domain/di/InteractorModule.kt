@@ -33,4 +33,6 @@ import dagger.Provides
 
     @Provides fun provideSetFavorite(interactor: SetFavoriteInteractor): SetFavorite = interactor
 
+    @Provides fun provideGetFavorites(interactor: GetFavoritesInteractor): GetFavorites = interactor
+
 }
