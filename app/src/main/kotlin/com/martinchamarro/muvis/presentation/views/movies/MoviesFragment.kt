@@ -59,7 +59,7 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureRecyclerView()
-        configurePresenter()
+        initializePresenter()
     }
 
     private fun configureRecyclerView() {
@@ -68,7 +68,7 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
         recyclerView.addItemDecoration(ItemOffsetDecorator(itemsSpacing))
     }
 
-    private fun configurePresenter() {
+    private fun initializePresenter() {
         presenter.view = this
         presenter.initialize()
     }

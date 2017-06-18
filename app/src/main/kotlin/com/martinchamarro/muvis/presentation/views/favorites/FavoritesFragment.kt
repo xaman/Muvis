@@ -22,13 +22,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.martinchamarro.muvis.R
+import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
+import com.martinchamarro.muvis.presentation.views.home.HomeActivity
+import javax.inject.Inject
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), FavoritesPresenter.View {
 
     companion object {
         fun getInstance() = FavoritesFragment()
     }
+
+    @Inject lateinit var presenter: FavoritesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +44,45 @@ class FavoritesFragment : Fragment() {
         return View.inflate(context, R.layout.fragment_favorites, null)
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initializePresenter()
+    }
 
+    private fun initializePresenter() {
+        presenter.view = this
+        presenter.initialize()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
+    override fun onPause() {
+        presenter.onPause()
+        super.onPause()
+    }
+
+    override fun render(favorites: List<Movie>) {
+        // TODO
+    }
+
+    override fun showProgress() = (activity as HomeActivity).showToolbarProgress()
+
+    override fun hideProgress() = (activity as HomeActivity).hideToolbarProgress()
+
+    override fun showEmpty() {
+        // TODO
+    }
+
+    override fun hideEmpty() {
+        // TODO
+    }
+
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
 
 }

@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.presentation.di
 import com.martinchamarro.muvis.domain.interactor.movies.*
 import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter
+import com.martinchamarro.muvis.presentation.views.favorites.FavoritesPresenter
 import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
 import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter
 
@@ -33,6 +34,10 @@ import dagger.Provides
 
     @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailPresenter {
         return DetailPresenter(getMovie, getDetail, getCredits, setFavorite)
+    }
+
+    @Provides fun provideFavoritesPresenter(getFavorites: GetFavorites): FavoritesPresenter {
+        return FavoritesPresenter(getFavorites)
     }
 
 }
