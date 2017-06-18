@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_detail.view.*
 import kotlinx.android.synthetic.main.layout_detail_info.view.*
 import java.util.*
 
-class DetailRenderer(val view: View) {
+class DetailRenderer(private val view: View) {
 
     init {
         with(view) {
@@ -59,24 +59,20 @@ class DetailRenderer(val view: View) {
         countryView.text = translateCountryName(detail.countries[0])
         genresView.text = formatGenres(detail.genres)
         descriptionView.text = detail.overview
-        descriptionView.setOnClickListener { onDescriptionClick(it) }
+        descriptionView.setOnClickListener { onDescriptionClick() }
     }
+
+    private fun translateCountryName(country: Country) = Locale("", country.iso).displayCountry
+
+    private fun formatGenres(genres: List<Genre>) = genres.map { it.name }.joinToString()
 
     fun render(credits: List<Cast>) = with(view) {
         creditsView.adapter = CreditsAdapter(ctx, credits)
     }
 
-    fun onDescriptionClick(v: View) = with(view.descriptionView) {
+    private fun onDescriptionClick() = with(view.descriptionView) {
         val descMaxLines = integer(R.integer.desc_max_lines)
         maxLines = if (maxLines == descMaxLines) Int.MAX_VALUE else descMaxLines
     }
 
-    private fun translateCountryName(country: Country) = Locale("", country.iso).displayCountry
-
-    private fun formatGenres(genres: List<Genre>): String {
-        return genres.foldIndexed("") { index, text, genre ->
-            val comma = if (index > 0) "," else ""
-            "$text$comma ${genre.name}"
-        }
-    }
 }
