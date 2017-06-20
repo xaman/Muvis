@@ -20,7 +20,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.domain.model.pictures.Picture
+import com.martinchamarro.muvis.domain.model.pictures.PosterSize
 import com.martinchamarro.muvis.presentation.extensions.load
 import com.martinchamarro.muvis.presentation.extensions.string
 import kotlinx.android.synthetic.main.item_favorite.view.*
@@ -33,7 +33,7 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         titleView.text = movie.title
         yearView.text = movie.releaseYear
         ratingView.text = movie.votesAverage.toString()
-        posterView.load(Picture.POSTER.url(movie.posterPath), R.drawable.ic_empty_movie)
+        posterView.load(movie.getPosterUrl(PosterSize.SMALL))
         movie.detail?.let {
             genresView.text = it.formattedGenres
             countryView.text = it.countryName

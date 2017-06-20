@@ -16,12 +16,10 @@
 
 package com.martinchamarro.muvis.domain.model.pictures
 
-import com.martinchamarro.muvis.Config.PICTURE_URL
+enum class BackdropSize(private val value: String) {
 
-enum class Picture(val size: String) {
-    POSTER("w154"),
-    BACKDROP("w342"),
-    PROFILE("w185");
+    SMALL("w300");
 
-    fun url(path: String?) = if (path != null) PICTURE_URL + size + path else ""
+    override fun toString() = value
+
 }

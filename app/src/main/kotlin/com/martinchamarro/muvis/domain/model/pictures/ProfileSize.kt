@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.model
+package com.martinchamarro.muvis.domain.model.pictures
 
-import com.martinchamarro.muvis.Config.PICTURE_URL
-import com.martinchamarro.muvis.domain.model.pictures.ProfileSize
+enum class ProfileSize(private val value: String) {
 
-data class Cast(val character: String,
-                val name: String,
-                private val profilePath: String?) {
+    SMALL("w185");
 
-    fun getProfileUrl(size: ProfileSize) = PICTURE_URL + size + profilePath
+    override fun toString() = value
 
 }

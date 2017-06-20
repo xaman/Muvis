@@ -20,7 +20,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Cast
-import com.martinchamarro.muvis.domain.model.pictures.Picture
+import com.martinchamarro.muvis.domain.model.pictures.ProfileSize
 import com.martinchamarro.muvis.presentation.extensions.load
 import kotlinx.android.synthetic.main.item_cast.view.*
 
@@ -29,7 +29,7 @@ class CastViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     fun bind(cast: Cast) = with(itemView) {
         nameView.text = cast.name
         characterView.text = cast.character
-        pictureView.load(Picture.PROFILE.url(cast.profilePath), R.drawable.default_avatar)
+        pictureView.load(cast.getProfileUrl(ProfileSize.SMALL), R.drawable.default_avatar)
     }
 
 }

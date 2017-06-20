@@ -19,7 +19,8 @@ package com.martinchamarro.muvis.presentation.views.detail
 import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.*
-import com.martinchamarro.muvis.domain.model.pictures.Picture
+import com.martinchamarro.muvis.domain.model.pictures.BackdropSize
+import com.martinchamarro.muvis.domain.model.pictures.PosterSize
 import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.views.widgets.HorizontalLayoutManager
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
@@ -39,8 +40,8 @@ class DetailRenderer(private val view: View) {
     fun render(movie: Movie) = with(view) {
         collapsingToolbar.title = movie.title
         titleView.text = movie.title
-        posterView.load(Picture.POSTER.url(movie.posterPath))
-        backdropView.load(Picture.BACKDROP.url(movie.backdropPath))
+        posterView.load(movie.getPosterUrl(PosterSize.SMALL))
+        backdropView.load(movie.getBackdropUrl(BackdropSize.SMALL))
         ratingView.text = movie.votesAverage.toString()
         yearView.text = movie.releaseYear
         renderFab(movie)

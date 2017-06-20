@@ -16,6 +16,9 @@
 
 package com.martinchamarro.muvis.domain.model
 
+import com.martinchamarro.muvis.Config.PICTURE_URL
+import com.martinchamarro.muvis.domain.model.pictures.BackdropSize
+import com.martinchamarro.muvis.domain.model.pictures.PosterSize
 import java.util.*
 
 data class Movie(
@@ -29,13 +32,17 @@ data class Movie(
         val popularity: Float,
         val votesCount: Int,
         val votesAverage: Float,
-        val posterPath: String?,
-        val backdropPath: String?,
+        private val posterPath: String?,
+        private val backdropPath: String?,
         val isFavorite: Boolean,
         val detail: Detail?) {
 
     val releaseYear: String?
         get() = releaseDate?.get(Calendar.YEAR).toString()
+
+    fun getPosterUrl(size: PosterSize) = PICTURE_URL + size + posterPath
+
+    fun getBackdropUrl(size: BackdropSize) = PICTURE_URL + size + backdropPath
 
     override fun hashCode() = id
 
