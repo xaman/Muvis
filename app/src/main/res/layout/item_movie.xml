@@ -51,30 +51,26 @@
 
             <TextView
                 android:id="@+id/titleView"
-                style="@style/AppTheme.Text.ItemTitle"
+                style="@style/AppTheme.Text.MovieTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Star Wars"/>
 
             <TextView
                 android:id="@+id/yearView"
+                style="@style/AppTheme.Text.MovieYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/titleView"
-                android:textColor="@color/ash"
-                android:textSize="12sp"
                 tools:text="2017"/>
 
             <TextView
                 android:id="@+id/ratingView"
+                style="@style/AppTheme.Text.MovieRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/titleView"
-                android:drawablePadding="1dp"
-                android:drawableRight="@drawable/ic_grid_rating"
-                android:textColor="@color/strawberry"
-                android:textSize="12sp"
                 tools:text="4.7"/>
 
         </RelativeLayout>
