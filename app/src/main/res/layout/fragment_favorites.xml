@@ -23,11 +23,14 @@
     android:background="@color/lime">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/favorites_grid_spacing"/>
 
     <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
+        android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:ev_icon="@drawable/ic_empty_favorite"

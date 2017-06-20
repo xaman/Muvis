@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Martin Chamarro (@martinchamarro)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+            android:id="@+id/posterView"
+            android:layout_width="@dimen/favorite_poster_width"
+            android:layout_height="@dimen/favorite_poster_height"
+            android:background="@color/silver"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_empty_movie"/>
+
+        <TextView
+            android:id="@+id/titleView"
+            style="@style/AppTheme.Text.FavoriteTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            app:layout_constraintLeft_toRightOf="@+id/posterView"
+            app:layout_constraintRight_toLeftOf="@+id/ratingView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Interstellar"/>
+
+        <TextView
+            android:id="@+id/ratingView"
+            style="@style/AppTheme.Text.FavoriteRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:drawableLeft="@drawable/ic_grid_rating"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="7.5"/>
+
+        <TextView
+            android:id="@+id/yearView"
+            style="@style/AppTheme.Text.FavoriteInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            app:layout_constraintBottom_toTopOf="@+id/genresView"
+            app:layout_constraintLeft_toRightOf="@+id/posterView"
+            app:layout_constraintTop_toBottomOf="@+id/titleView"
+            tools:text="2016"/>
+
+        <TextView
+            android:id="@+id/countryView"
+            style="@style/AppTheme.Text.FavoriteInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"
+            app:layout_constraintBottom_toTopOf="@+id/runtimeView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingView"
+            tools:text="EEUU"/>
+
+        <TextView
+            android:id="@+id/genresView"
+            style="@style/AppTheme.Text.FavoriteGenres"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/posterView"
+            app:layout_constraintRight_toLeftOf="@id/runtimeView"
+            tools:text="Ciencia Ficción, Aventura"/>
+
+        <TextView
+            android:id="@+id/runtimeView"
+            style="@style/AppTheme.Text.FavoriteInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="102 mins."/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

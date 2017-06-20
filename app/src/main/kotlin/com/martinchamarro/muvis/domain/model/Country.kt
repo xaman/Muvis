@@ -16,6 +16,12 @@
 
 package com.martinchamarro.muvis.domain.model
 
+import java.util.*
+
 data class Country (
         val iso: String,
-        val name: String)
+        val name: String) {
+
+    val formattedName = Locale("", iso).displayCountry
+
+}

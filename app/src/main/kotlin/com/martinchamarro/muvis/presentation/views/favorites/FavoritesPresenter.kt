@@ -23,8 +23,7 @@ import com.martinchamarro.muvis.presentation.base.Presenter
 import javax.inject.Inject
 
 class FavoritesPresenter @Inject constructor(
-        private val getFavorites: GetFavorites
-) : Presenter {
+        private val getFavorites: GetFavorites) : Presenter {
 
     companion object {
         val TAG: String = this::class.java.simpleName
@@ -40,6 +39,7 @@ class FavoritesPresenter @Inject constructor(
     private fun onFavoritesSuccess(favorites: List<Movie>) {
         view?.hideProgress()
         view?.render(favorites)
+        if (favorites.isEmpty()) view?.showEmpty() else view?.hideEmpty()
     }
 
     private fun onFavoritesError(cause: Throwable) {

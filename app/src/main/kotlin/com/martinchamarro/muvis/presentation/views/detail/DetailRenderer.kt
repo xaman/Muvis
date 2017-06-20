@@ -25,7 +25,6 @@ import com.martinchamarro.muvis.presentation.views.widgets.HorizontalLayoutManag
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.activity_detail.view.*
 import kotlinx.android.synthetic.main.layout_detail_info.view.*
-import java.util.*
 
 class DetailRenderer(private val view: View) {
 
@@ -56,15 +55,11 @@ class DetailRenderer(private val view: View) {
 
     fun render(detail: Detail) = with(view) {
         runtimeView.text = String.format(ctx.string(R.string.runtime_value), detail.runtime)
-        countryView.text = translateCountryName(detail.countries[0])
-        genresView.text = formatGenres(detail.genres)
+        countryView.text = detail.countryName
+        genresView.text = detail.formattedGenres
         descriptionView.text = detail.overview
         descriptionView.setOnClickListener { onDescriptionClick() }
     }
-
-    private fun translateCountryName(country: Country) = Locale("", country.iso).displayCountry
-
-    private fun formatGenres(genres: List<Genre>) = genres.map { it.name }.joinToString()
 
     fun render(credits: List<Cast>) = with(view) {
         creditsView.adapter = CreditsAdapter(ctx, credits)

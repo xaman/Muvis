@@ -17,14 +17,24 @@
 package com.martinchamarro.muvis.presentation.views.favorites
 
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
+import com.martinchamarro.muvis.presentation.extensions.dimen
+import com.martinchamarro.muvis.presentation.extensions.gone
+import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
+import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
+import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.item_movie.view.*
+import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
 class FavoritesFragment : Fragment(), FavoritesPresenter.View {
@@ -46,7 +56,14 @@ class FavoritesFragment : Fragment(), FavoritesPresenter.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureRecyclerView()
         initializePresenter()
+    }
+
+    private fun configureRecyclerView() {
+        recyclerView.layoutManager = LinearLayoutManager(ctx)
+        val margin = dimen(R.dimen.favorites_grid_spacing)
+        recyclerView.addItemDecoration(ItemOffsetDecorator(margin))
     }
 
     private fun initializePresenter() {
@@ -65,20 +82,23 @@ class FavoritesFragment : Fragment(), FavoritesPresenter.View {
     }
 
     override fun render(favorites: List<Movie>) {
-        // TODO
+        val adapter = FavoritesAdapter(context, favorites, this::onFavoriteClick)
+        recyclerView.adapter = adapter
+    }
+
+    private fun onFavoriteClick(movie: Movie, view: View) {
+        val transitionName = getString(R.string.transition_picture)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view.posterView, transitionName)
+        startActivity(DetailActivity.createIntent(ctx, movie.id), options.toBundle())
     }
 
     override fun showProgress() = (activity as HomeActivity).showToolbarProgress()
 
     override fun hideProgress() = (activity as HomeActivity).hideToolbarProgress()
 
-    override fun showEmpty() {
-        // TODO
-    }
+    override fun showEmpty() = emptyView.visible()
 
-    override fun hideEmpty() {
-        // TODO
-    }
+    override fun hideEmpty() = emptyView.gone()
 
     override fun onDestroy() {
         presenter.onDestroy()

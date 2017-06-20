@@ -20,6 +20,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.support.annotation.IntegerRes
+import android.support.annotation.LayoutRes
+import android.support.annotation.StringRes
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
@@ -35,6 +37,10 @@ fun View.gone() { visibility = View.GONE }
 fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.resources.getDrawable(drawableRes)
 
 fun View.integer(@IntegerRes integerRes: Int) = ctx.integer(integerRes)
+
+fun View.string(@StringRes stringRes: Int) = context.getString(stringRes)
+
+fun View.inflate(@LayoutRes layoutRes: Int) = View.inflate(context, layoutRes, null)
 
 fun ImageView.load(url: String?, @DrawableRes placeholderRes: Int = -1) {
     if (placeholderRes != -1) setImageResource(placeholderRes)
