@@ -17,13 +17,13 @@
 package com.martinchamarro.muvis.data.api
 
 import android.content.Context
-import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import org.jetbrains.anko.connectivityManager
 
 object NetworkChecker {
     fun isAvailable(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo: NetworkInfo? = cm.activeNetworkInfo
-        return networkInfo != null && networkInfo.isAvailable && networkInfo.isConnected
+        val cm = context.connectivityManager
+        val network: NetworkInfo? = cm.activeNetworkInfo
+        return network != null && network.isAvailable && network.isConnected
     }
 }

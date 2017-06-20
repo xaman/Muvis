@@ -21,7 +21,7 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class OfflineCacheInterceptor(val context: Context) : Interceptor {
+class OfflineCacheInterceptor(private val context: Context) : Interceptor {
 
     companion object {
         const val CACHE_HEADER = "Cache-Control"

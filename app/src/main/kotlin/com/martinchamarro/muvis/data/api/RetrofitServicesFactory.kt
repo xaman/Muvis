@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import javax.inject.Inject
 
-class RetrofitServicesFactory @Inject constructor(val context: Context) {
+class RetrofitServicesFactory @Inject constructor(private val context: Context) {
 
     private companion object {
         val PARAM_API_KEY = "api_key"

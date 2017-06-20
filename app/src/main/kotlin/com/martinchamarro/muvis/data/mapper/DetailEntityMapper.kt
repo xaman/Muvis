@@ -21,8 +21,8 @@ import com.martinchamarro.muvis.domain.model.Detail
 import javax.inject.Inject
 
 class DetailEntityMapper @Inject constructor(
-        val genreMapper: GenreEntityMapper,
-        val countryMapper: CountryEntityMapper) {
+        private val genreMapper: GenreEntityMapper,
+        private val countryMapper: CountryEntityMapper) {
 
     operator fun invoke(entity: DetailEntity?): Detail? {
         return if (entity != null) Detail(
