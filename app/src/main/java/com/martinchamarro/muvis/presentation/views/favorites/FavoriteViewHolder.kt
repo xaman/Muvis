@@ -27,6 +27,10 @@ import kotlinx.android.synthetic.main.item_favorite.view.*
 
 class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    companion object {
+        private const val MAX_GENRES = 2
+    }
+
     private val runtimeText = view.string(R.string.runtime_value)
 
     fun render(movie: Movie) = with(itemView) {
@@ -35,7 +39,7 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         ratingView.text = movie.votesAverage.toString()
         posterView.load(movie.getPosterUrl(PosterSize.SMALL))
         movie.detail?.let {
-            genresView.text = it.formattedGenres
+            genresView.text = it.genres.take(MAX_GENRES).map { it.name }.joinToString()
             countryView.text = it.countryName
             runtimeView.text = String.format(runtimeText, it.runtime)
         }
