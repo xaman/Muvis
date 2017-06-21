@@ -31,7 +31,8 @@ class MovieEntityBuilder {
                     1000,
                     8.0f,
                     "/a1d3c5b6c4dc7d8a4cb3abc.png",
-                    "/4f5e7af8aef68efec9ee53e.png"
+                    "/4f5e7af8aef68efec9ee53e.png",
+                    null
             )
         }
     }
