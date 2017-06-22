@@ -40,6 +40,7 @@
     <dimen name="favorites_grid_spacing">2dp</dimen>
     <dimen name="favorite_poster_width">72dp</dimen>
     <dimen name="favorite_poster_height">86dp</dimen>
+    <dimen name="favorite_margin">8dp</dimen>
 
     <dimen name="detail_credits_spacing">10dp</dimen>
     <dimen name="item_cast_width">100dp</dimen>
