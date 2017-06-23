@@ -16,7 +16,7 @@
 
 package com.martinchamarro.muvis.presentation.di
 
-import com.martinchamarro.muvis.domain.interactor.movies.*
+import com.martinchamarro.muvis.domain.usecase.movies.*
 import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesPresenter

@@ -25,8 +25,8 @@ import dagger.Provides
 
 @Module class ThreadingModule {
 
-    @Provides @Singleton fun provideExecutor(interactorExecutor: InteractorExecutor): Executor {
-        return interactorExecutor
+    @Provides @Singleton fun provideExecutor(useCaseExecutor: UseCaseExecutor): Executor {
+        return useCaseExecutor
     }
 
     @Provides @Singleton fun provideMainThread(mainThreadImpl: MainThreadImpl): MainThread {

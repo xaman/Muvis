@@ -29,7 +29,7 @@ class MovieEntityMapperTest {
     private lateinit var mapper: MovieEntityMapper
 
     @Before fun setUp() {
-        mapper = MovieEntityMapper()
+        mapper = MovieEntityMapper(DetailEntityMapper(GenreEntityMapper(), CountryEntityMapper()))
     }
 
     @Test fun testEntityMapping() {
@@ -45,8 +45,6 @@ class MovieEntityMapperTest {
             assertEquals(entity.votesCount.toLong(), votesCount.toLong())
             assertEquals(entity.votesAverage, votesAverage, 0.1f)
             assertEquals(entity.popularity, popularity, 0.1f)
-            assertEquals(entity.posterPath, posterPath)
-            assertEquals(entity.backdropPath, backdropPath)
         }
     }
 }

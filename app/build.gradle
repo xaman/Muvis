@@ -17,6 +17,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -67,10 +68,6 @@ android {
     }
 }
 
-kapt {
-    generateStubs = true
-}
-
 dependencies {
 
     compile rootProject.ext.dependencies.support
@@ -102,8 +99,4 @@ static def getDate() {
     def date = new Date()
     def formattedDate = date.format('yyyyMMddHHmmss')
     return formattedDate
-}
-
-repositories {
-    mavenCentral()
 }

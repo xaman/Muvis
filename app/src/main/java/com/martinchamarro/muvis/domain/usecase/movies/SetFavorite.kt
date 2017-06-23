@@ -14,37 +14,27 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.interactor.movies
+package com.martinchamarro.muvis.domain.usecase.movies
 
-import com.martinchamarro.muvis.domain.interactor.Interactor
+import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
 import javax.inject.Inject
 
-class SetFavoriteInteractor @Inject constructor(
-        private val executor: Executor,
-        private val mainThread: MainThread,
-        private val repository: MoviesRepository) : Interactor, SetFavorite {
+class SetFavorite @Inject constructor(
+        executor: Executor,
+        mainThread: MainThread,
+        private val repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
 
     private var id = -1
-    private lateinit var onSuccess: (Movie) -> Unit
-    private lateinit var onError: (Throwable) -> Unit
 
-    override fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
+    fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
-        this.onSuccess = onSuccess
-        this.onError = onError
-        executor.execute(this)
+        super.execute(onSuccess, onError)
     }
 
-    override fun run() {
-        try {
-            val movie = repository.setFavorite(id)
-            mainThread.post { onSuccess(movie) }
-        } catch(e: Exception) {
-            mainThread.post { onError(e) }
-        }
-    }
+    override fun onExecute(): Movie = repository.setFavorite(id)
+
 }

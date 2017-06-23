@@ -32,8 +32,8 @@ import javax.inject.Singleton
 
     private val handler: Handler = Handler(Looper.getMainLooper())
 
-    override fun post(runnable: () -> Unit) {
-        this.handler.post(runnable)
+    override fun post(callback: () -> Unit) {
+        this.handler.post(callback)
     }
 
 }

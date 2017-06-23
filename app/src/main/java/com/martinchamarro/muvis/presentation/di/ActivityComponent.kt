@@ -19,7 +19,7 @@ package com.martinchamarro.muvis.presentation.di
 
 import android.app.Activity
 
-import com.martinchamarro.muvis.domain.di.InteractorModule
+import com.martinchamarro.muvis.domain.di.UseCaseModule
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent
 import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment
@@ -32,7 +32,7 @@ import dagger.Component
 @PerActivity
 @Component(
         dependencies = arrayOf(ApplicationComponent::class),
-        modules = arrayOf(ActivityModule::class, PresenterModule::class, InteractorModule::class))
+        modules = arrayOf(ActivityModule::class, PresenterModule::class, UseCaseModule::class))
 interface ActivityComponent {
 
     fun inject(activity: SplashActivity)

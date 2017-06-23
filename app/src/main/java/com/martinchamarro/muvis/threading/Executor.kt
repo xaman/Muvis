@@ -16,8 +16,6 @@
 
 package com.martinchamarro.muvis.threading
 
-import com.martinchamarro.muvis.domain.interactor.Interactor
-
 interface Executor {
-    fun execute(interactor: Interactor?)
+    fun execute(executable: () -> Unit)
 }

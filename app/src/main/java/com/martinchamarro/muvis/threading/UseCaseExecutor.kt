@@ -16,8 +16,6 @@
 
 package com.martinchamarro.muvis.threading
 
-import com.martinchamarro.muvis.domain.interactor.Interactor
-
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -26,9 +24,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Executor of interactors implemented using a ThreadPoolExecutor
+ * Executor of use cases implemented using a ThreadPoolExecutor
  */
-@Singleton class InteractorExecutor @Inject constructor() : Executor {
+@Singleton class UseCaseExecutor @Inject constructor() : Executor {
 
     companion object {
         private val CORE_POOL_SIZE = 3
@@ -44,10 +42,7 @@ import javax.inject.Singleton
         threadExecutor = ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TIME_UNIT, WORK_QUEUE)
     }
 
-    override fun execute(interactor: Interactor?) {
-        if (interactor == null) {
-            throw IllegalArgumentException("Interactor to execute can't be null")
-        }
-        threadExecutor.submit(interactor)
+    override fun execute(executable: () -> Unit) {
+        threadExecutor.submit(executable)
     }
 }

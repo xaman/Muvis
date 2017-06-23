@@ -17,13 +17,13 @@
 package com.martinchamarro.muvis.presentation.views.detail
 
 import com.martinchamarro.muvis.Config
-import com.martinchamarro.muvis.domain.interactor.movies.GetCredits
-import com.martinchamarro.muvis.domain.interactor.movies.GetDetail
-import com.martinchamarro.muvis.domain.interactor.movies.GetMovie
-import com.martinchamarro.muvis.domain.interactor.movies.SetFavorite
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.usecase.movies.GetMovie
+import com.martinchamarro.muvis.domain.usecase.movies.GetDetail
+import com.martinchamarro.muvis.domain.usecase.movies.GetCredits
+import com.martinchamarro.muvis.domain.usecase.movies.SetFavorite
 import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.base.Presenter
 import javax.inject.Inject

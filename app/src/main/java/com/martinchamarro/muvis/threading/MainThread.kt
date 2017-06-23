@@ -17,5 +17,5 @@
 package com.martinchamarro.muvis.threading
 
 interface MainThread {
-    fun post(runnable: () -> Unit)
+    fun post(callback: () -> Unit)
 }
