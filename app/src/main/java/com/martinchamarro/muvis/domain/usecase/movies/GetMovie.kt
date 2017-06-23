@@ -22,13 +22,14 @@ import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class GetMovie @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
         private var repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
 
-    private var id = -1
+    private var id by Delegates.notNull<Int>()
 
     fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id

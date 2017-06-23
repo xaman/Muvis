@@ -22,13 +22,14 @@ import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class SetFavorite @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
         private val repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
 
-    private var id = -1
+    private var id by Delegates.notNull<Int>()
 
     fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
