@@ -22,6 +22,6 @@ data class Country (
         val iso: String,
         val name: String) {
 
-    val formattedName = Locale("", iso).displayCountry
+    val formattedName: String = Locale("", iso).displayCountry
 
 }

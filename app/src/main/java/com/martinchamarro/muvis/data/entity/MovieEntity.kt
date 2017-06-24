@@ -44,15 +44,12 @@ data class MovieEntity(
     }
 
     val releaseCalendar: Calendar?
-        get() {
-            try {
-                val format = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
-                val calendar = GregorianCalendar()
-                calendar.time = format.parse(releaseDate)
-                return calendar
-            } catch (e: ParseException) {
-                return null
-            }
+        get() = try {
+            val format = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
+            val calendar = GregorianCalendar().apply { time = format.parse(releaseDate) }
+            calendar
+        } catch (e: ParseException) {
+            null
         }
 
     var isFavorite: Boolean = false
@@ -60,4 +57,5 @@ data class MovieEntity(
     override fun equals(other: Any?) = other != null && other is MovieEntity && other.id == id
 
     override fun hashCode() = id
+
 }

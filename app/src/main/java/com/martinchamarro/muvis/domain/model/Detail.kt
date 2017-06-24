@@ -27,8 +27,8 @@ data class Detail (
         val genres: List<Genre>,
         val countries: List<Country>) {
 
-    val formattedGenres = genres.map { it.name }.joinToString()
+    val formattedGenres: String = genres.map { it.name }.joinToString()
 
-    val countryName = countries.firstOrNull()?.formattedName ?: ""
+    val countryName: String = countries.firstOrNull()?.formattedName ?: ""
 
 }
