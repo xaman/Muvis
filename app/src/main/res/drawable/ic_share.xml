@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright 2017 Martin Chamarro (@martinchamarro)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
+    <path
+        android:pathData="M17,15.309C16.392,15.309 15.848,15.55 15.432,15.928L9.728,12.594C9.768,12.41 9.8,12.225 9.8,12.032C9.8,11.839 9.768,11.655 9.728,11.47L15.368,8.169C15.8,8.57 16.368,8.819 17,8.819C18.328,8.819 19.4,7.743 19.4,6.41C19.4,5.076 18.328,4 17,4C15.672,4 14.6,5.076 14.6,6.41C14.6,6.602 14.632,6.787 14.672,6.972L9.032,10.273C8.6,9.871 8.032,9.622 7.4,9.622C6.072,9.622 5,10.699 5,12.032C5,13.365 6.072,14.442 7.4,14.442C8.032,14.442 8.6,14.193 9.032,13.791L14.728,17.133C14.688,17.301 14.664,17.478 14.664,17.655C14.664,18.948 15.712,20 17,20C18.288,20 19.336,18.948 19.336,17.655C19.336,16.361 18.288,15.309 17,15.309L17,15.309Z"
+        android:strokeColor="#00000000"
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="1"/>
+</vector>
