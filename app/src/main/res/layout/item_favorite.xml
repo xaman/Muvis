@@ -36,7 +36,7 @@
             android:layout_height="@dimen/favorite_poster_height"
             android:background="@color/silver"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_empty_movie"/>
+            android:src="@drawable/default_movie"/>
 
         <TextView
             android:id="@+id/titleView"

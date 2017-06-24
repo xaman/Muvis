@@ -37,7 +37,8 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/nameView"
             android:background="@color/silver"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"/>
 
         <TextView
             android:id="@+id/nameView"

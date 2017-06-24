@@ -30,7 +30,7 @@ class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         titleView.text = movie.title
         yearView.text = movie.releaseYear
         ratingView.text = movie.votesAverage.toString()
-        posterView.load(movie.getPosterUrl(PosterSize.SMALL), R.drawable.ic_empty_movie)
+        posterView.load(movie.getPosterUrl(PosterSize.SMALL), R.drawable.default_movie)
     }
 
 }
