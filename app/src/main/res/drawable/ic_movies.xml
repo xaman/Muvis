@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright 2017 Martin Chamarro (@martinchamarro)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
+    <path
+        android:pathData="M22.259,5.482L14.839,5.482L17.474,1.23C17.702,0.861 17.584,0.38 17.209,0.156C16.834,-0.069 16.345,0.048 16.117,0.416L12.978,5.482L11.022,5.482L7.883,0.416C7.655,0.048 7.166,-0.069 6.791,0.156C6.416,0.381 6.298,0.861 6.526,1.23L9.161,5.482L1.741,5.482C0.781,5.482 0,6.25 0,7.194L0,21.329C0,22.273 0.781,23.042 1.741,23.042L22.259,23.042C23.219,23.042 24,22.273 24,21.329L24,7.194C24,6.25 23.219,5.482 22.259,5.482L22.259,5.482ZM16.831,19.275C16.831,19.789 16.407,20.206 15.884,20.206L3.772,20.206C3.249,20.206 2.825,19.789 2.825,19.275L2.825,9.248C2.825,8.734 3.249,8.318 3.772,8.318L15.884,8.318C16.407,8.318 16.831,8.734 16.831,9.248L16.831,19.275L16.831,19.275ZM20.333,18.977C19.428,18.977 18.691,18.253 18.691,17.362C18.691,16.471 19.428,15.747 20.333,15.747C21.239,15.747 21.976,16.471 21.976,17.362C21.976,18.253 21.239,18.977 20.333,18.977L20.333,18.977ZM20.333,12.777C19.428,12.777 18.691,12.052 18.691,11.161C18.691,10.271 19.428,9.546 20.333,9.546C21.239,9.546 21.976,10.271 21.976,11.161C21.976,12.052 21.239,12.777 20.333,12.777L20.333,12.777Z"
+        android:strokeColor="#00000000"
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="1"/>
+</vector>
