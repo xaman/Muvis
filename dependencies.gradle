@@ -42,7 +42,8 @@ allprojects {
                 constraintLayout   : "com.android.support.constraint:constraint-layout:1.0.2",
                 adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1",
                 lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0",
-                anko               : "org.jetbrains.anko:anko:$ankoVersion"
+                anko               : "org.jetbrains.anko:anko:$ankoVersion",
+                funktionaleEither  : "org.funktionale:funktionale-either:1.1"
         ]
     }
 }
