@@ -27,6 +27,7 @@ allprojects {
         dependencies = [
                 support            : "com.android.support:appcompat-v7:${supportVersion}",
                 design             : "com.android.support:design:${supportVersion}",
+                multidex           : "com.android.support:multidex:1.0.1",
                 cardView           : "com.android.support:cardview-v7:${supportVersion}",
                 gson               : "com.google.code.gson:gson:2.8.0",
                 dagger             : "com.google.dagger:dagger:${daggerVersion}",

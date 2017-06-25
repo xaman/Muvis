@@ -16,12 +16,14 @@
 
 package com.martinchamarro.muvis
 
-import android.app.Application
+import android.content.Context
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent
 import com.martinchamarro.muvis.globalutils.di.ApplicationModule
 import com.martinchamarro.muvis.globalutils.di.DaggerApplicationComponent
 
-class AndroidApplication : Application() {
+class AndroidApplication : MultiDexApplication() {
 
     lateinit var applicationComponent: ApplicationComponent
         private set
@@ -31,10 +33,15 @@ class AndroidApplication : Application() {
         initializeInjection()
     }
 
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
     private fun initializeInjection() {
         applicationComponent = DaggerApplicationComponent.builder()
-            .applicationModule(ApplicationModule(this))
-            .build()
+                .applicationModule(ApplicationModule(this))
+                .build()
     }
 
 }
