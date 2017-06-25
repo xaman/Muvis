@@ -30,7 +30,8 @@
     <dimen name="big_padding">30dp</dimen>
 
     <dimen name="movies_grid_spacing">2dp</dimen>
-    <dimen name="item_movie_padding">10dp</dimen>
+    <dimen name="item_movie_padding">8dp</dimen>
+    <dimen name="item_movie_margin">2dp</dimen>
 
     <dimen name="detail_poster_width">120dp</dimen>
     <dimen name="detail_backdrop_height">200dp</dimen>

@@ -36,8 +36,9 @@
     <style name="AppTheme.Text.MovieRating">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/strawberry</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@drawable/ic_movie_rating</item>
         <item name="android:drawablePadding">1dp</item>
-        <item name="android:drawableLeft">@drawable/ic_grid_rating</item>
     </style>
 
 
@@ -92,6 +93,8 @@
         <item name="android:textColor">@color/concrete</item>
     </style>
     <style name="AppTheme.Text.FavoriteRating">
+        <item name="android:drawableLeft">@drawable/ic_favorite_rating</item>
+        <item name="android:drawablePadding">1dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/strawberry</item>
     </style>

@@ -58,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/favorite_margin"
             android:layout_marginTop="@dimen/favorite_margin"
-            android:drawableLeft="@drawable/ic_grid_rating"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="7.5"/>
