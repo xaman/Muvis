@@ -42,8 +42,7 @@ class MoviesRepositoryImpl @Inject constructor(
                 { movies ->
                     cache.putAll(movies)
                     Either.right(movies.map { moviesMapper(it) })
-                }
-        )
+                })
     }
 
     override fun getMovieById(id: Int): Either<Throwable, Movie> {
@@ -63,15 +62,13 @@ class MoviesRepositoryImpl @Inject constructor(
                 { entity ->
                     cache.get(id)?.detail = entity
                     Either.right(detailMapper(entity))
-                }
-        )
+                })
     }
 
     override fun getCredits(id: Int): Either<Throwable, List<Cast>> {
         return api.getCredits(id).fold(
                 { throwable -> Either.left(throwable) },
-                { credits -> Either.right(credits.map { castMapper(it) }) }
-        )
+                { credits -> Either.right(credits.map { castMapper(it) }) })
     }
 
     override fun setFavorite(id: Int): Either<Throwable, Movie> {

@@ -38,7 +38,7 @@ class MovieEntityMapper @Inject constructor(
                 posterPath = posterPath,
                 backdropPath = backdropPath,
                 isFavorite = isFavorite,
-                detail = detail?.let { detailMapper(it) } )
+                detail = detail?.let { detailMapper(it) })
     }
 
 }

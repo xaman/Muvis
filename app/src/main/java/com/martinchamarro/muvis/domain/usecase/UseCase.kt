@@ -24,16 +24,13 @@ abstract class UseCase<out OUTPUT>(
         private val executor: Executor,
         private val mainThread: MainThread) {
 
-   open protected fun execute(onSuccess: (OUTPUT) -> Unit = {}, onError: (Throwable) -> Unit = {}) {
+    open protected fun execute(onSuccess: (OUTPUT) -> Unit = {}, onError: (Throwable) -> Unit = {}) {
         executor.execute {
             onExecute().fold(
-                { throwable -> runOnMainThread { onError(throwable) } },
-                { output -> runOnMainThread { onSuccess(output) }}
-            )
+                    { throwable -> mainThread.post { onError(throwable) } },
+                    { output -> mainThread.post { onSuccess(output) } })
         }
     }
-
-    private fun runOnMainThread(callback: () -> Unit) = mainThread.post(callback)
 
     abstract fun onExecute(): Either<Throwable, OUTPUT>
 
