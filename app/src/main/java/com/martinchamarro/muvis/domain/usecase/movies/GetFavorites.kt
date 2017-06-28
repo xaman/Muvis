@@ -21,6 +21,7 @@ import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
+import org.funktionale.either.Either
 import javax.inject.Inject
 
 class GetFavorites @Inject constructor(
@@ -32,6 +33,6 @@ class GetFavorites @Inject constructor(
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): List<Movie> = repository.getFavorites()
+    override fun onExecute(): Either<Throwable, List<Movie>> = repository.getFavorites()
 
 }

@@ -18,6 +18,8 @@ package com.martinchamarro.muvis.data.api
 
 import com.martinchamarro.muvis.data.entity.*
 import com.martinchamarro.muvis.domain.exception.ApiException
+import org.funktionale.either.Either
+import org.funktionale.either.eitherTry
 import retrofit2.Call
 import javax.inject.Inject
 
@@ -25,30 +27,20 @@ class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) 
 
     private val services = servicesFactory.create()
 
-    @Throws(ApiException::class)
-    override fun getFeaturedMovies(): List<MovieEntity> {
+    override fun getFeaturedMovies(): Either<Throwable, List<MovieEntity>> = eitherTry {
         val response = execute(services.getFeaturedMovies("2017"))
-        return response?.results ?: throw ApiException()
+        response.results
     }
 
-    @Throws(ApiException::class)
-    override fun getMovieDetail(id: Int): DetailEntity {
-        val response = execute(services.getMovieDetail(id))
-        return response ?: throw ApiException()
+    override fun getMovieDetail(id: Int): Either<Throwable, DetailEntity> = eitherTry {
+        execute(services.getMovieDetail(id))
     }
 
-    @Throws(ApiException::class)
-    override fun getCredits(id: Int): List<CastEntity> {
+    override fun getCredits(id: Int): Either<Throwable, List<CastEntity>> = eitherTry {
         val response = execute(services.getCredits(id))
-        return response?.cast ?: throw ApiException()
+        response.cast
     }
 
     @Throws(ApiException::class)
-    private fun <T> execute(call: Call<T>): T? {
-        try {
-            return call.execute().body()
-        } catch (t: Throwable) {
-            throw ApiException("Error executing Api call", t)
-        }
-    }
+    private fun <T> execute(call: Call<T>) = call.execute().body()!!
 }

@@ -19,4 +19,4 @@ package com.martinchamarro.muvis.data.api.responses
 import com.google.gson.annotations.SerializedName
 import com.martinchamarro.muvis.data.entity.CastEntity
 
-class CreditsResponse(@SerializedName("cast") var cast: List<CastEntity>)
+class CreditsResponse(@SerializedName("cast") val cast: List<CastEntity>)

@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.domain.usecase
 
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
+import org.funktionale.either.Either
 
 abstract class UseCase<out OUTPUT>(
         private val executor: Executor,
@@ -25,15 +26,15 @@ abstract class UseCase<out OUTPUT>(
 
    open protected fun execute(onSuccess: (OUTPUT) -> Unit = {}, onError: (Throwable) -> Unit = {}) {
         executor.execute {
-            try {
-                val result = onExecute()
-                mainThread.post { onSuccess(result) }
-            } catch (cause: Throwable) {
-                mainThread.post { onError(cause) }
-            }
+            onExecute().fold(
+                { throwable -> runOnMainThread { onError(throwable) } },
+                { output -> runOnMainThread { onSuccess(output) }}
+            )
         }
     }
 
-    abstract fun onExecute(): OUTPUT
+    private fun runOnMainThread(callback: () -> Unit) = mainThread.post(callback)
+
+    abstract fun onExecute(): Either<Throwable, OUTPUT>
 
 }

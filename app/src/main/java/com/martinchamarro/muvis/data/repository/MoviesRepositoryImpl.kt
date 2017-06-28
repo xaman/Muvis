@@ -20,11 +20,10 @@ import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
 import com.martinchamarro.muvis.data.database.Database
 import com.martinchamarro.muvis.data.mapper.*
-import com.martinchamarro.muvis.domain.exception.DetailNotFoundException
 import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
-import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.*
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import org.funktionale.either.Either
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -37,44 +36,53 @@ class MoviesRepositoryImpl @Inject constructor(
         private val detailMapper: DetailEntityMapper,
         private val castMapper: CastEntityMapper) : MoviesRepository {
 
-    @Throws(RepositoryException::class)
-    override fun getFeaturedMovies(): List<Movie> {
-        val movies = api.getFeaturedMovies()
-        cache.putAll(movies)
-        return movies.map { moviesMapper(it) }.toList()
+    override fun getFeaturedMovies(): Either<Throwable, List<Movie>> {
+        return api.getFeaturedMovies().fold(
+                { throwable -> Either.left(throwable) },
+                { movies ->
+                    cache.putAll(movies)
+                    Either.right(movies.map { moviesMapper(it) })
+                }
+        )
     }
 
-    @Throws(RepositoryException::class)
-    override fun getMovieById(id: Int): Movie {
-        val entity = cache.get(id) ?: throw MovieNotFoundException()
+    override fun getMovieById(id: Int): Either<Throwable, Movie> {
+        val entity = cache.get(id) ?: return Either.left(MovieNotFoundException())
         entity.isFavorite = db.contains(id)
-        return moviesMapper(entity)
+        return Either.right(moviesMapper(entity))
     }
 
-    @Throws(RepositoryException::class)
-    override fun getMovieDetail(id: Int): Detail {
-        val movieEntity = cache.get(id)
-        val detailEntity = movieEntity?.detail ?: api.getMovieDetail(id)
-        movieEntity?.detail = detailEntity
-        val detail = detailMapper(detailEntity)
-        return detail ?: throw DetailNotFoundException()
+    override fun getMovieDetail(id: Int): Either<Throwable, Detail> {
+        val entity = cache.get(id)?.detail ?: return getMovieDetailFromApi(id)
+        return Either.Right(detailMapper(entity))
     }
 
-    @Throws(RepositoryException::class)
-    override fun getCredits(id: Int): List<Cast> {
-        val credits = api.getCredits(id)
-        return credits.map { castMapper(it) }.toList()
+    private fun getMovieDetailFromApi(id: Int): Either<Throwable, Detail> {
+        return api.getMovieDetail(id).fold(
+                { throwable -> Either.left(throwable) },
+                { entity ->
+                    cache.get(id)?.detail = entity
+                    Either.right(detailMapper(entity))
+                }
+        )
     }
 
-    @Throws(RepositoryException::class)
-    override fun setFavorite(id: Int): Movie {
-        val entity = cache.get(id) ?: throw MovieNotFoundException()
+    override fun getCredits(id: Int): Either<Throwable, List<Cast>> {
+        return api.getCredits(id).fold(
+                { throwable -> Either.left(throwable) },
+                { credits -> Either.right(credits.map { castMapper(it) }) }
+        )
+    }
+
+    override fun setFavorite(id: Int): Either<Throwable, Movie> {
+        val entity = cache.get(id) ?: return Either.left(MovieNotFoundException())
         entity.isFavorite = !db.contains(id)
         if (entity.isFavorite) db.save(entity) else db.delete(id)
-        return moviesMapper(entity)
+        return Either.right(moviesMapper(entity))
     }
 
-    override fun getFavorites(): List<Movie> {
-        return db.loadAll().map { moviesMapper(it) }
+    override fun getFavorites(): Either<Throwable, List<Movie>> {
+        val movies = db.loadAll().map { moviesMapper(it) }
+        return Either.right(movies)
     }
 }

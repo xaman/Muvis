@@ -16,26 +16,22 @@
 
 package com.martinchamarro.muvis.domain.repository
 
-import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
+import org.funktionale.either.Either
 
 interface MoviesRepository {
-    @Throws(RepositoryException::class)
-    fun getFeaturedMovies(): List<Movie>
 
-    @Throws(RepositoryException::class)
-    fun getMovieById(id: Int): Movie
+    fun getFeaturedMovies(): Either<Throwable, List<Movie>>
 
-    @Throws(RepositoryException::class)
-    fun getMovieDetail(id: Int): Detail
+    fun getMovieById(id: Int): Either<Throwable, Movie>
 
-    @Throws(RepositoryException::class)
-    fun getCredits(id: Int): List<Cast>
+    fun getMovieDetail(id: Int): Either<Throwable, Detail>
 
-    @Throws(RepositoryException::class)
-    fun setFavorite(id: Int): Movie
+    fun getCredits(id: Int): Either<Throwable, List<Cast>>
 
-    fun getFavorites(): List<Movie>
+    fun setFavorite(id: Int): Either<Throwable, Movie>
+
+    fun getFavorites(): Either<Throwable, List<Movie>>
 }
