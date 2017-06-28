@@ -19,16 +19,13 @@ package com.martinchamarro.muvis.data.api
 import com.martinchamarro.muvis.data.entity.CastEntity
 import com.martinchamarro.muvis.data.entity.DetailEntity
 import com.martinchamarro.muvis.data.entity.MovieEntity
-import com.martinchamarro.muvis.domain.exception.ApiException
+import org.funktionale.either.Either
 
 interface Api {
 
-    @Throws(ApiException::class)
-    fun getFeaturedMovies(): List<MovieEntity>
+    fun getFeaturedMovies(): Either<Throwable, List<MovieEntity>>
 
-    @Throws(ApiException::class)
-    fun getMovieDetail(id: Int): DetailEntity
+    fun getMovieDetail(id: Int): Either<Throwable, DetailEntity>
 
-    @Throws(ApiException::class)
-    fun getCredits(id: Int): List<CastEntity>
+    fun getCredits(id: Int): Either<Throwable, List<CastEntity>>
 }

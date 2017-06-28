@@ -21,6 +21,7 @@ import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import org.funktionale.either.Either
 import javax.inject.Inject
 
 class GetFeatured @Inject constructor(
@@ -32,6 +33,6 @@ class GetFeatured @Inject constructor(
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): List<Movie> = repository.getFeaturedMovies()
+    override fun onExecute(): Either<Throwable, List<Movie>> = repository.getFeaturedMovies()
 
 }

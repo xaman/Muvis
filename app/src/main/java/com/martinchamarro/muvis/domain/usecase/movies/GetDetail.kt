@@ -21,6 +21,7 @@ import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import org.funktionale.either.Either
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -36,5 +37,5 @@ class GetDetail @Inject constructor(
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): Detail = repository.getMovieDetail(id)
+    override fun onExecute(): Either<Throwable, Detail> = repository.getMovieDetail(id)
 }
