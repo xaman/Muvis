@@ -25,6 +25,7 @@ import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment
 import com.martinchamarro.muvis.presentation.views.movies.MoviesFragment
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
+import com.martinchamarro.muvis.presentation.views.search.SearchActivity
 import com.martinchamarro.muvis.presentation.views.splash.SplashActivity
 
 import dagger.Component
@@ -35,12 +36,13 @@ import dagger.Component
         modules = arrayOf(ActivityModule::class, PresenterModule::class, UseCaseModule::class))
 interface ActivityComponent {
 
-    fun inject(activity: SplashActivity)
-    fun inject(activity: HomeActivity)
     fun inject(activity: DetailActivity)
+    fun inject(activity: HomeActivity)
+    fun inject(activity: SearchActivity)
+    fun inject(activity: SplashActivity)
 
-    fun inject(fragment: MoviesFragment)
     fun inject(fragment: FavoritesFragment)
+    fun inject(fragment: MoviesFragment)
 
     fun activity(): Activity
 

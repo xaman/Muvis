@@ -17,15 +17,25 @@
 package com.martinchamarro.muvis.presentation.navigation
 
 import android.app.Activity
+import android.content.Intent
 
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
+import com.martinchamarro.muvis.presentation.views.search.SearchActivity
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.noAnimation
 
 import javax.inject.Inject
 
 class Navigator @Inject constructor(private val activity: Activity) {
 
-    fun navigateToHome() = with(activity) {
-        startActivity(intentFor<HomeActivity>())
-    }
+    fun navigateToHome() = start<HomeActivity>()
+
+    fun navigateToSearch() = start(intent<SearchActivity>().noAnimation())
+
+    private inline fun <reified T : Any> start() = start(intent<T>())
+
+    private fun start(intent: Intent) = activity.startActivity(intent)
+
+    private inline fun <reified T : Any> intent() = activity.intentFor<T>()
+
 }

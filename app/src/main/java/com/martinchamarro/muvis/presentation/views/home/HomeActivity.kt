@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.presentation.views.home
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import butterknife.ButterKnife
 import butterknife.OnPageChange
 import com.martinchamarro.muvis.R
@@ -25,10 +26,14 @@ import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.gone
 import com.martinchamarro.muvis.presentation.extensions.setVisible
 import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.navigation.Navigator
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_toolbar_progress.*
+import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
+
+    @Inject lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +45,15 @@ class HomeActivity : AppCompatActivity() {
         configureNavigation()
     }
 
-    private fun configureToolbar() = toolbar.inflateMenu(R.menu.home_menu)
+    private fun configureToolbar() {
+        toolbar.inflateMenu(R.menu.home_menu)
+        toolbar.setOnMenuItemClickListener { onMenuItemClick(it); true }
+    }
+
+    private fun onMenuItemClick(item: MenuItem) = when(item.itemId) {
+        R.id.action_search -> navigator.navigateToSearch()
+        else -> Unit
+    }
 
     private fun configurePager() {
         pager.adapter = HomePagerAdapter(supportFragmentManager)
