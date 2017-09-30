@@ -48,4 +48,8 @@
     <dimen name="item_cast_height">160dp</dimen>
     <dimen name="item_cast_text_margin">4dp</dimen>
 
+    <dimen name="search_input_wrapper_width">270dp</dimen>
+    <dimen name="search_input_wrapper_horizontal_padding">15dp</dimen>
+    <dimen name="search_input_wrapper_vertical_padding">4dp</dimen>
+
 </resources>

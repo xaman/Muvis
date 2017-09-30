@@ -111,4 +111,21 @@
     </style>
 
 
+    <!-- Search -->
+    <style name="SearchEditTextWrapper">
+        <item name="android:background">@drawable/bg_search_input</item>
+        <item name="android:paddingLeft">@dimen/search_input_wrapper_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/search_input_wrapper_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/search_input_wrapper_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/search_input_wrapper_vertical_padding</item>
+    </style>
+    <style name="SearchEditText">
+        <item name="android:inputType">text</item>
+        <item name="android:textCursorDrawable">@drawable/default_cursor</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/strawberry</item>
+        <item name="android:textColorHint">@color/ash</item>
+    </style>
+
+
 </resources>
