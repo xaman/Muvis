@@ -23,16 +23,20 @@ import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import org.funktionale.either.Either
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class GetFeatured @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
         private val repository: MoviesRepository) : UseCase<List<Movie>>(executor, mainThread) {
 
-    public override fun execute(onSuccess: (List<Movie>) -> Unit, onError: (Throwable) -> Unit) {
+    private var page by Delegates.notNull<Int>()
+
+    fun execute(page: Int, onSuccess: (List<Movie>) -> Unit, onError: (Throwable) -> Unit) {
+        this.page = page
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): Either<Throwable, List<Movie>> = repository.getFeaturedMovies()
+    override fun onExecute(): Either<Throwable, List<Movie>> = repository.getFeaturedMovies(page)
 
 }

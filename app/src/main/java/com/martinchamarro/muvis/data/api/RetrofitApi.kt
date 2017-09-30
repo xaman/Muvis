@@ -27,8 +27,8 @@ class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) 
 
     private val services = servicesFactory.create()
 
-    override fun getFeaturedMovies(): Either<Throwable, List<MovieEntity>> = eitherTry {
-        val response = execute(services.getFeaturedMovies("2017"))
+    override fun getFeaturedMovies(page: Int): Either<Throwable, List<MovieEntity>> = eitherTry {
+        val response = execute(services.getFeaturedMovies("2017", page))
         response.results
     }
 

@@ -23,7 +23,7 @@ import org.funktionale.either.Either
 
 interface MoviesRepository {
 
-    fun getFeaturedMovies(): Either<Throwable, List<Movie>>
+    fun getFeaturedMovies(page: Int): Either<Throwable, List<Movie>>
 
     fun getMovieById(id: Int): Either<Throwable, Movie>
 

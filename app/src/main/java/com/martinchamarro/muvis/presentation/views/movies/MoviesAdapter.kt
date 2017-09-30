@@ -24,9 +24,15 @@ import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 
 class MoviesAdapter(
-        private val context: Context,
-        private val movies: List<Movie>,
-        private val onItemClick: (Movie, View) -> Unit) : RecyclerView.Adapter<MovieViewHolder>() {
+        private val context: Context) : RecyclerView.Adapter<MovieViewHolder>() {
+
+    private var movies: List<Movie> = listOf()
+    lateinit var onItemClick: (Movie, View) -> Unit
+
+    fun setMovies(movies: List<Movie>) {
+        this.movies = movies
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder {
         val view = View.inflate(context, R.layout.item_movie, null)

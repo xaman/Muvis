@@ -46,6 +46,7 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
     }
 
     @Inject lateinit var presenter: MoviesPresenter
+    private lateinit var adapter: MoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,9 +64,14 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
     }
 
     private fun configureRecyclerView() {
-        recyclerView.layoutManager = StaggeredGridLayoutManager(NUM_COLUMNS, VERTICAL)
+        val layoutManager = StaggeredGridLayoutManager(NUM_COLUMNS, VERTICAL)
+        recyclerView.layoutManager = layoutManager
         val itemsSpacing = dimen(R.dimen.movies_grid_spacing)
         recyclerView.addItemDecoration(ItemOffsetDecorator(itemsSpacing))
+        recyclerView.addOnScrollListener(OnScrollEndListener(layoutManager, presenter::onScrollEnd))
+        adapter = MoviesAdapter(context)
+        adapter.onItemClick = this::onMovieClick
+        recyclerView.adapter = adapter
     }
 
     private fun initializePresenter() {
@@ -78,9 +84,7 @@ class MoviesFragment : Fragment(), MoviesPresenter.View {
         presenter.onResume()
     }
 
-    override fun render(movies: List<Movie>) {
-        recyclerView.adapter = MoviesAdapter(activity, movies, this::onMovieClick)
-    }
+    override fun render(movies: List<Movie>) = adapter.setMovies(movies)
 
     private fun onMovieClick(movie: Movie, view: View) {
         val transitionName = getString(R.string.transition_picture)

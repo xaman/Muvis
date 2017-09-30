@@ -25,22 +25,38 @@ class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) 
 
     var view: View? = null
 
+    private var page: Int = 1
+    private var featured: MutableList<Movie> = mutableListOf()
+
     override fun initialize() {
+        loadMovies()
+    }
+
+    private fun loadMovies() {
         view?.showProgress()
-        getFeatured.execute(this::onMoviesLoadSuccess, this::onMoviesLoadError)
+        getFeatured.execute(page, { onMoviesLoadSuccess(it) }, { onMoviesLoadError() })
     }
 
-    fun onMoviesLoadSuccess(movies: List<Movie>) {
+    private fun onMoviesLoadSuccess(movies: List<Movie>) {
+        featured.addAll(movies)
+        if (featured.isNotEmpty()) view?.render(featured) else view?.showEmptyView()
         view?.hideProgress()
-        if (movies.isNotEmpty()) view?.render(movies) else view?.showEmptyView()
     }
 
-    fun onMoviesLoadError(cause: Throwable) {
+    private fun onMoviesLoadError() {
         view?.hideProgress()
         view?.showFeaturedError()
     }
 
-    override fun onDestroy() { view = null }
+    fun onScrollEnd() {
+        page += 1
+        loadMovies()
+    }
+
+    override fun onDestroy() {
+        featured.clear()
+        view = null
+    }
 
     interface View {
         fun render(movies: List<Movie>)

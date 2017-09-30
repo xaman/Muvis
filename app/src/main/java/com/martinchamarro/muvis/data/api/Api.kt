@@ -23,7 +23,7 @@ import org.funktionale.either.Either
 
 interface Api {
 
-    fun getFeaturedMovies(): Either<Throwable, List<MovieEntity>>
+    fun getFeaturedMovies(page: Int): Either<Throwable, List<MovieEntity>>
 
     fun getMovieDetail(id: Int): Either<Throwable, DetailEntity>
 

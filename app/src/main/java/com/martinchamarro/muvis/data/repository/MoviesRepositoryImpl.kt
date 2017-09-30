@@ -36,8 +36,8 @@ class MoviesRepositoryImpl @Inject constructor(
         private val detailMapper: DetailEntityMapper,
         private val castMapper: CastEntityMapper) : MoviesRepository {
 
-    override fun getFeaturedMovies(): Either<Throwable, List<Movie>> {
-        return api.getFeaturedMovies().fold(
+    override fun getFeaturedMovies(page: Int): Either<Throwable, List<Movie>> {
+        return api.getFeaturedMovies(page).fold(
                 { throwable -> Either.left(throwable) },
                 { movies ->
                     cache.putAll(movies)

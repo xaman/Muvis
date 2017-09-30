@@ -33,7 +33,9 @@ interface Services {
 
     @Headers(HEADER_CACHE)
     @GET("/3/discover/movie")
-    fun getFeaturedMovies(@Query("release_date.gte") release: String): Call<FeaturedMoviesResponse>
+    fun getFeaturedMovies(
+            @Query("primary_release_year") releaseYear: String,
+            @Query("page") page: Int): Call<FeaturedMoviesResponse>
 
     @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}")
