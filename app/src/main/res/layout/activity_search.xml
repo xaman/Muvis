@@ -37,11 +37,12 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/searchInput"
                 style="@style/SearchEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Peliculas">
+                android:hint="@string/search_input_hint">
                 <requestFocus/>
             </EditText>
 

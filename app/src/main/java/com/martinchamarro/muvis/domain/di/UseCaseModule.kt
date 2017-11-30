@@ -50,4 +50,8 @@ import dagger.Provides
         return GetFavorites(executor, mainThread, repository)
     }
 
+    @Provides fun provideSearchMovies(executor: Executor, mainThread: MainThread, repository: MoviesRepository): SearchMovies {
+        return SearchMovies(executor, mainThread, repository)
+    }
+
 }

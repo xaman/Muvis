@@ -35,4 +35,7 @@
     <!-- Detail -->
     <string name="runtime_value">%s mins.</string>
 
+    <!-- Search -->
+    <string name="search_input_hint">Películas</string>
+
 </resources>
