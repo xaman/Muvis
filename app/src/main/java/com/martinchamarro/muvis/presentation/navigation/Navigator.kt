@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.presentation.navigation
 
 import android.app.Activity
 import android.content.Intent
+import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.search.SearchActivity
@@ -31,6 +32,8 @@ class Navigator @Inject constructor(private val activity: Activity) {
     fun navigateToHome() = start<HomeActivity>()
 
     fun navigateToSearch() = start(intent<SearchActivity>().noAnimation())
+
+    fun navigateToDetail(movieId: Int) = start(DetailActivity.createIntent(activity, movieId))
 
     private inline fun <reified T : Any> start() = start(intent<T>())
 

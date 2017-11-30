@@ -86,7 +86,10 @@ class MoviesRepositoryImpl @Inject constructor(
     override fun searchMovies(text: String): Either<Throwable, List<Movie>> {
         return api.searchMovies(text).fold(
                 { throwable -> Either.left(throwable) },
-                { entities -> Either.right(entities.map { moviesMapper(it) })}
+                { entities ->
+                    cache.putAll(entities)
+                    Either.right(entities.map { moviesMapper(it) })
+                }
         )
     }
 }
