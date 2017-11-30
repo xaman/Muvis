@@ -16,7 +16,7 @@
 
 package com.martinchamarro.muvis.presentation.base
 
-interface Presenter {
+interface BasePresenter {
 
     fun initialize() {
         // Default empty implementation

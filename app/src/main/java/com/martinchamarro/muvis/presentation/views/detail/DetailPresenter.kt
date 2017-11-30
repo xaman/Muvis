@@ -25,14 +25,14 @@ import com.martinchamarro.muvis.domain.usecase.movies.GetDetail
 import com.martinchamarro.muvis.domain.usecase.movies.GetCredits
 import com.martinchamarro.muvis.domain.usecase.movies.SetFavorite
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.base.Presenter
+import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class DetailPresenter @Inject constructor(
         private val getMovie: GetMovie,
         private val getDetail: GetDetail,
         private val getCredits: GetCredits,
-        private val setFavorite: SetFavorite) : Presenter {
+        private val setFavorite: SetFavorite) : BasePresenter {
 
     companion object {
         val TAG: String = DetailPresenter::class.java.simpleName

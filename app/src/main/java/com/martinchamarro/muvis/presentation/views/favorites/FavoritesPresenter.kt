@@ -19,11 +19,11 @@ package com.martinchamarro.muvis.presentation.views.favorites
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.usecase.movies.GetFavorites
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.base.Presenter
+import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class FavoritesPresenter @Inject constructor(
-        private val getFavorites: GetFavorites) : Presenter {
+        private val getFavorites: GetFavorites) : BasePresenter {
 
     companion object {
         val TAG: String = this::class.java.simpleName

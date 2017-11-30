@@ -14,34 +14,20 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.views.splash
+package com.martinchamarro.muvis.presentation.views.search
 
-import com.martinchamarro.muvis.presentation.base.BasePresenter
-import com.martinchamarro.muvis.presentation.navigation.Navigator
-import com.martinchamarro.muvis.threading.async
 import javax.inject.Inject
 
+class SearchPresenter @Inject constructor() : SearchContract.Presenter {
 
-class SplashPresenter @Inject constructor(private val navigator: Navigator) : BasePresenter {
+    var view: SearchContract.View? = null
 
-    companion object {
-        private val SPLASH_DELAY = 1500L
-    }
+    override fun search(text: String) {
 
-    var view: View? = null
-
-    override fun initialize() {
-        async(SPLASH_DELAY) {
-            navigator.navigateToHome()
-            view?.finish()
-        }
     }
 
     override fun onDestroy() {
         view = null
     }
 
-    interface View {
-        fun finish()
-    }
 }

@@ -20,8 +20,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
+import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity() {
+
+    @Inject protected lateinit var presenter: SearchContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +34,16 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        presenter.onResume()
     }
 
     override fun onPause() {
+        presenter.onPause()
         super.onPause()
     }
 
     override fun onDestroy() {
+        presenter.onDestroy()
         super.onDestroy()
     }
 

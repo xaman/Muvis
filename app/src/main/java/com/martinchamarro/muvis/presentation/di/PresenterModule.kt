@@ -21,6 +21,8 @@ import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesPresenter
 import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
+import com.martinchamarro.muvis.presentation.views.search.SearchContract
+import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
 import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter
 
 import dagger.Module
@@ -39,5 +41,7 @@ import dagger.Provides
     @Provides fun provideFavoritesPresenter(getFavorites: GetFavorites): FavoritesPresenter {
         return FavoritesPresenter(getFavorites)
     }
+
+    @Provides fun provideSearchPresenter(): SearchContract.Presenter = SearchPresenter()
 
 }
