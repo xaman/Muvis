@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.usecase.movies
+package com.martinchamarro.muvis.domain.usecase
 
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
-import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import org.funktionale.either.Either

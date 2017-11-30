@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.data.api
 
 import com.martinchamarro.muvis.data.api.responses.CreditsResponse
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
+import com.martinchamarro.muvis.data.api.responses.MoviesSearchResponse
 import com.martinchamarro.muvis.data.entity.DetailEntity
 import retrofit2.Call
 import retrofit2.http.GET
@@ -35,14 +36,26 @@ interface Services {
     @GET("/3/discover/movie")
     fun getFeaturedMovies(
             @Query("primary_release_year") releaseYear: String,
-            @Query("page") page: Int): Call<FeaturedMoviesResponse>
+            @Query("page") page: Int
+    ): Call<FeaturedMoviesResponse>
 
     @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}")
-    fun getMovieDetail(@Path("movie_id") id: Int): Call<DetailEntity>
+    fun getMovieDetail(
+            @Path("movie_id") id: Int
+    ): Call<DetailEntity>
 
     @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}/credits")
-    fun getCredits(@Path("movie_id") id: Int): Call<CreditsResponse>
+    fun getCredits(
+            @Path("movie_id") id: Int
+    ): Call<CreditsResponse>
+
+    @Headers(HEADER_CACHE)
+    @GET("/3/search/movie")
+    fun searchMovies(
+            @Query("query") text: String,
+            @Query("include_adult") includeAdult: Boolean = true
+    ): Call<MoviesSearchResponse>
 
 }

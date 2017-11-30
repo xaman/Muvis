@@ -17,7 +17,7 @@
 package com.martinchamarro.muvis.presentation.views.movies
 
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.domain.usecase.movies.GetFeatured
+import com.martinchamarro.muvis.domain.usecase.GetFeatured
 import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 

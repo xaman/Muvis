@@ -20,10 +20,10 @@ import com.martinchamarro.muvis.Config
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.domain.usecase.movies.GetMovie
-import com.martinchamarro.muvis.domain.usecase.movies.GetDetail
-import com.martinchamarro.muvis.domain.usecase.movies.GetCredits
-import com.martinchamarro.muvis.domain.usecase.movies.SetFavorite
+import com.martinchamarro.muvis.domain.usecase.GetMovie
+import com.martinchamarro.muvis.domain.usecase.GetDetail
+import com.martinchamarro.muvis.domain.usecase.GetCredits
+import com.martinchamarro.muvis.domain.usecase.SetFavorite
 import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject

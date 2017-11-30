@@ -14,21 +14,20 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.usecase.movies
+package com.martinchamarro.muvis.domain.usecase
 
-import com.martinchamarro.muvis.threading.Executor
-import com.martinchamarro.muvis.threading.MainThread
-import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import com.martinchamarro.muvis.threading.Executor
+import com.martinchamarro.muvis.threading.MainThread
 import org.funktionale.either.Either
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class GetMovie @Inject constructor(
+class SetFavorite @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
-        private var repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
+        private val repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
 
     private var id by Delegates.notNull<Int>()
 
@@ -37,6 +36,6 @@ class GetMovie @Inject constructor(
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): Either<Throwable, Movie> = repository.getMovieById(id)
+    override fun onExecute(): Either<Throwable, Movie> = repository.setFavorite(id)
 
 }

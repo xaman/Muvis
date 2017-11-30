@@ -14,21 +14,9 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.data.api
+package com.martinchamarro.muvis.data.api.responses
 
-import com.martinchamarro.muvis.data.entity.CastEntity
-import com.martinchamarro.muvis.data.entity.DetailEntity
+import com.google.gson.annotations.SerializedName
 import com.martinchamarro.muvis.data.entity.MovieEntity
-import org.funktionale.either.Either
 
-interface Api {
-
-    fun getFeaturedMovies(page: Int): Either<Throwable, List<MovieEntity>>
-
-    fun getMovieDetail(id: Int): Either<Throwable, DetailEntity>
-
-    fun getCredits(id: Int): Either<Throwable, List<CastEntity>>
-
-    fun searchMovies(text: String): Either<Throwable, List<MovieEntity>>
-
-}
+class MoviesSearchResponse(@SerializedName("results") val movies: List<MovieEntity>)

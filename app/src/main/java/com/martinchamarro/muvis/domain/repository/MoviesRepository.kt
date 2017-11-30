@@ -34,4 +34,7 @@ interface MoviesRepository {
     fun setFavorite(id: Int): Either<Throwable, Movie>
 
     fun getFavorites(): Either<Throwable, List<Movie>>
+
+    fun searchMovies(text: String): Either<Throwable, List<Movie>>
+
 }

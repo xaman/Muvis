@@ -17,7 +17,7 @@
 package com.martinchamarro.muvis.domain.di
 
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
-import com.martinchamarro.muvis.domain.usecase.movies.*
+import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
 

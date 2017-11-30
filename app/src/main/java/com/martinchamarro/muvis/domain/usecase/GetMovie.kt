@@ -14,29 +14,28 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.usecase.movies
+package com.martinchamarro.muvis.domain.usecase
 
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
-import com.martinchamarro.muvis.domain.usecase.UseCase
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import org.funktionale.either.Either
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class GetFeatured @Inject constructor(
+class GetMovie @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
-        private val repository: MoviesRepository) : UseCase<List<Movie>>(executor, mainThread) {
+        private var repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
 
-    private var page by Delegates.notNull<Int>()
+    private var id by Delegates.notNull<Int>()
 
-    fun execute(page: Int, onSuccess: (List<Movie>) -> Unit, onError: (Throwable) -> Unit) {
-        this.page = page
+    fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
+        this.id = id
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): Either<Throwable, List<Movie>> = repository.getFeaturedMovies(page)
+    override fun onExecute(): Either<Throwable, Movie> = repository.getMovieById(id)
 
 }

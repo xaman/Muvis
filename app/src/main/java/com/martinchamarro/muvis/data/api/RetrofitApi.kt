@@ -25,11 +25,15 @@ import javax.inject.Inject
 
 class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) : Api {
 
+    companion object {
+        private const val DEFAULT_FEATURED_YEAR = "2017"
+        private const val DEFAULT_INCLUDE_ADULT = true
+    }
+
     private val services = servicesFactory.create()
 
     override fun getFeaturedMovies(page: Int): Either<Throwable, List<MovieEntity>> = eitherTry {
-        val response = execute(services.getFeaturedMovies("2017", page))
-        response.results
+        execute(services.getFeaturedMovies(DEFAULT_FEATURED_YEAR, page)).results
     }
 
     override fun getMovieDetail(id: Int): Either<Throwable, DetailEntity> = eitherTry {
@@ -37,8 +41,11 @@ class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) 
     }
 
     override fun getCredits(id: Int): Either<Throwable, List<CastEntity>> = eitherTry {
-        val response = execute(services.getCredits(id))
-        response.cast
+        execute(services.getCredits(id)).cast
+    }
+
+    override fun searchMovies(text: String): Either<Throwable, List<MovieEntity>> = eitherTry {
+        execute(services.searchMovies(text, DEFAULT_INCLUDE_ADULT)).movies
     }
 
     @Throws(ApiException::class)

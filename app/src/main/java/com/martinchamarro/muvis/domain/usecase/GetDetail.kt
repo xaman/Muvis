@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.usecase.movies
+package com.martinchamarro.muvis.domain.usecase
 
-import com.martinchamarro.muvis.domain.usecase.UseCase
-import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
+import com.martinchamarro.muvis.domain.model.Detail
+import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import org.funktionale.either.Either
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class SetFavorite @Inject constructor(
+class GetDetail @Inject constructor(
         executor: Executor,
         mainThread: MainThread,
-        private val repository: MoviesRepository) : UseCase<Movie>(executor, mainThread) {
+        private val repository: MoviesRepository) : UseCase<Detail>(executor, mainThread) {
 
     private var id by Delegates.notNull<Int>()
 
-    fun execute(id: Int, onSuccess: (Movie) -> Unit, onError: (Throwable) -> Unit) {
+    fun execute(id: Int, onSuccess: (Detail) -> Unit, onError: (Throwable) -> Unit) {
         this.id = id
         super.execute(onSuccess, onError)
     }
 
-    override fun onExecute(): Either<Throwable, Movie> = repository.setFavorite(id)
-
+    override fun onExecute(): Either<Throwable, Detail> = repository.getMovieDetail(id)
 }
