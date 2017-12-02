@@ -54,4 +54,8 @@ import dagger.Provides
         return SearchMovies(executor, mainThread, repository)
     }
 
+    @Provides fun provideGetTrailer(executor: Executor, mainThread: MainThread, repository: MoviesRepository): GetTrailer {
+        return GetTrailer(executor, mainThread, repository)
+    }
+
 }

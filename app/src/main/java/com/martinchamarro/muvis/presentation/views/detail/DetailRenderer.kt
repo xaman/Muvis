@@ -84,4 +84,9 @@ class DetailRenderer(private val view: View) {
         creditsView.adapter = CreditsAdapter(ctx, credits)
     }
 
+    fun render(trailer: Video) = with(view) {
+        videoThumbnail.renderVideo(trailer.key)
+        videoThumbnail.visible()
+    }
+
 }

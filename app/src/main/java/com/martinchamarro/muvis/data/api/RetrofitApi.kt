@@ -48,6 +48,10 @@ class RetrofitApi @Inject constructor(servicesFactory: RetrofitServicesFactory) 
         execute(services.searchMovies(text, DEFAULT_INCLUDE_ADULT)).movies
     }
 
+    override fun getVideos(id: Int): Either<Throwable, List<VideoEntity>> = eitherTry {
+        execute(services.getVideos(id)).results
+    }
+
     @Throws(ApiException::class)
     private fun <T> execute(call: Call<T>) = call.execute().body()!!
 }

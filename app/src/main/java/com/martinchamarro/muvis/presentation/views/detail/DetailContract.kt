@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.presentation.views.detail
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.Video
 import com.martinchamarro.muvis.presentation.base.BasePresenter
 
 interface DetailContract {
@@ -33,6 +34,7 @@ interface DetailContract {
         fun render(movie: Movie)
         fun render(detail: Detail)
         fun render(credits: List<Cast>)
+        fun render(trailer: Video)
         fun showProgress()
         fun hideProgress()
         fun shareMovie(url: String)

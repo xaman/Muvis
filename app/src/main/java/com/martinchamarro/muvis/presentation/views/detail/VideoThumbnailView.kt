@@ -41,7 +41,7 @@ class VideoThumbnailView : CardView, YouTubeThumbnailView.OnInitializedListener 
         cardElevation = 0.0f
         radius = dimen(R.dimen.video_thumbnail_radius).toFloat()
         setCardBackgroundColor(color(R.color.silver))
-        youtubeThumbnail.initialize(Config.YOUTUBE_API_KEY, this)g
+        youtubeThumbnail.initialize(Config.YOUTUBE_API_KEY, this)
     }
 
     override fun onInitializationSuccess(thumbnail: YouTubeThumbnailView?, loader: YouTubeThumbnailLoader?) {

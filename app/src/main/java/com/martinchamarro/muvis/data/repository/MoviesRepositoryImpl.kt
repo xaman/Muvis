@@ -20,7 +20,7 @@ import com.martinchamarro.muvis.data.api.Api
 import com.martinchamarro.muvis.data.cache.MoviesCache
 import com.martinchamarro.muvis.data.database.Database
 import com.martinchamarro.muvis.data.mapper.*
-import com.martinchamarro.muvis.domain.exception.MovieNotFoundException
+import com.martinchamarro.muvis.domain.exception.*
 import com.martinchamarro.muvis.domain.model.*
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import org.funktionale.either.Either
@@ -34,7 +34,8 @@ class MoviesRepositoryImpl @Inject constructor(
         private val db: Database,
         private val moviesMapper: MovieEntityMapper,
         private val detailMapper: DetailEntityMapper,
-        private val castMapper: CastEntityMapper) : MoviesRepository {
+        private val castMapper: CastEntityMapper,
+        private val videoMapper: VideoEntityMapper) : MoviesRepository {
 
     override fun getFeaturedMovies(page: Int): Either<Throwable, List<Movie>> {
         return api.getFeaturedMovies(page).fold(
@@ -95,6 +96,23 @@ class MoviesRepositoryImpl @Inject constructor(
                             .reversed()
                     cache.putAll(entities)
                     Either.right(entities.map { moviesMapper(it) })
+                }
+        )
+    }
+
+    override fun getMovieTrailer(id: Int): Either<Throwable, Video> {
+        return api.getVideos(id).fold(
+                { throwable -> Either.left(throwable) },
+                { videos ->
+                    val trailer = videos
+                            .filter { it.isfromYoutube }
+                            .filter { it.isTrailer }
+                            .map { videoMapper(it) }
+                            .firstOrNull()
+                    when(trailer) {
+                        null -> Either.left(TrailerNotFoundException())
+                        else -> Either.right(trailer)
+                    }
                 }
         )
     }

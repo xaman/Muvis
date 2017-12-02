@@ -24,6 +24,7 @@ import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.domain.model.Video
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -91,6 +92,8 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     override fun render(detail: Detail) = renderer.render(detail)
 
     override fun render(credits: List<Cast>) = renderer.render(credits)
+
+    override fun render(trailer: Video) = renderer.render(trailer)
 
     override fun showProgress() {}
 

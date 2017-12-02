@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.data.api
 import com.martinchamarro.muvis.data.api.responses.CreditsResponse
 import com.martinchamarro.muvis.data.api.responses.FeaturedMoviesResponse
 import com.martinchamarro.muvis.data.api.responses.MoviesSearchResponse
+import com.martinchamarro.muvis.data.api.responses.VideosResponse
 import com.martinchamarro.muvis.data.entity.DetailEntity
 import retrofit2.Call
 import retrofit2.http.GET
@@ -57,5 +58,11 @@ interface Services {
             @Query("query") text: String,
             @Query("include_adult") includeAdult: Boolean = true
     ): Call<MoviesSearchResponse>
+
+    @Headers(HEADER_CACHE)
+    @GET("/3/movie/{movie_id}/videos")
+    fun getVideos(
+            @Path("movie_id") id: Int
+    ): Call<VideosResponse>
 
 }

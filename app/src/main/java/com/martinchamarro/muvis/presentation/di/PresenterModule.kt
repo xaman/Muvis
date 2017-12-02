@@ -18,16 +18,11 @@ package com.martinchamarro.muvis.presentation.di
 
 import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.presentation.navigation.Navigator
-import com.martinchamarro.muvis.presentation.views.detail.DetailContract
-import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter
-import com.martinchamarro.muvis.presentation.views.favorites.FavoritesContract
-import com.martinchamarro.muvis.presentation.views.favorites.FavoritesPresenter
-import com.martinchamarro.muvis.presentation.views.movies.MoviesContract
-import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
-import com.martinchamarro.muvis.presentation.views.search.SearchContract
-import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
-import com.martinchamarro.muvis.presentation.views.splash.SplashContract
-import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter
+import com.martinchamarro.muvis.presentation.views.detail.*
+import com.martinchamarro.muvis.presentation.views.favorites.*
+import com.martinchamarro.muvis.presentation.views.movies.*
+import com.martinchamarro.muvis.presentation.views.search.*
+import com.martinchamarro.muvis.presentation.views.splash.*
 
 import dagger.Module
 import dagger.Provides
@@ -42,8 +37,8 @@ import dagger.Provides
         return MoviesPresenter(getFeatured)
     }
 
-    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailContract.Presenter {
-        return DetailPresenter(getMovie, getDetail, getCredits, setFavorite)
+    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, getTrailer: GetTrailer, setFavorite: SetFavorite): DetailContract.Presenter {
+        return DetailPresenter(getMovie, getDetail, getCredits, getTrailer, setFavorite)
     }
 
     @Provides fun provideFavoritesPresenter(getFavorites: GetFavorites): FavoritesContract.Presenter {

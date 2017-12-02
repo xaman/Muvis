@@ -20,10 +20,8 @@ import com.martinchamarro.muvis.Config
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.domain.usecase.GetMovie
-import com.martinchamarro.muvis.domain.usecase.GetDetail
-import com.martinchamarro.muvis.domain.usecase.GetCredits
-import com.martinchamarro.muvis.domain.usecase.SetFavorite
+import com.martinchamarro.muvis.domain.model.Video
+import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.globalutils.logger.Logger
 import javax.inject.Inject
 
@@ -31,6 +29,7 @@ class DetailPresenter @Inject constructor(
         private val getMovie: GetMovie,
         private val getDetail: GetDetail,
         private val getCredits: GetCredits,
+        private val getTrailer: GetTrailer,
         private val setFavorite: SetFavorite) : DetailContract.Presenter {
 
     companion object {
@@ -47,6 +46,7 @@ class DetailPresenter @Inject constructor(
         getMovie.execute(movieId, this::onMovieLoadSuccess, this::onMovieLoadError)
         getDetail.execute(movieId, this::onDetailLoadSuccess, this::onDetailLoadError)
         getCredits.execute(movieId, this::onCreditsLoadSuccess, this::onCreditsLoadError)
+        getTrailer.execute(movieId, this::onTrailerLoadSuccess, this::onTrailerLoadError)
     }
 
     private fun onMovieLoadSuccess(movie: Movie) {
@@ -60,21 +60,23 @@ class DetailPresenter @Inject constructor(
         view?.finish()
     }
 
-    private fun onDetailLoadSuccess(detail: Detail) {
-        view?.render(detail)
-    }
+    private fun onDetailLoadSuccess(detail: Detail) { view?.render(detail) }
 
     private fun onDetailLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading detail: ${cause.message}")
         view?.finish()
     }
 
-    private fun onCreditsLoadSuccess(credits: List<Cast>) {
-        view?.render(credits)
-    }
+    private fun onCreditsLoadSuccess(credits: List<Cast>) { view?.render(credits) }
 
     private fun onCreditsLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading credits: ${cause.message}")
+    }
+
+    private fun onTrailerLoadSuccess(trailer: Video) { view?.render(trailer) }
+
+    private fun onTrailerLoadError(cause: Throwable) {
+        Logger.e(TAG, "Error loading trailer: ${cause.message}")
     }
 
     override fun setFavorite() {
@@ -90,9 +92,7 @@ class DetailPresenter @Inject constructor(
         Logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
     }
 
-    override fun shareMovie() {
-        view?.shareMovie(Config.MOVIE_URL + movie.id)
-    }
+    override fun shareMovie() { view?.shareMovie(Config.MOVIE_URL + movie.id) }
 
     override fun onDestroy() { this.view = null }
 

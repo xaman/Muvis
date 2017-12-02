@@ -14,30 +14,29 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.domain.repository
+package com.martinchamarro.muvis.domain.usecase
 
-import com.martinchamarro.muvis.domain.model.Cast
-import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.model.Video
+import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import com.martinchamarro.muvis.threading.Executor
+import com.martinchamarro.muvis.threading.MainThread
 import org.funktionale.either.Either
+import javax.inject.Inject
+import kotlin.properties.Delegates
 
-interface MoviesRepository {
+class GetTrailer @Inject constructor(
+        executor: Executor,
+        mainThread: MainThread,
+        private var repository: MoviesRepository) : UseCase<Video>(executor, mainThread) {
 
-    fun getFeaturedMovies(page: Int): Either<Throwable, List<Movie>>
+    private var id by Delegates.notNull<Int>()
 
-    fun getMovieById(id: Int): Either<Throwable, Movie>
+    fun execute(id: Int, onSuccess: (Video) -> Unit, onError: (Throwable) -> Unit) {
+        this.id = id
+        super.execute(onSuccess, onError)
+    }
 
-    fun getMovieDetail(id: Int): Either<Throwable, Detail>
-
-    fun getCredits(id: Int): Either<Throwable, List<Cast>>
-
-    fun setFavorite(id: Int): Either<Throwable, Movie>
-
-    fun getFavorites(): Either<Throwable, List<Movie>>
-
-    fun searchMovies(text: String): Either<Throwable, List<Movie>>
-
-    fun getMovieTrailer(id: Int): Either<Throwable, Video>
+    override fun onExecute(): Either<Throwable, Video> = repository.getMovieTrailer(id)
 
 }
