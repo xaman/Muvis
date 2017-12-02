@@ -30,36 +30,36 @@ import retrofit2.http.Query
 interface Services {
 
     companion object {
-        const val HEADER_CACHE = "Cache-Control: public, max-age=3600"
+        const val HEADER_CACHE_ONE_HOUR = "Cache-Control: public, max-age=3600"
+        const val HEADER_CACHE_ONE_DAY = "Cache-Control: public, max-age=86400"
     }
 
-    @Headers(HEADER_CACHE)
+    @Headers(HEADER_CACHE_ONE_HOUR)
     @GET("/3/discover/movie")
     fun getFeaturedMovies(
             @Query("primary_release_year") releaseYear: String,
             @Query("page") page: Int
     ): Call<FeaturedMoviesResponse>
 
-    @Headers(HEADER_CACHE)
+    @Headers(HEADER_CACHE_ONE_DAY)
     @GET("/3/movie/{movie_id}")
     fun getMovieDetail(
             @Path("movie_id") id: Int
     ): Call<DetailEntity>
 
-    @Headers(HEADER_CACHE)
+    @Headers(HEADER_CACHE_ONE_DAY)
     @GET("/3/movie/{movie_id}/credits")
     fun getCredits(
             @Path("movie_id") id: Int
     ): Call<CreditsResponse>
 
-    @Headers(HEADER_CACHE)
+    @Headers(HEADER_CACHE_ONE_HOUR)
     @GET("/3/search/movie")
     fun searchMovies(
             @Query("query") text: String,
             @Query("include_adult") includeAdult: Boolean = true
     ): Call<MoviesSearchResponse>
 
-    @Headers(HEADER_CACHE)
     @GET("/3/movie/{movie_id}/videos")
     fun getVideos(
             @Path("movie_id") id: Int
