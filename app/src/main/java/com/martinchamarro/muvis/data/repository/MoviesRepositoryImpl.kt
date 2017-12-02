@@ -46,7 +46,7 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override fun getMovieById(id: Int): Either<Throwable, Movie> {
-        val entity = cache.get(id) ?: return Either.left(MovieNotFoundException())
+        val entity = cache.get(id) ?: db.load(id) ?: return Either.left(MovieNotFoundException())
         entity.isFavorite = db.contains(id)
         return Either.right(moviesMapper(entity))
     }
