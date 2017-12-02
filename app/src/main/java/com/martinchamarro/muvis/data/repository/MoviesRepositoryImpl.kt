@@ -79,7 +79,9 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override fun getFavorites(): Either<Throwable, List<Movie>> {
-        val movies = db.loadAll().map { moviesMapper(it) }
+        val movies = db.loadAll()
+                .map { moviesMapper(it) }
+                .reversed()
         return Either.right(movies)
     }
 
