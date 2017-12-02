@@ -29,6 +29,7 @@ import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.share
 import javax.inject.Inject
 
@@ -77,7 +78,8 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     private fun setListeners() {
-        fabView.setOnClickListener { presenter.setFavorite() }
+        fabView.onClick { presenter.setFavorite() }
+        videoThumbnail.onClick { presenter.showTrailer() }
     }
 
     override fun onResume() {

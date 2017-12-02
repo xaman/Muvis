@@ -27,6 +27,7 @@ interface DetailContract {
     interface Presenter : BasePresenter<View> {
         fun setFavorite()
         fun shareMovie()
+        fun showTrailer()
     }
 
     interface View {

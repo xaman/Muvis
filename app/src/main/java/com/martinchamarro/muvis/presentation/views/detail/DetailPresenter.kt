@@ -23,6 +23,7 @@ import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.model.Video
 import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.globalutils.logger.Logger
+import com.martinchamarro.muvis.presentation.navigation.Navigator
 import javax.inject.Inject
 
 class DetailPresenter @Inject constructor(
@@ -30,15 +31,16 @@ class DetailPresenter @Inject constructor(
         private val getDetail: GetDetail,
         private val getCredits: GetCredits,
         private val getTrailer: GetTrailer,
-        private val setFavorite: SetFavorite) : DetailContract.Presenter {
+        private val setFavorite: SetFavorite,
+        private val navigator: Navigator) : DetailContract.Presenter {
 
     companion object {
         val TAG: String = DetailPresenter::class.java.simpleName
     }
 
     override var view: DetailContract.View? = null
-    lateinit var movie: Movie
-    lateinit var detail: Detail
+    private lateinit var movie: Movie
+    private var trailer: Video? = null
 
     override fun initialize() {
         view?.showProgress()
@@ -73,7 +75,10 @@ class DetailPresenter @Inject constructor(
         Logger.e(TAG, "Error loading credits: ${cause.message}")
     }
 
-    private fun onTrailerLoadSuccess(trailer: Video) { view?.render(trailer) }
+    private fun onTrailerLoadSuccess(trailer: Video) {
+        this.trailer = trailer
+        view?.render(trailer)
+    }
 
     private fun onTrailerLoadError(cause: Throwable) {
         Logger.e(TAG, "Error loading trailer: ${cause.message}")
@@ -93,6 +98,8 @@ class DetailPresenter @Inject constructor(
     }
 
     override fun shareMovie() { view?.shareMovie(Config.MOVIE_URL + movie.id) }
+
+    override fun showTrailer() { trailer?.run { navigator.navigateToTrailer(key) } }
 
     override fun onDestroy() { this.view = null }
 

@@ -22,6 +22,7 @@ import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.search.SearchActivity
+import com.martinchamarro.muvis.presentation.views.trailer.TrailerActivity
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.noAnimation
 
@@ -34,6 +35,8 @@ class Navigator @Inject constructor(private val activity: Activity) {
     fun navigateToSearch() = start(intent<SearchActivity>().noAnimation())
 
     fun navigateToDetail(movieId: Int) = start(DetailActivity.createIntent(activity, movieId))
+
+    fun navigateToTrailer(videoKey: String) = TrailerActivity.start(activity, videoKey)
 
     private inline fun <reified T : Any> start() = start(intent<T>())
 

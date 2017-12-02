@@ -32,6 +32,7 @@
         <activity
             android:name=".presentation.views.splash.SplashActivity"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.TransparentStatus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -40,13 +41,20 @@
         </activity>
         <activity
             android:name=".presentation.views.home.HomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".presentation.views.detail.DetailActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Detail"/>
         <activity
             android:name=".presentation.views.search.SearchActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".presentation.views.trailer.TrailerActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatus"/>
     </application>
 
 </manifest>
