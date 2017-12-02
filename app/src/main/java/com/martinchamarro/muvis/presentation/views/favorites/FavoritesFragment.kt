@@ -25,10 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.extensions.activityComponent
-import com.martinchamarro.muvis.presentation.extensions.dimen
-import com.martinchamarro.muvis.presentation.extensions.gone
-import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
@@ -37,13 +34,13 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
-class FavoritesFragment : Fragment(), FavoritesPresenter.View {
+class FavoritesFragment : Fragment(), FavoritesContract.View {
 
     companion object {
         fun getInstance() = FavoritesFragment()
     }
 
-    @Inject lateinit var presenter: FavoritesPresenter
+    @Inject lateinit var presenter: FavoritesContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -34,9 +34,9 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.layout_toolbar_progress.*
 import javax.inject.Inject
 
-class SearchActivity : AppCompatActivity(), SearchPresenter.View {
+class SearchActivity : AppCompatActivity(), SearchContract.View {
 
-    @Inject protected lateinit var presenter: SearchPresenter
+    @Inject protected lateinit var presenter: SearchContract.Presenter
     @Inject protected lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {

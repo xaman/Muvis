@@ -14,26 +14,21 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.base
+package com.martinchamarro.muvis.presentation.views.favorites
 
-interface BasePresenter<T> {
+import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.presentation.base.BasePresenter
 
-    var view: T?
+interface FavoritesContract {
 
-    fun initialize() {
-        // Default empty implementation
-    }
+    interface Presenter : BasePresenter<View>
 
-    fun onResume() {
-        // Default empty implementation
-    }
-
-    fun onPause() {
-        // Default empty implementation
-    }
-
-    fun onDestroy() {
-        // Default empty implementation
+    interface View {
+        fun render(favorites: List<Movie>)
+        fun showProgress()
+        fun hideProgress()
+        fun showEmpty()
+        fun hideEmpty()
     }
 
 }

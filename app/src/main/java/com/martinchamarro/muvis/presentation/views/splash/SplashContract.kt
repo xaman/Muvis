@@ -14,26 +14,16 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.base
+package com.martinchamarro.muvis.presentation.views.splash
 
-interface BasePresenter<T> {
+import com.martinchamarro.muvis.presentation.base.BasePresenter
 
-    var view: T?
+interface SplashContract {
 
-    fun initialize() {
-        // Default empty implementation
-    }
+    interface Presenter : BasePresenter<View>
 
-    fun onResume() {
-        // Default empty implementation
-    }
-
-    fun onPause() {
-        // Default empty implementation
-    }
-
-    fun onDestroy() {
-        // Default empty implementation
+    interface View {
+        fun finish()
     }
 
 }

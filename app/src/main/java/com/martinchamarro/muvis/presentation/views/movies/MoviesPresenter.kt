@@ -18,19 +18,16 @@ package com.martinchamarro.muvis.presentation.views.movies
 
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.usecase.GetFeatured
-import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
-class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) : BasePresenter {
+class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) : MoviesContract.Presenter {
 
-    var view: View? = null
+    override var view: MoviesContract.View? = null
 
     private var page: Int = 1
     private var featured: MutableList<Movie> = mutableListOf()
 
-    override fun initialize() {
-        loadMovies()
-    }
+    override fun initialize() { loadMovies() }
 
     private fun loadMovies() {
         view?.showProgress()
@@ -58,12 +55,4 @@ class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) 
         view = null
     }
 
-    interface View {
-        fun render(movies: List<Movie>)
-        fun showEmptyView()
-        fun hideEmptyView()
-        fun showProgress()
-        fun hideProgress()
-        fun showFeaturedError()
-    }
 }

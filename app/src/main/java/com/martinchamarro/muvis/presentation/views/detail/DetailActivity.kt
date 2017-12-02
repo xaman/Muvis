@@ -31,9 +31,9 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.share
 import javax.inject.Inject
 
-class DetailActivity : AppCompatActivity(), DetailPresenter.View {
+class DetailActivity : AppCompatActivity(), DetailContract.View {
 
-    @Inject lateinit var presenter: DetailPresenter
+    @Inject lateinit var presenter: DetailContract.Presenter
     private lateinit var renderer: DetailRenderer
 
     companion object {

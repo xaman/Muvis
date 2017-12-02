@@ -19,19 +19,18 @@ package com.martinchamarro.muvis.presentation.views.search
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.usecase.SearchMovies
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class SearchPresenter @Inject constructor(
-        private val searchMovies: SearchMovies) : BasePresenter {
+        private val searchMovies: SearchMovies) : SearchContract.Presenter {
 
-    var view: View? = null
+    override var view: SearchContract.View? = null
 
     companion object {
         private val TAG: String = SearchPresenter::class.java.simpleName
     }
 
-    fun search(text: String) {
+    override fun search(text: String) {
         if (text.isNullOrEmpty()) view?.showEmpty()
         else searchMovies.execute(text, this::onSearchSuccess, this::onSearchError)
     }
@@ -51,16 +50,6 @@ class SearchPresenter @Inject constructor(
         Logger.e(TAG, "Error searching movies: ${cause.message}")
     }
 
-    override fun onDestroy() {
-        view = null
-    }
-
-    interface View {
-        fun render(movies: List<Movie>)
-        fun showProgress()
-        fun hideProgress()
-        fun showEmpty()
-        fun hideEmpty()
-    }
+    override fun onDestroy() { view = null }
 
 }

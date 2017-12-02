@@ -16,19 +16,18 @@
 
 package com.martinchamarro.muvis.presentation.views.splash
 
-import com.martinchamarro.muvis.presentation.base.BasePresenter
 import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.threading.async
 import javax.inject.Inject
 
 
-class SplashPresenter @Inject constructor(private val navigator: Navigator) : BasePresenter {
+class SplashPresenter @Inject constructor(private val navigator: Navigator) : SplashContract.Presenter {
+
+    override var view: SplashContract.View? = null
 
     companion object {
         private val SPLASH_DELAY = 1500L
     }
-
-    var view: View? = null
 
     override fun initialize() {
         async(SPLASH_DELAY) {
@@ -37,11 +36,5 @@ class SplashPresenter @Inject constructor(private val navigator: Navigator) : Ba
         }
     }
 
-    override fun onDestroy() {
-        view = null
-    }
-
-    interface View {
-        fun finish()
-    }
+    override fun onDestroy() { view = null }
 }

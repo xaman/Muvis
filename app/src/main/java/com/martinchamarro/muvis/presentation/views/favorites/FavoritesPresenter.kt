@@ -19,17 +19,16 @@ package com.martinchamarro.muvis.presentation.views.favorites
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.usecase.GetFavorites
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class FavoritesPresenter @Inject constructor(
-        private val getFavorites: GetFavorites) : BasePresenter {
+        private val getFavorites: GetFavorites) : FavoritesContract.Presenter {
 
     companion object {
         val TAG: String = this::class.java.simpleName
     }
 
-    var view: View? = null
+    override var view: FavoritesContract.View? = null
 
     override fun onResume() {
         view?.showProgress()
@@ -47,16 +46,6 @@ class FavoritesPresenter @Inject constructor(
         Logger.e(TAG, "Error loading favorites: ${cause.message}")
     }
 
-    override fun onDestroy() {
-        view = null
-    }
-
-    interface View {
-        fun render(favorites: List<Movie>)
-        fun showProgress()
-        fun hideProgress()
-        fun showEmpty()
-        fun hideEmpty()
-    }
+    override fun onDestroy() { view = null }
 
 }

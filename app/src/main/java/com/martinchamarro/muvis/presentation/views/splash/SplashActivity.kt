@@ -25,9 +25,9 @@ import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import com.martinchamarro.muvis.presentation.extensions.supportsKitkat
 import javax.inject.Inject
 
-class SplashActivity : AppCompatActivity(), SplashPresenter.View {
+class SplashActivity : AppCompatActivity(), SplashContract.View {
 
-    @Inject lateinit var presenter: SplashPresenter
+    @Inject lateinit var presenter: SplashContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         configureFullScreen()

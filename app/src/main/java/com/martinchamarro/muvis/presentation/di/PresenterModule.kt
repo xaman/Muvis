@@ -18,10 +18,15 @@ package com.martinchamarro.muvis.presentation.di
 
 import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.presentation.navigation.Navigator
+import com.martinchamarro.muvis.presentation.views.detail.DetailContract
 import com.martinchamarro.muvis.presentation.views.detail.DetailPresenter
+import com.martinchamarro.muvis.presentation.views.favorites.FavoritesContract
 import com.martinchamarro.muvis.presentation.views.favorites.FavoritesPresenter
+import com.martinchamarro.muvis.presentation.views.movies.MoviesContract
 import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
+import com.martinchamarro.muvis.presentation.views.search.SearchContract
 import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
+import com.martinchamarro.muvis.presentation.views.splash.SplashContract
 import com.martinchamarro.muvis.presentation.views.splash.SplashPresenter
 
 import dagger.Module
@@ -29,19 +34,23 @@ import dagger.Provides
 
 @Module class PresenterModule {
 
-    @Provides fun provideSplashPresenter(navigator: Navigator) = SplashPresenter(navigator)
+    @Provides fun provideSplashPresenter(navigator: Navigator): SplashContract.Presenter {
+        return SplashPresenter(navigator)
+    }
 
-    @Provides fun provideMoviesPresenter(getFeatured: GetFeatured) = MoviesPresenter(getFeatured)
+    @Provides fun provideMoviesPresenter(getFeatured: GetFeatured): MoviesContract.Presenter {
+        return MoviesPresenter(getFeatured)
+    }
 
-    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailPresenter {
+    @Provides fun provideDetailPresenter(getMovie: GetMovie, getDetail: GetDetail, getCredits: GetCredits, setFavorite: SetFavorite): DetailContract.Presenter {
         return DetailPresenter(getMovie, getDetail, getCredits, setFavorite)
     }
 
-    @Provides fun provideFavoritesPresenter(getFavorites: GetFavorites): FavoritesPresenter {
+    @Provides fun provideFavoritesPresenter(getFavorites: GetFavorites): FavoritesContract.Presenter {
         return FavoritesPresenter(getFavorites)
     }
 
-    @Provides fun provideSearchPresenter(searchMovies: SearchMovies): SearchPresenter {
+    @Provides fun provideSearchPresenter(searchMovies: SearchMovies): SearchContract.Presenter {
         return SearchPresenter(searchMovies)
     }
 

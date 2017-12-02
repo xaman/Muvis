@@ -25,20 +25,19 @@ import com.martinchamarro.muvis.domain.usecase.GetDetail
 import com.martinchamarro.muvis.domain.usecase.GetCredits
 import com.martinchamarro.muvis.domain.usecase.SetFavorite
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.base.BasePresenter
 import javax.inject.Inject
 
 class DetailPresenter @Inject constructor(
         private val getMovie: GetMovie,
         private val getDetail: GetDetail,
         private val getCredits: GetCredits,
-        private val setFavorite: SetFavorite) : BasePresenter {
+        private val setFavorite: SetFavorite) : DetailContract.Presenter {
 
     companion object {
         val TAG: String = DetailPresenter::class.java.simpleName
     }
 
-    var view: View? = null
+    override var view: DetailContract.View? = null
     lateinit var movie: Movie
     lateinit var detail: Detail
 
@@ -78,31 +77,23 @@ class DetailPresenter @Inject constructor(
         Logger.e(TAG, "Error loading credits: ${cause.message}")
     }
 
-    fun setFavorite() {
+    override fun setFavorite() {
         setFavorite.execute(movie.id, this::onSetFavoriteSuccess, this::onSetFavoriteError)
     }
 
-    fun onSetFavoriteSuccess(movie: Movie) {
+    private fun onSetFavoriteSuccess(movie: Movie) {
         this.movie = movie
         view?.render(movie)
     }
 
-    fun onSetFavoriteError(cause: Throwable) {
+    private fun onSetFavoriteError(cause: Throwable) {
         Logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
     }
 
-    fun shareMovie() = view?.shareMovie(Config.MOVIE_URL + movie.id)
+    override fun shareMovie() {
+        view?.shareMovie(Config.MOVIE_URL + movie.id)
+    }
 
     override fun onDestroy() { this.view = null }
 
-    interface View {
-        fun getMovieId(): Int?
-        fun render(movie: Movie)
-        fun render(detail: Detail)
-        fun render(credits: List<Cast>)
-        fun showProgress()
-        fun hideProgress()
-        fun shareMovie(url: String)
-        fun finish()
-    }
 }

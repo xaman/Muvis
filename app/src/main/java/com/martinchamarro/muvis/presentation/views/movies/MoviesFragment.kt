@@ -38,7 +38,7 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
-class MoviesFragment : Fragment(), MoviesPresenter.View {
+class MoviesFragment : Fragment(), MoviesContract.View {
 
     companion object {
         private val NUM_COLUMNS = 3

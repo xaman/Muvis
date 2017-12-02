@@ -17,6 +17,6 @@
 
 <resources>
 
-    <string name="transition_picture">transition_picture</string>
+    <string name="transition_picture" translatable="false">transition_picture</string>
 
 </resources>
