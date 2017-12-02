@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright 2017 Martin Chamarro (@martinchamarro)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="67dp"
+        android:height="46dp"
+        android:viewportWidth="67.0"
+        android:viewportHeight="46.0">
+    <path
+        android:pathData="M16,1L51,1A15,15 0,0 1,66 16L66,30A15,15 0,0 1,51 45L16,45A15,15 0,0 1,1 30L1,16A15,15 0,0 1,16 1z"
+        android:strokeColor="#00000000"
+        android:fillType="evenOdd"
+        android:fillAlpha="1.0"
+        android:fillColor="#F44336"
+        android:strokeWidth="1"/>
+    <path
+        android:pathData="M47,23l-20,10l0,-20z"
+        android:strokeColor="#00000000"
+        android:fillType="evenOdd"
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="1"/>
+</vector>

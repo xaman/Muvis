@@ -37,6 +37,8 @@
     <dimen name="detail_backdrop_height">200dp</dimen>
     <dimen name="detail_fab_margin">20dp</dimen>
     <dimen name="detail_fab_elevation">5dp</dimen>
+    <dimen name="detail_video_thumbnail_height">200dp</dimen>
+    <dimen name="video_thumbnail_radius">7dp</dimen>
 
     <dimen name="favorites_grid_spacing">2dp</dimen>
     <dimen name="favorite_poster_width">72dp</dimen>

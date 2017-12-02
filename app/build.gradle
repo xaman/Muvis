@@ -50,7 +50,8 @@ android {
             versionNameSuffix '-debug-build' + getDate()
             debuggable true
             buildConfigField "boolean", "DEBUG_MODE", "true"
-            buildConfigField "String", "API_KEY", '"3202eb5aa836427005ced3a158c19d0b"'
+            buildConfigField "String", "TMD_API_KEY", '"3202eb5aa836427005ced3a158c19d0b"'
+            buildConfigField "String", "YOUTUBE_API_KEY", '"AIzaSyA-EvoyslHvgTYiR3Tft9mYoEgD5INnnFE"'
         }
 
         release {
@@ -59,7 +60,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable false
             buildConfigField "boolean", "DEBUG_MODE", "false"
-            buildConfigField "String", "API_KEY", '"<<API_KEY>>"'
+            buildConfigField "String", "TMD_API_KEY", '"<<API_KEY>>"'
+            buildConfigField "String", "YOUTUBE_API_KEY", '"<<API_KEY>>"'
+
             zipAlignEnabled true
             signingConfig signingConfigs.release
         }
@@ -78,7 +81,7 @@ android {
 }
 
 dependencies {
-
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.dependencies.support
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.multidex

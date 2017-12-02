@@ -82,7 +82,7 @@ class RetrofitServicesFactory @Inject constructor(private val context: Context) 
     }
 
     private fun addCommonParams(builder: HttpUrl.Builder) {
-        builder.addQueryParameter(PARAM_API_KEY, Config.API_KEY)
+        builder.addQueryParameter(PARAM_API_KEY, Config.TMD_API_KEY)
         builder.addQueryParameter(PARAM_LANGUAGE, Locale.getDefault().language)
     }
 }

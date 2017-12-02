@@ -17,12 +17,14 @@
 package com.martinchamarro.muvis.presentation.extensions
 
 import android.content.Context
-import android.support.annotation.DimenRes
-import android.support.annotation.IntegerRes
-import android.support.annotation.StringRes
+import android.support.annotation.*
+import android.support.v4.content.ContextCompat
+
 
 fun Context.string(@StringRes stringRes: Int): String = getString(stringRes)
 
 fun Context.dimen(@DimenRes dimenRes: Int) = resources.getDimensionPixelSize(dimenRes)
 
 fun Context.integer(@IntegerRes integerRes: Int) = resources.getInteger(integerRes)
+
+fun Context.color(@ColorRes colorRes: Int): Int = ContextCompat.getColor(this, colorRes)
