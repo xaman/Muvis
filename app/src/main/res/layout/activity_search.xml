@@ -57,14 +57,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
-        android:id="@+id/emptyView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        app:ev_icon="@drawable/ic_empty_search"
-        app:ev_text="@string/empty_search_explanation"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -72,5 +64,13 @@
         android:layout_below="@+id/toolbar"
         android:clipToPadding="false"
         android:padding="@dimen/favorites_grid_spacing"/>
+
+    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        app:ev_icon="@drawable/ic_empty_search"
+        app:ev_text="@string/empty_search_explanation"/>
 
 </RelativeLayout>

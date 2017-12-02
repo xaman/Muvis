@@ -32,7 +32,8 @@ class SearchPresenter @Inject constructor(
     }
 
     fun search(text: String) {
-        searchMovies.execute(text, this::onSearchSuccess, this::onSearchError)
+        if (text.isNullOrEmpty()) view?.showEmpty()
+        else searchMovies.execute(text, this::onSearchSuccess, this::onSearchError)
     }
 
     private fun onSearchSuccess(movies: List<Movie>) {

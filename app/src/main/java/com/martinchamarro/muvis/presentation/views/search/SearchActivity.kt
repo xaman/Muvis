@@ -32,7 +32,6 @@ import com.martinchamarro.muvis.presentation.views.favorites.FavoritesAdapter
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.layout_toolbar_progress.*
-import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), SearchPresenter.View {
