@@ -21,7 +21,7 @@ import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.model.pictures.PosterSize
-import com.martinchamarro.muvis.presentation.extensions.load
+import com.martinchamarro.muvis.presentation.extensions.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -29,8 +29,14 @@ class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     fun bind(movie: Movie) = with(itemView) {
         titleView.text = movie.title
         yearView.text = movie.releaseYear
-        ratingView.text = movie.votesAverage.toString()
         posterView.load(movie.getPosterUrl(PosterSize.SMALL), R.drawable.default_movie)
+        bindRating(movie)
+    }
+
+    private fun bindRating(movie: Movie) = with(itemView.ratingView) {
+        val average = movie.votesAverage
+        if (average == 0.0f) gone() else visible()
+        text = average.toString()
     }
 
 }

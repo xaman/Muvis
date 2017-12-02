@@ -21,8 +21,7 @@ import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.model.pictures.PosterSize
-import com.martinchamarro.muvis.presentation.extensions.load
-import com.martinchamarro.muvis.presentation.extensions.string
+import com.martinchamarro.muvis.presentation.extensions.*
 import kotlinx.android.synthetic.main.item_favorite.view.*
 
 class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -36,12 +35,22 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun render(movie: Movie) = with(itemView) {
         titleView.text = movie.title
         yearView.text = movie.releaseYear
-        ratingView.text = movie.votesAverage.toString()
         posterView.load(movie.getPosterUrl(PosterSize.SMALL))
-        movie.detail?.let {
-            genresView.text = it.genres.take(MAX_GENRES).map { it.name }.joinToString()
-            countryView.text = it.countryName
-            runtimeView.text = String.format(runtimeText, it.runtime)
+        renderRating(movie)
+        renderDetail(movie)
+    }
+
+    private fun renderRating(movie: Movie) = with(itemView.ratingView) {
+        val average = movie.votesAverage
+        if (average == 0.0f) gone() else visible()
+        text = average.toString()
+    }
+
+    private fun renderDetail(movie: Movie) = with(itemView) {
+        movie.detail?.run {
+            genresView.text = genres.take(MAX_GENRES).joinToString { it.name }
+            countryView.text = countryName
+            runtimeView.text = String.format(runtimeText, runtime)
         }
     }
 

@@ -42,10 +42,16 @@ class DetailRenderer(private val view: View) {
         titleView.text = movie.title
         posterView.load(movie.getPosterUrl(PosterSize.SMALL))
         backdropView.load(movie.getBackdropUrl(BackdropSize.SMALL))
-        ratingView.text = movie.votesAverage.toString()
         yearView.text = movie.releaseYear
+        renderRating(movie)
         renderFab(movie)
         view.visible()
+    }
+
+    private fun renderRating(movie: Movie) = with(view.ratingView) {
+        val average = movie.votesAverage
+        if (average == 0.0f) gone() else visible()
+        ratingView.text = average.toString()
     }
 
     private fun renderFab(movie: Movie) = with(view.fabView) {
