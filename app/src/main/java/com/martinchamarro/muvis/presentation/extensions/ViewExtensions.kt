@@ -32,6 +32,8 @@ val View.ctx: Context
 
 fun View.visible() { visibility = View.VISIBLE }
 
+fun View.invisible() { visibility = View.INVISIBLE }
+
 fun View.gone() { visibility = View.GONE }
 
 fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ctx.resources.getDrawable(drawableRes)

@@ -34,9 +34,8 @@ class MovieViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     }
 
     private fun bindRating(movie: Movie) = with(itemView.ratingView) {
-        val average = movie.votesAverage
-        if (average == 0.0f) gone() else visible()
-        text = average.toString()
+        if (movie.votesAverage == 0.0f) gone() else visible()
+        text = movie.votesAverage.toString()
     }
 
 }

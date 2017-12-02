@@ -41,9 +41,8 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun renderRating(movie: Movie) = with(itemView.ratingView) {
-        val average = movie.votesAverage
-        if (average == 0.0f) gone() else visible()
-        text = average.toString()
+        if (movie.votesAverage == 0.0f) invisible() else visible()
+        text = movie.votesAverage.toString()
     }
 
     private fun renderDetail(movie: Movie) = with(itemView) {
@@ -51,6 +50,7 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             genresView.text = genres.take(MAX_GENRES).joinToString { it.name }
             countryView.text = countryName
             runtimeView.text = String.format(runtimeText, runtime)
+            if (runtime == 0) runtimeView.invisible() else runtimeView.visible()
         }
     }
 

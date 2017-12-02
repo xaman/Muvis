@@ -19,8 +19,7 @@ package com.martinchamarro.muvis.presentation.views.detail
 import android.view.View
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.*
-import com.martinchamarro.muvis.domain.model.pictures.BackdropSize
-import com.martinchamarro.muvis.domain.model.pictures.PosterSize
+import com.martinchamarro.muvis.domain.model.pictures.*
 import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.views.widgets.HorizontalLayoutManager
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
@@ -49,9 +48,8 @@ class DetailRenderer(private val view: View) {
     }
 
     private fun renderRating(movie: Movie) = with(view.ratingView) {
-        val average = movie.votesAverage
-        if (average == 0.0f) gone() else visible()
-        ratingView.text = average.toString()
+        if (movie.votesAverage == 0.0f) gone() else visible()
+        ratingView.text = movie.votesAverage.toString()
     }
 
     private fun renderFab(movie: Movie) = with(view.fabView) {
@@ -61,20 +59,29 @@ class DetailRenderer(private val view: View) {
     }
 
     fun render(detail: Detail) = with(view) {
-        runtimeView.text = String.format(ctx.string(R.string.runtime_value), detail.runtime)
         countryView.text = detail.countryName
         genresView.text = detail.formattedGenres
-        descriptionView.text = detail.overview
-        descriptionView.setOnClickListener { onDescriptionClick() }
+        renderRuntime(detail)
+        renderDescription(detail)
     }
 
-    fun render(credits: List<Cast>) = with(view) {
-        creditsView.adapter = CreditsAdapter(ctx, credits)
+    private fun renderRuntime(detail: Detail) = with(view.runtimeView) {
+        if (detail.runtime == 0) gone() else visible()
+        text = String.format(ctx.string(R.string.runtime_value), detail.runtime)
+    }
+
+    private fun renderDescription(detail: Detail) = with(view.descriptionView) {
+        text = detail.overview
+        setOnClickListener { onDescriptionClick() }
     }
 
     private fun onDescriptionClick() = with(view.descriptionView) {
         val descMaxLines = integer(R.integer.desc_max_lines)
         maxLines = if (maxLines == descMaxLines) Int.MAX_VALUE else descMaxLines
+    }
+
+    fun render(credits: List<Cast>) = with(view) {
+        creditsView.adapter = CreditsAdapter(ctx, credits)
     }
 
 }
