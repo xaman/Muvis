@@ -24,10 +24,4 @@
         android:icon="@drawable/ic_search"
         android:title="@string/action_search"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/action_filter"
-        android:enabled="true"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/action_filter"
-        app:showAsAction="always"/>
 </menu>
