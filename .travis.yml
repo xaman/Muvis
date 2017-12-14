@@ -1,0 +1,55 @@
+# References:
+# https://github.com/googlecodelabs/mdc-android-kotlin/blob/master/.travis.yml
+# https://docs.travis-ci.com/user/languages/android/
+# https://github.com/harmittaa/travis-example-android/blob/master/.travis.yml
+# https://github.com/codecov/example-android/blob/master/.travis.yml
+# https://github.com/travis-ci/travis-ci/issues/6122
+# https://gist.github.com/harmittaa/7d3c51041ffd0e54cda9807e95593309
+# https://github.com/rotemmiz/travis-ci-android-emulator/blob/master/.travis.yml
+#
+language: android
+jdk: oraclejdk8
+
+env:
+  - ANDROID_EMULATOR_API_LEVEL=19
+
+android:
+  components:
+    - tools # to get the new `repository-11.xml`
+    - tools # to install Android SDK tools 25+, latest, cannot get more granular control than this
+    # See https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943 for more
+    # details.
+    - platform-tools #latest
+    - build-tools-26.0.2
+    - android-26
+    - extra-android-m2repository
+    - extra-android-support
+    - sys-img-armeabi-v7a-android-19
+  licenses:
+    - 'android-sdk-license-.+'
+
+before_install:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+  - ./gradlew dependencies || true
+
+before_script:
+  - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
+  - echo y | android update sdk --no-ui --all --filter extra-android-support
+  - echo y | android update sdk --no-ui --all --filter "android-$ANDROID_EMULATOR_API_LEVEL"
+  - echo y | android update sdk --no-ui --all --filter build-tools-26.0.2
+  - echo y | android update sdk --no-ui --all --filter "sys-img-armeabi-v7a-android-$ANDROID_EMULATOR_API_LEVEL"
+  - echo no | android create avd --force -n test -t "android-$ANDROID_EMULATOR_API_LEVEL" --abi armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
+
+script:
+  - ./gradlew clean
+  - ./gradlew testDebug -PdisablePreDex;
+  - android-wait-for-emulator
+  # Unlock the device
+  - adb shell input keyevent 82
+  # Avoid having it lock itself again.
+  - adb shell svc power stayon true
+  # Make gradle output info-level logging, so the tests do not timeout
+  - ./gradlew connectedCheck --info -PdisablePreDex;
