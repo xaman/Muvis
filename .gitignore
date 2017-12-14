@@ -5,7 +5,6 @@
 bin/
 build/
 gen/
-gradle/
 
 # Files
 .class
@@ -16,8 +15,6 @@ gradle/
 .settings
 ant.properties
 com_crashlytics_export_strings.xml
-gradle.properties
-gradlew
 lint.xml
 local.properties
 previews.xml
@@ -26,4 +23,4 @@ crashlytics-build.properties
 *.dex
 *.iml
 *.jks
-*.keystore
+gradlew.bat
