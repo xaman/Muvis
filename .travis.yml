@@ -28,6 +28,12 @@ android:
   licenses:
     - 'android-sdk-license-.+'
 
+before_install:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+  - ./gradlew dependencies || true
+
 before_script:
   - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
   - echo y | android update sdk --no-ui --all --filter extra-android-support
@@ -38,7 +44,7 @@ before_script:
   - emulator -avd test -no-audio -no-window &
 
 script:
-  - ./gradlew build lint test assembleAndroidTest -PdisablePreDex;
+  - ./gradlew testDebug -PdisablePreDex;
   - android-wait-for-emulator
   # Unlock the device
   - adb shell input keyevent 82
