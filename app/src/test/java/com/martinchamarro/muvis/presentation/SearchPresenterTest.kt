@@ -16,66 +16,61 @@
 
 package com.martinchamarro.muvis.presentation
 
-import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
-import com.martinchamarro.muvis.domain.usecase.GetFeatured
+import com.martinchamarro.muvis.domain.usecase.SearchMovies
+import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.utils.DummyExecutor
 import com.martinchamarro.muvis.presentation.utils.DummyMainThread
 import com.martinchamarro.muvis.presentation.utils.DummyMovieFactory.givenAListOfMovies
-import com.martinchamarro.muvis.presentation.views.movies.MoviesContract
-import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
+import com.martinchamarro.muvis.presentation.views.search.SearchContract
+import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.funktionale.either.Either
-import org.funktionale.either.Either.Companion.left
 import org.funktionale.either.Either.Companion.right
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.*
 
-class MoviesPresenterTest {
+class SearchPresenterTest {
 
+    val mockView: SearchContract.View = mock()
     val mockRepository: MoviesRepository = mock()
-    val mockView: MoviesContract.View = mock()
-    lateinit var presenter: MoviesPresenter
+    val mockedLogger: Logger = mock()
+
+    lateinit var presenter: SearchPresenter
 
     @Before
     fun setUp() {
-        presenter = createAMockedPresenter()
+        presenter = createMockedPresenter()
     }
 
     @Test
-    fun `should show an error if the repository returns an exception`() {
-        givenTheRepositoryReturns(left(RepositoryException()))
-        presenter.initialize()
-        verify(mockView).showFeaturedError()
-    }
-
-    @Test
-    fun `should show an empty view if the list of featured movies is empty`() {
+    fun `should show the empty view if the list of results is empty`() {
         givenTheRepositoryReturns(right(emptyList()))
-        presenter.initialize()
-        verify(mockView).showEmptyView()
+        presenter.search("Text without search results")
+        verify(mockView).showEmpty()
     }
 
     @Test
-    fun `should render de list of movies if it is not empty`(){
+    fun `should render the list of results if its not empty`() {
         val anyMoviesList = givenAListOfMovies()
         givenTheRepositoryReturns(right(anyMoviesList))
-        presenter.initialize()
+        presenter.search("Star Wars")
         verify(mockView).render(anyMoviesList)
     }
 
-    private fun createAMockedPresenter(): MoviesPresenter {
-        val getFeatured = GetFeatured(DummyExecutor(), DummyMainThread(), mockRepository)
-        presenter = MoviesPresenter(getFeatured)
+    private fun createMockedPresenter(): SearchPresenter {
+        val searchMovies = SearchMovies(DummyExecutor(), DummyMainThread(), mockRepository)
+        presenter = SearchPresenter(searchMovies, mockedLogger)
         presenter.view = mockView
         return presenter
     }
 
     private fun givenTheRepositoryReturns(result: Either<Throwable, List<Movie>>) {
-        whenever(mockRepository.getFeaturedMovies(1)).thenReturn(result)
+        whenever(mockRepository.searchMovies(anyString())).thenReturn(result)
     }
 
 }

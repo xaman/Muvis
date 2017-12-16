@@ -17,6 +17,7 @@
 package com.martinchamarro.muvis.presentation.di
 
 import com.martinchamarro.muvis.domain.usecase.*
+import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.presentation.views.detail.*
 import com.martinchamarro.muvis.presentation.views.favorites.*
@@ -45,8 +46,8 @@ import dagger.Provides
         return FavoritesPresenter(getFavorites)
     }
 
-    @Provides fun provideSearchPresenter(searchMovies: SearchMovies): SearchContract.Presenter {
-        return SearchPresenter(searchMovies)
+    @Provides fun provideSearchPresenter(searchMovies: SearchMovies, logger: Logger): SearchContract.Presenter {
+        return SearchPresenter(searchMovies, logger)
     }
 
 }

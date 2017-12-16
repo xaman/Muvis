@@ -22,7 +22,8 @@ import com.martinchamarro.muvis.globalutils.logger.Logger
 import javax.inject.Inject
 
 class SearchPresenter @Inject constructor(
-        private val searchMovies: SearchMovies) : SearchContract.Presenter {
+        private val searchMovies: SearchMovies,
+        private val logger: Logger) : SearchContract.Presenter {
 
     override var view: SearchContract.View? = null
 
@@ -47,7 +48,7 @@ class SearchPresenter @Inject constructor(
 
     private fun onSearchError(cause: Throwable) {
         view?.hideProgress()
-        Logger.e(TAG, "Error searching movies: ${cause.message}")
+        logger.e(TAG, "Error searching movies: ${cause.message}")
     }
 
     override fun onDestroy() { view = null }

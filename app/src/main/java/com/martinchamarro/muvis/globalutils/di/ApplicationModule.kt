@@ -18,6 +18,7 @@ package com.martinchamarro.muvis.globalutils.di
 
 import android.app.Application
 import android.content.Context
+import com.martinchamarro.muvis.globalutils.logger.Logger
 
 import javax.inject.Singleton
 
@@ -27,5 +28,7 @@ import dagger.Provides
 @Module class ApplicationModule(private val application: Application) {
 
     @Provides @Singleton internal fun provideApplicationContext(): Context = application
+
+    @Provides @Singleton fun provideLogger() = Logger
 
 }

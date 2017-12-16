@@ -23,6 +23,7 @@ import com.martinchamarro.muvis.threading.di.ThreadingModule
 import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
+import com.martinchamarro.muvis.globalutils.logger.Logger
 
 import javax.inject.Singleton
 
@@ -36,4 +37,5 @@ interface ApplicationComponent {
     fun mainThread(): MainThread
     fun executor(): Executor
     fun moviesRepository(): MoviesRepository
+    fun logger(): Logger
 }
