@@ -31,6 +31,7 @@ import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.android.synthetic.main.item_movie.view.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
@@ -47,11 +48,11 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
         activityComponent.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return View.inflate(context, R.layout.fragment_favorites, null)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureRecyclerView()
         initializePresenter()
@@ -79,13 +80,13 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
     }
 
     override fun render(favorites: List<Movie>) {
-        val adapter = FavoritesAdapter(context, favorites, this::onFavoriteClick)
+        val adapter = FavoritesAdapter(ctx, favorites, this::onFavoriteClick)
         recyclerView.adapter = adapter
     }
 
     private fun onFavoriteClick(movie: Movie, view: View) {
         val transitionName = getString(R.string.transition_picture)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view.posterView, transitionName)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(act, view.posterView, transitionName)
         startActivity(DetailActivity.createIntent(ctx, movie.id), options.toBundle())
     }
 

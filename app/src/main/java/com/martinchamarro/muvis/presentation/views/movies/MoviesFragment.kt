@@ -35,6 +35,7 @@ import com.martinchamarro.muvis.presentation.views.home.HomeActivity
 import com.martinchamarro.muvis.presentation.views.widgets.ItemOffsetDecorator
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.item_movie.view.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
 import javax.inject.Inject
 
@@ -53,11 +54,11 @@ class MoviesFragment : Fragment(), MoviesContract.View {
         activityComponent.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return View.inflate(context, R.layout.fragment_movies, null)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureRecyclerView()
         initializePresenter()
@@ -69,7 +70,7 @@ class MoviesFragment : Fragment(), MoviesContract.View {
         val itemsSpacing = dimen(R.dimen.movies_grid_spacing)
         recyclerView.addItemDecoration(ItemOffsetDecorator(itemsSpacing))
         recyclerView.addOnScrollListener(OnScrollEndListener(layoutManager, presenter::onScrollEnd))
-        adapter = MoviesAdapter(context)
+        adapter = MoviesAdapter(ctx)
         adapter.onItemClick = this::onMovieClick
         recyclerView.adapter = adapter
     }
@@ -88,7 +89,7 @@ class MoviesFragment : Fragment(), MoviesContract.View {
 
     private fun onMovieClick(movie: Movie, view: View) {
         val transitionName = getString(R.string.transition_picture)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view.posterView, transitionName)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(act, view.posterView, transitionName)
         startActivity(DetailActivity.createIntent(ctx, movie.id), options.toBundle())
     }
 

@@ -19,8 +19,10 @@ package com.martinchamarro.muvis.presentation.extensions
 import android.support.annotation.DimenRes
 import android.support.v4.app.Fragment
 import com.martinchamarro.muvis.presentation.di.ActivityComponent
+import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.support.v4.ctx
 
 val Fragment.activityComponent: ActivityComponent
-    get() = activity.activityComponent
+    get() = act.activityComponent
 
-fun Fragment.dimen(@DimenRes dimenRes: Int) = context.dimen(dimenRes)
+fun Fragment.dimen(@DimenRes dimenRes: Int): Int = ctx.dimen(dimenRes)

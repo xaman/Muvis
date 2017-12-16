@@ -17,12 +17,12 @@
 allprojects {
     ext {
 
-        supportVersion = '26.1.0'
-        daggerVersion = '2.11'
+        supportVersion = '27.0.2'
+        daggerVersion = '2.13'
         butterKnifeVersion = '8.8.1'
         retrofitVersion = "2.3.0"
-        okhttpVersion = "3.9.0"
-        ankoVersion = "0.10.1"
+        okhttpVersion = "3.9.1"
+        ankoVersion = "0.10.3"
 
         dependencies = [
                 support            : "com.android.support:appcompat-v7:${supportVersion}",
@@ -39,17 +39,17 @@ allprojects {
                 okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
                 picasso            : "com.squareup.picasso:picasso:2.5.2",
-                constraintLayout   : "com.android.support.constraint:constraint-layout:1.1.0-beta1",
+                constraintLayout   : "com.android.support.constraint:constraint-layout:1.1.0-beta4",
                 adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1",
                 lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0",
                 anko               : "org.jetbrains.anko:anko:$ankoVersion",
-                funktionaleEither  : "org.funktionale:funktionale-either:1.1"
+                funktionaleEither  : "org.funktionale:funktionale-either:1.2"
         ]
 
         testingDependencies = [
                 junit        : 'junit:junit:4.12',
-                mockitoCore  : 'org.mockito:mockito-core:2.8.47',
-                mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.4.0',
+                mockitoCore  : 'org.mockito:mockito-core:2.13.0',
+                mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.5.0',
                 espresso     : 'com.android.support.test.espresso:espresso-core:3.0.1'
         ]
     }

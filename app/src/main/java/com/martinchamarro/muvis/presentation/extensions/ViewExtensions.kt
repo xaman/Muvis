@@ -35,7 +35,7 @@ fun View.invisible() { visibility = View.INVISIBLE }
 
 fun View.gone() { visibility = View.GONE }
 
-fun View.drawable(@DrawableRes drawableRes: Int): Drawable = ContextCompat.getDrawable(ctx, drawableRes)
+fun View.drawable(@DrawableRes drawableRes: Int): Drawable? = ContextCompat.getDrawable(ctx, drawableRes)
 
 fun View.integer(@IntegerRes integerRes: Int) = ctx.integer(integerRes)
 
