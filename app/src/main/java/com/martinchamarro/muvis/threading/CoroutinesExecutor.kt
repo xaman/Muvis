@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.threading.di
+package com.martinchamarro.muvis.threading
 
-import com.martinchamarro.muvis.threading.*
-
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.async
+import javax.inject.Inject
 import javax.inject.Singleton
 
-import dagger.Module
-import dagger.Provides
-
-@Module class ThreadingModule {
-
-    @Provides @Singleton fun provideExecutor(coroutinesExecutor: CoroutinesExecutor): Executor {
-        return coroutinesExecutor
+@Singleton
+class CoroutinesExecutor @Inject constructor() : Executor {
+    override fun execute(executable: () -> Unit) {
+        async(CommonPool) {
+            executable()
+        }
     }
-
-    @Provides @Singleton fun provideMainThread(mainThreadImpl: MainThreadImpl): MainThread {
-        return mainThreadImpl
-    }
-
 }

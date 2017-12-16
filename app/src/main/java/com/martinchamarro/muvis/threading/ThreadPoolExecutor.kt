@@ -26,7 +26,7 @@ import javax.inject.Singleton
 /**
  * Executor of use cases implemented using a ThreadPoolExecutor
  */
-@Singleton class UseCaseExecutor @Inject constructor() : Executor {
+@Singleton class ThreadPoolExecutor @Inject constructor() : Executor {
 
     companion object {
         private val CORE_POOL_SIZE = 3

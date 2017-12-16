@@ -46,3 +46,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task startDebug(type: Exec, dependsOn: ':app:installDebug') {
+    def adb = "$System.env.ANDROID_HOME/platform-tools/adb"
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.martinchamarro.muvis.debug/com.martinchamarro.muvis.presentation.views.splash.SplashActivity'
+}
