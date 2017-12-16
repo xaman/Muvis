@@ -19,6 +19,7 @@ package com.martinchamarro.muvis.data.cache
 import com.martinchamarro.muvis.data.entity.MovieEntity
 
 interface MoviesCache {
+    val isEmpty: Boolean
     fun getAll(): List<MovieEntity>
     fun get(id: Int): MovieEntity?
     fun put(movie: MovieEntity)

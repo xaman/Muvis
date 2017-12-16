@@ -21,7 +21,9 @@ import javax.inject.Inject
 
 class MoviesCacheImpl @Inject constructor() : MoviesCache {
 
-    val values = HashMap<Int, MovieEntity>()
+    private val values = mutableMapOf<Int, MovieEntity>()
+
+    override val isEmpty: Boolean get() = values.isEmpty()
 
     override fun getAll(): List<MovieEntity> = values.map { it.value }.toList()
 

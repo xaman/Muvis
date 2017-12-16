@@ -16,7 +16,7 @@
 
 package com.martinchamarro.muvis.data.mapper
 
-import com.martinchamarro.muvis.data.entity.MovieEntityBuilder
+import com.martinchamarro.muvis.data.utils.DummyMovieEntityFactory.givenAMovie
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -28,23 +28,23 @@ class MovieEntityMapperTest {
 
     private lateinit var mapper: MovieEntityMapper
 
-    @Before fun setUp() {
+    @Before
+    fun setUp() {
         mapper = MovieEntityMapper(DetailEntityMapper(GenreEntityMapper(), CountryEntityMapper()))
     }
 
-    @Test fun testEntityMapping() {
-        val entity = MovieEntityBuilder.build()
+    @Test
+    fun `should map an entity object to a domain one`() {
+        val entity = givenAMovie()
         val movie = mapper.invoke(entity)
-        with(movie) {
-            assertEquals(entity.id.toLong(), id.toLong())
-            assertEquals(entity.title, title)
-            assertEquals(entity.originalTitle, originalTitle)
-            assertEquals(entity.originalLanguage, originalLanguage)
-            assertEquals(entity.overview, overview)
-            assertEquals(entity.isForAdults, forAdults)
-            assertEquals(entity.votesCount.toLong(), votesCount.toLong())
-            assertEquals(entity.votesAverage, votesAverage, 0.1f)
-            assertEquals(entity.popularity, popularity, 0.1f)
-        }
+        assertEquals(entity.id, movie.id)
+        assertEquals(entity.title, movie.title)
+        assertEquals(entity.originalTitle, movie.originalTitle)
+        assertEquals(entity.originalLanguage, movie.originalLanguage)
+        assertEquals(entity.overview, movie.overview)
+        assertEquals(entity.isForAdults, movie.forAdults)
+        assertEquals(entity.votesCount.toLong(), movie.votesCount.toLong())
+        assertEquals(entity.votesAverage, movie.votesAverage, 0.1f)
+        assertEquals(entity.popularity, movie.popularity, 0.1f)
     }
 }

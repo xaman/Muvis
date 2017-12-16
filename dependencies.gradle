@@ -45,5 +45,12 @@ allprojects {
                 anko               : "org.jetbrains.anko:anko:$ankoVersion",
                 funktionaleEither  : "org.funktionale:funktionale-either:1.1"
         ]
+
+        testingDependencies = [
+                junit        : 'junit:junit:4.12',
+                mockitoCore  : 'org.mockito:mockito-core:2.7.5',
+                mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.4.0',
+                espresso     : 'com.android.support.test.espresso:espresso-core:3.0.1'
+        ]
     }
 }

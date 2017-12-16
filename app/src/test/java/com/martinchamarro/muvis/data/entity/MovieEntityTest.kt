@@ -16,10 +16,9 @@
 
 package com.martinchamarro.muvis.data.entity
 
-import com.google.gson.Gson
-
-import org.junit.Assert.*
-
+import com.martinchamarro.muvis.data.utils.DummyMovieEntityFactory.givenAMovie
+import com.martinchamarro.muvis.data.utils.DummyMovieEntityFactory.givenAnotherMovie
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -29,53 +28,21 @@ class MovieEntityTest {
 
     companion object {
         private val ANY_ID = 123456
-        private val ANY_MOVIE_JSON = "{\n" +
-                "      \"id\": 263115,\n" +
-                "      \"title\": \"Logan\",\n" +
-                "      \"original_title\": \"Logan\",\n" +
-                "      \"original_language\": \"en\",\n" +
-                "      \"overview\": \"Sin sus poderes, por primera vez, Wolverine es verdaderamente vulnerable. Después de una vida de dolor y angustia, sin rumbo y perdido en el mundo donde los X-Men son leyenda, su mentor Charles Xavier lo convence de asumir una última misión: proteger a una joven que será la única esperanza para la raza mutante. Tercera y última película protagonizada por Hugh Jackman en el papel de Lobezno.\",\n" +
-                "      \"release_date\": \"2017-02-28\",\n" +
-                "      \"adult\": false,\n" +
-                "      \"popularity\": 63.118666,\n" +
-                "      \"vote_count\": 2491,\n" +
-                "      \"vote_average\": 7.5,\n" +
-                "      \"poster_path\": \"/3pRgLyNXt5lNeVSnwttwFW8gOdB.jpg\",\n" +
-                "      \"backdrop_path\": \"/5pAGnkFYSsFJ99ZxDIYnhQbQFXs.jpg\"\n" +
-                "    }"
     }
 
-    @Test fun testTwoMoviesAreEqualIfSameId() {
-        val movie = MovieEntityBuilder.build()
-        movie.id = ANY_ID
-        val otherMovie = MovieEntityBuilder.build()
-        otherMovie.id = ANY_ID
-        assertEquals(movie, otherMovie)
+    @Test
+    fun `should use the id to compare if two movies are equal`() {
+        val anyMovie = givenAMovie()
+        anyMovie.id = ANY_ID
+        val anyOtherMovie = givenAnotherMovie()
+        anyOtherMovie.id = ANY_ID
+        assertTrue(anyMovie == anyOtherMovie)
     }
 
-    @Test fun testHashCodeIsEqualThanId() {
-        val movie = MovieEntityBuilder.build()
-        movie.id = ANY_ID
-        assertEquals(movie.id.toLong(), movie.hashCode().toLong())
-    }
-
-    @Test fun testAllFieldsParsedFromJson() {
-        val gson = Gson()
-        val entity = gson.fromJson(ANY_MOVIE_JSON, MovieEntity::class.java)
-        with(entity) {
-            assertEquals(263115, id.toLong())
-            assertEquals("Logan", title)
-            assertEquals("Logan", originalTitle)
-            assertEquals("en", originalLanguage)
-            assertEquals("Sin sus poderes, por primera vez, Wolverine es verdaderamente vulnerable. Después de una vida de dolor y angustia, sin rumbo y perdido en el mundo donde los X-Men son leyenda, su mentor Charles Xavier lo convence de asumir una última misión: proteger a una joven que será la única esperanza para la raza mutante. Tercera y última película protagonizada por Hugh Jackman en el papel de Lobezno.", overview)
-            assertEquals("2017-02-28", releaseDate)
-            assertEquals(false, isForAdults)
-            assertEquals(63.118666f, popularity, 0.1f)
-            assertEquals(2491, votesCount.toLong())
-            assertEquals(7.5f, votesAverage, 0.1f)
-            assertEquals("/3pRgLyNXt5lNeVSnwttwFW8gOdB.jpg", posterPath)
-            assertEquals("/5pAGnkFYSsFJ99ZxDIYnhQbQFXs.jpg", backdropPath)
-        }
+    @Test
+    fun `should generate the hashcode using the id`() {
+        val anyMovie = givenAMovie()
+        assertTrue(anyMovie.id == anyMovie.hashCode())
     }
 
 }
