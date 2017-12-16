@@ -17,7 +17,9 @@
 package com.martinchamarro.muvis.presentation.views.splash
 
 import com.martinchamarro.muvis.presentation.navigation.Navigator
-import com.martinchamarro.muvis.threading.async
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.delay
 import javax.inject.Inject
 
 
@@ -30,7 +32,8 @@ class SplashPresenter @Inject constructor(private val navigator: Navigator) : Sp
     }
 
     override fun initialize() {
-        async(SPLASH_DELAY) {
+        async(CommonPool) {
+            delay(SPLASH_DELAY)
             navigator.navigateToHome()
             view?.finish()
         }

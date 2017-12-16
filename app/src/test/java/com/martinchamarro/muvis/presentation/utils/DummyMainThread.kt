@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.threading
+package com.martinchamarro.muvis.presentation.utils
 
-import android.os.Handler
+import com.martinchamarro.muvis.threading.MainThread
 
-inline fun async(delay: Long = 0L, crossinline code: () -> Unit) {
-    Handler().postDelayed({ code() }, delay)
+class DummyMainThread : MainThread {
+    override fun post(callback: () -> Unit) = callback()
 }
