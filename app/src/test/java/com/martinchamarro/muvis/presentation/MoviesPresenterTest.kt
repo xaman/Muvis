@@ -20,9 +20,9 @@ import com.martinchamarro.muvis.domain.exception.RepositoryException
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.domain.usecase.GetFeatured
-import com.martinchamarro.muvis.presentation.utils.DummyExecutor
-import com.martinchamarro.muvis.presentation.utils.DummyMainThread
-import com.martinchamarro.muvis.presentation.utils.DummyMovieFactory.givenAListOfMovies
+import com.martinchamarro.muvis.presentation.threading.DummyExecutor
+import com.martinchamarro.muvis.presentation.threading.DummyMainThread
+import com.martinchamarro.muvis.presentation.factories.DummyMovieFactory.givenAListOfMovies
 import com.martinchamarro.muvis.presentation.views.movies.MoviesContract
 import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
 import com.nhaarman.mockito_kotlin.mock
@@ -36,9 +36,9 @@ import org.junit.Test
 
 class MoviesPresenterTest {
 
-    val mockRepository: MoviesRepository = mock()
-    val mockView: MoviesContract.View = mock()
-    lateinit var presenter: MoviesPresenter
+    private val mockRepository: MoviesRepository = mock()
+    private val mockView: MoviesContract.View = mock()
+    private lateinit var presenter: MoviesPresenter
 
     @Before
     fun setUp() {

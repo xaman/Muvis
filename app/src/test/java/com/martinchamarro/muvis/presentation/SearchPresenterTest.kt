@@ -20,9 +20,9 @@ import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.domain.usecase.SearchMovies
 import com.martinchamarro.muvis.globalutils.logger.Logger
-import com.martinchamarro.muvis.presentation.utils.DummyExecutor
-import com.martinchamarro.muvis.presentation.utils.DummyMainThread
-import com.martinchamarro.muvis.presentation.utils.DummyMovieFactory.givenAListOfMovies
+import com.martinchamarro.muvis.presentation.threading.DummyExecutor
+import com.martinchamarro.muvis.presentation.threading.DummyMainThread
+import com.martinchamarro.muvis.presentation.factories.DummyMovieFactory.givenAListOfMovies
 import com.martinchamarro.muvis.presentation.views.search.SearchContract
 import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
 import com.nhaarman.mockito_kotlin.mock
@@ -36,11 +36,10 @@ import org.mockito.ArgumentMatchers.*
 
 class SearchPresenterTest {
 
-    val mockView: SearchContract.View = mock()
-    val mockRepository: MoviesRepository = mock()
-    val mockedLogger: Logger = mock()
-
-    lateinit var presenter: SearchPresenter
+    private val mockView: SearchContract.View = mock()
+    private val mockRepository: MoviesRepository = mock()
+    private val mockedLogger: Logger = mock()
+    private lateinit var presenter: SearchPresenter
 
     @Before
     fun setUp() {

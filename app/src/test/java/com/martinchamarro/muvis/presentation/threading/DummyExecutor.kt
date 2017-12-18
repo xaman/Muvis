@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.utils
+package com.martinchamarro.muvis.presentation.threading
 
-import com.martinchamarro.muvis.threading.MainThread
+import com.martinchamarro.muvis.threading.Executor
 
-class DummyMainThread : MainThread {
-    override fun post(callback: () -> Unit) = callback()
+class DummyExecutor : Executor {
+    override fun execute(executable: () -> Unit) = executable()
 }

@@ -32,7 +32,8 @@ class DetailPresenter @Inject constructor(
         private val getCredits: GetCredits,
         private val getTrailer: GetTrailer,
         private val setFavorite: SetFavorite,
-        private val navigator: Navigator) : DetailContract.Presenter {
+        private val navigator: Navigator,
+        private val logger: Logger) : DetailContract.Presenter {
 
     companion object {
         val TAG: String = DetailPresenter::class.java.simpleName
@@ -58,21 +59,21 @@ class DetailPresenter @Inject constructor(
     }
 
     private fun onMovieLoadError(cause: Throwable) {
-        Logger.e(TAG, "Error loading movie: ${cause.message}")
+        logger.e(TAG, "Error loading movie: ${cause.message}")
         view?.finish()
     }
 
     private fun onDetailLoadSuccess(detail: Detail) { view?.render(detail) }
 
     private fun onDetailLoadError(cause: Throwable) {
-        Logger.e(TAG, "Error loading detail: ${cause.message}")
+        logger.e(TAG, "Error loading detail: ${cause.message}")
         view?.finish()
     }
 
     private fun onCreditsLoadSuccess(credits: List<Cast>) { view?.render(credits) }
 
     private fun onCreditsLoadError(cause: Throwable) {
-        Logger.e(TAG, "Error loading credits: ${cause.message}")
+        logger.e(TAG, "Error loading credits: ${cause.message}")
     }
 
     private fun onTrailerLoadSuccess(trailer: Video) {
@@ -81,7 +82,7 @@ class DetailPresenter @Inject constructor(
     }
 
     private fun onTrailerLoadError(cause: Throwable) {
-        Logger.e(TAG, "Error loading trailer: ${cause.message}")
+        logger.e(TAG, "Error loading trailer: ${cause.message}")
     }
 
     override fun setFavorite() {
@@ -94,7 +95,7 @@ class DetailPresenter @Inject constructor(
     }
 
     private fun onSetFavoriteError(cause: Throwable) {
-        Logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
+        logger.e(TAG, "Error setting movie as favorite: ${cause.message}")
     }
 
     override fun shareMovie() { view?.shareMovie(Config.MOVIE_URL + movie.id) }

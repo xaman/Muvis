@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.utils
+package com.martinchamarro.muvis.presentation.factories
 
-import com.martinchamarro.muvis.threading.Executor
+import com.martinchamarro.muvis.domain.model.Video
 
-class DummyExecutor : Executor {
-    override fun execute(executable: () -> Unit) = executable()
+object DummyTrailerFactory {
+
+    fun givenATrailer() = Video(id="597bb8b3c3a368182a00000d", name="Official Teaser Trailer", key="zB4I68XVPzQ")
+
 }
