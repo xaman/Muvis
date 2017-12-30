@@ -124,3 +124,5 @@ static def getDate() {
     def formattedDate = date.format('yyyyMMddHHmmss')
     return formattedDate
 }
+
+apply plugin: 'com.google.gms.google-services'
