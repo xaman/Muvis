@@ -93,9 +93,11 @@ dependencies {
     implementation rootProject.ext.dependencies.design
     implementation rootProject.ext.dependencies.multidex
     implementation rootProject.ext.dependencies.cardView
+    implementation rootProject.ext.dependencies.constraintLayout
     implementation rootProject.ext.dependencies.gson
     implementation rootProject.ext.dependencies.dagger
     kapt rootProject.ext.dependencies.daggerCompiler
+    implementation rootProject.ext.dependencies.firebaseCore
     implementation rootProject.ext.dependencies.butterKnife
     kapt rootProject.ext.dependencies.butterKnifeCompiler
     implementation rootProject.ext.dependencies.retrofit
@@ -103,7 +105,6 @@ dependencies {
     implementation rootProject.ext.dependencies.okhttp3Logging
     implementation rootProject.ext.dependencies.kotlin
     implementation rootProject.ext.dependencies.picasso
-    implementation rootProject.ext.dependencies.constraintLayout
     implementation rootProject.ext.dependencies.adjustableImageView
     implementation rootProject.ext.dependencies.lazyStorage
     implementation rootProject.ext.dependencies.anko
