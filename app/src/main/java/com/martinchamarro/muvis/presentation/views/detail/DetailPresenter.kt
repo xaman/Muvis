@@ -43,6 +43,8 @@ class DetailPresenter @Inject constructor(
     private lateinit var movie: Movie
     private var trailer: Video? = null
 
+    override val isFavorite: Boolean get() = movie.isFavorite
+
     override fun initialize() {
         view?.showProgress()
         val movieId = view?.getMovieId() ?: -1

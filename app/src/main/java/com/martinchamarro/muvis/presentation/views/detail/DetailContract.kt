@@ -25,6 +25,7 @@ import com.martinchamarro.muvis.presentation.base.BasePresenter
 interface DetailContract {
 
     interface Presenter : BasePresenter<View> {
+        val isFavorite: Boolean
         fun setFavorite()
         fun shareMovie()
         fun showTrailer()

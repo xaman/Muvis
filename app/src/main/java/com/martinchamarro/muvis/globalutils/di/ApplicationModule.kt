@@ -19,6 +19,8 @@ package com.martinchamarro.muvis.globalutils.di
 import android.app.Application
 import android.content.Context
 import com.martinchamarro.muvis.globalutils.logger.Logger
+import com.martinchamarro.muvis.globalutils.tracker.FirebaseTracker
+import com.martinchamarro.muvis.globalutils.tracker.Tracker
 
 import javax.inject.Singleton
 
@@ -30,5 +32,7 @@ import dagger.Provides
     @Provides @Singleton internal fun provideApplicationContext(): Context = application
 
     @Provides @Singleton fun provideLogger() = Logger
+
+    @Provides @Singleton fun provideTracker(context: Context): Tracker = FirebaseTracker(context)
 
 }

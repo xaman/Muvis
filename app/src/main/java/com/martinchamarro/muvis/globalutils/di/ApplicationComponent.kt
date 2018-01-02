@@ -24,6 +24,7 @@ import com.martinchamarro.muvis.threading.Executor
 import com.martinchamarro.muvis.threading.MainThread
 import com.martinchamarro.muvis.domain.repository.MoviesRepository
 import com.martinchamarro.muvis.globalutils.logger.Logger
+import com.martinchamarro.muvis.globalutils.tracker.Tracker
 
 import javax.inject.Singleton
 
@@ -38,4 +39,5 @@ interface ApplicationComponent {
     fun executor(): Executor
     fun moviesRepository(): MoviesRepository
     fun logger(): Logger
+    fun tracker(): Tracker
 }

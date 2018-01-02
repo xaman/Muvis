@@ -25,6 +25,10 @@ import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.domain.model.Detail
 import com.martinchamarro.muvis.domain.model.Movie
 import com.martinchamarro.muvis.domain.model.Video
+import com.martinchamarro.muvis.globalutils.tracker.Tracker
+import com.martinchamarro.muvis.globalutils.tracker.event.FavMovie
+import com.martinchamarro.muvis.globalutils.tracker.event.ShowMovie
+import com.martinchamarro.muvis.globalutils.tracker.event.UnfavMovie
 import com.martinchamarro.muvis.presentation.extensions.activityComponent
 import com.martinchamarro.muvis.presentation.extensions.fullScreen
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -36,6 +40,7 @@ import javax.inject.Inject
 class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     @Inject lateinit var presenter: DetailContract.Presenter
+    @Inject lateinit var tracker: Tracker
     private lateinit var renderer: DetailRenderer
 
     companion object {
@@ -54,6 +59,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         initializeRenderer()
         initializePresenter()
         setListeners()
+        trackShowMovie()
     }
 
     private fun injectDependencies() = activityComponent.inject(this)
@@ -78,7 +84,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     private fun setListeners() {
-        fabView.onClick { presenter.setFavorite() }
+        fabView.onClick { onFabClick() }
         videoThumbnail.onClick { presenter.showTrailer() }
     }
 
@@ -102,6 +108,14 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     override fun hideProgress() {}
 
     override fun shareMovie(url: String) { share(url) }
+
+    private fun onFabClick() {
+        val id = getMovieId()
+        tracker.track(if (presenter.isFavorite) UnfavMovie(id) else FavMovie(id))
+        presenter.setFavorite()
+    }
+
+    private fun trackShowMovie() = tracker.track(ShowMovie(getMovieId()))
 
     override fun onPause() {
         presenter.onPause()
