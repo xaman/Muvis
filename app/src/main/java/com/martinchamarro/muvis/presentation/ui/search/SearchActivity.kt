@@ -18,13 +18,13 @@ package com.martinchamarro.muvis.presentation.ui.search
 
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import butterknife.ButterKnife
 import butterknife.OnTextChanged
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.presentation.base.BaseActivity
 import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.navigation.Navigator
 import com.martinchamarro.muvis.presentation.ui.detail.DetailActivity
@@ -34,9 +34,8 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.layout_toolbar_progress.*
 import javax.inject.Inject
 
-class SearchActivity : AppCompatActivity(), SearchContract.View {
+class SearchActivity : BaseActivity<SearchContract.Presenter>(), SearchContract.View {
 
-    @Inject protected lateinit var presenter: SearchContract.Presenter
     @Inject protected lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,16 +54,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
     private fun configureRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onPause() {
-        presenter.onPause()
-        super.onPause()
     }
 
     @OnTextChanged(R.id.searchInput)
@@ -87,11 +76,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
     override fun showEmpty() = emptyView.visible()
 
     override fun hideEmpty() = emptyView.gone()
-
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
-    }
 
     override fun finish() {
         super.finish()

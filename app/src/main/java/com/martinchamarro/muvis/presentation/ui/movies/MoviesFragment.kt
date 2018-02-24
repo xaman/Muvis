@@ -18,7 +18,6 @@ package com.martinchamarro.muvis.presentation.ui.movies
 
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager.VERTICAL
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
@@ -26,10 +25,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.extensions.activityComponent
-import com.martinchamarro.muvis.presentation.extensions.dimen
-import com.martinchamarro.muvis.presentation.extensions.gone
-import com.martinchamarro.muvis.presentation.extensions.visible
+import com.martinchamarro.muvis.presentation.base.BaseFragment
+import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.ui.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.ui.home.HomeActivity
 import com.martinchamarro.muvis.presentation.widgets.ItemOffsetDecorator
@@ -37,16 +34,14 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
-import javax.inject.Inject
 
-class MoviesFragment : Fragment(), MoviesContract.View {
+class MoviesFragment : BaseFragment<MoviesContract.Presenter>(), MoviesContract.View {
 
     companion object {
         private const val NUM_COLUMNS = 3
         fun getInstance() = MoviesFragment()
     }
 
-    @Inject lateinit var presenter: MoviesPresenter
     private lateinit var adapter: MoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,11 +75,6 @@ class MoviesFragment : Fragment(), MoviesContract.View {
         presenter.initialize()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
     override fun render(movies: List<Movie>) = adapter.setMovies(movies)
 
     private fun onMovieClick(movie: Movie, view: View) {
@@ -102,15 +92,5 @@ class MoviesFragment : Fragment(), MoviesContract.View {
     override fun hideProgress() = (activity as HomeActivity).hideToolbarProgress()
 
     override fun showFeaturedError() {}
-
-    override fun onPause() {
-        presenter.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
-    }
 
 }

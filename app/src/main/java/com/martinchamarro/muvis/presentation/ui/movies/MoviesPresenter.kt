@@ -45,7 +45,7 @@ class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) 
         view?.showFeaturedError()
     }
 
-    fun onScrollEnd() {
+    override fun onScrollEnd() {
         page += 1
         loadMovies()
     }

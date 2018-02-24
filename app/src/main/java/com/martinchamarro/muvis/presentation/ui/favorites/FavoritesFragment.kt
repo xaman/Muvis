@@ -18,13 +18,13 @@ package com.martinchamarro.muvis.presentation.ui.favorites
 
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Movie
+import com.martinchamarro.muvis.presentation.base.BaseFragment
 import com.martinchamarro.muvis.presentation.extensions.*
 import com.martinchamarro.muvis.presentation.ui.detail.DetailActivity
 import com.martinchamarro.muvis.presentation.ui.home.HomeActivity
@@ -33,15 +33,12 @@ import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
-import javax.inject.Inject
 
-class FavoritesFragment : Fragment(), FavoritesContract.View {
+class FavoritesFragment : BaseFragment<FavoritesContract.Presenter>(), FavoritesContract.View {
 
     companion object {
         fun getInstance() = FavoritesFragment()
     }
-
-    @Inject lateinit var presenter: FavoritesContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,16 +66,6 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
         presenter.initialize()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onPause() {
-        presenter.onPause()
-        super.onPause()
-    }
-
     override fun render(favorites: List<Movie>) {
         val adapter = FavoritesAdapter(ctx, favorites, this::onFavoriteClick)
         recyclerView.adapter = adapter
@@ -97,10 +84,5 @@ class FavoritesFragment : Fragment(), FavoritesContract.View {
     override fun showEmpty() = emptyView.visible()
 
     override fun hideEmpty() = emptyView.gone()
-
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
-    }
 
 }

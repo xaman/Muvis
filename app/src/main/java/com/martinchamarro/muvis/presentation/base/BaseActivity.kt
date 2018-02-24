@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Martin Chamarro (@martinchamarro)
+ * Copyright 2018 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,28 @@
  * limitations under the License.
  */
 
-package com.martinchamarro.muvis.presentation.ui.movies
+package com.martinchamarro.muvis.presentation.base
 
-import com.martinchamarro.muvis.domain.model.Movie
-import com.martinchamarro.muvis.presentation.base.BasePresenter
+import android.support.v7.app.AppCompatActivity
+import javax.inject.Inject
 
-interface MoviesContract {
+abstract class BaseActivity<PRESENTER : BasePresenter<*>> : AppCompatActivity() {
 
-    interface Presenter : BasePresenter<View> {
-        fun onScrollEnd()
+    @Inject lateinit var presenter: PRESENTER
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
     }
 
-    interface View {
-        fun render(movies: List<Movie>)
-        fun showEmptyView()
-        fun hideEmptyView()
-        fun showProgress()
-        fun hideProgress()
-        fun showFeaturedError()
+    override fun onPause() {
+        presenter.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
     }
 
 }

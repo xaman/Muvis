@@ -17,17 +17,12 @@
 package com.martinchamarro.muvis.presentation.ui.splash
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
 import com.martinchamarro.muvis.R
-import com.martinchamarro.muvis.presentation.extensions.activityComponent
-import com.martinchamarro.muvis.presentation.extensions.fullScreen
-import com.martinchamarro.muvis.presentation.extensions.supportsKitkat
-import javax.inject.Inject
+import com.martinchamarro.muvis.presentation.base.BaseActivity
+import com.martinchamarro.muvis.presentation.extensions.*
 
-class SplashActivity : AppCompatActivity(), SplashContract.View {
-
-    @Inject lateinit var presenter: SplashContract.Presenter
+class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         configureFullScreen()
@@ -45,21 +40,6 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     private fun initializePresenter() {
         presenter.view = this
         presenter.initialize()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onPause() {
-        presenter.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
     }
 
 }
