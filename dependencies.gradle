@@ -18,40 +18,52 @@ allprojects {
     ext {
 
         supportVersion = '27.0.2'
-        daggerVersion = '2.13'
+        multidexVersion = '1.0.2'
+        constraintLayoutVersion = '1.1.0-beta5'
+        gsonVersion = '2.8.2'
+        daggerVersion = '2.14.1'
+        firebaseCoreVersion = '11.8.0'
         butterKnifeVersion = '8.8.1'
-        retrofitVersion = "2.3.0"
-        okhttpVersion = "3.9.1"
-        ankoVersion = "0.10.3"
+        retrofitVersion = '2.3.0'
+        okhttpVersion = '3.9.1'
+        picassoVersion = '2.5.2'
+        adjustableImageViewVersion = '1.0.1'
+        lazyStorageVersion = '1.1.0'
+        ankoVersion = '0.10.4'
+        funktionaleEitherVersion = '1.2'
 
         dependencies = [
-                support            : "com.android.support:appcompat-v7:${supportVersion}",
-                design             : "com.android.support:design:${supportVersion}",
-                multidex           : "com.android.support:multidex:1.0.2",
-                cardView           : "com.android.support:cardview-v7:${supportVersion}",
-                constraintLayout   : "com.android.support.constraint:constraint-layout:1.1.0-beta4",
-                gson               : "com.google.code.gson:gson:2.8.2",
-                dagger             : "com.google.dagger:dagger:${daggerVersion}",
-                daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
-                firebaseCore       : "com.google.firebase:firebase-core:11.8.0",
-                butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
-                butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
-                retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-                retrofitGson       : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-                okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+                support            : "com.android.support:appcompat-v7:$supportVersion",
+                design             : "com.android.support:design:$supportVersion",
+                multidex           : "com.android.support:multidex:$multidexVersion",
+                cardView           : "com.android.support:cardview-v7:$supportVersion",
+                constraintLayout   : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+                gson               : "com.google.code.gson:gson:$gsonVersion",
+                dagger             : "com.google.dagger:dagger:$daggerVersion",
+                daggerCompiler     : "com.google.dagger:dagger-compiler:$daggerVersion",
+                firebaseCore       : "com.google.firebase:firebase-core:$firebaseCoreVersion",
+                butterKnife        : "com.jakewharton:butterknife:$butterKnifeVersion",
+                butterKnifeCompiler: "com.jakewharton:butterknife-compiler:$butterKnifeVersion",
+                retrofit           : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                retrofitGson       : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+                okhttp3Logging     : "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
                 kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
-                picasso            : "com.squareup.picasso:picasso:2.5.2",
-                adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1",
-                lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:1.1.0",
+                picasso            : "com.squareup.picasso:picasso:$picassoVersion",
+                adjustableImageView: "com.inthecheesefactory.thecheeselibrary:adjustable-imageview:$adjustableImageViewVersion",
+                lazyStorage        : "com.martinchamarro.lazystorage:lazystorage:$lazyStorageVersion",
                 anko               : "org.jetbrains.anko:anko:$ankoVersion",
-                funktionaleEither  : "org.funktionale:funktionale-either:1.2"
+                funktionaleEither  : "org.funktionale:funktionale-either:$funktionaleEitherVersion"
         ]
 
+        mockitoCoreVersion = '2.15.0'
+        mockitoKotlinVersion = '1.5.0'
+        espressoCoreVersion = '3.0.1'
+
         testingDependencies = [
-                junit        : 'junit:junit:4.12',
-                mockitoCore  : 'org.mockito:mockito-core:2.13.0',
-                mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.5.0',
-                espresso     : 'com.android.support.test.espresso:espresso-core:3.0.1'
+                junit        : "junit:junit:4.12",
+                mockitoCore  : "org.mockito:mockito-core:$mockitoCoreVersion",
+                mockitoKotlin: "com.nhaarman:mockito-kotlin:$mockitoKotlinVersion",
+                espresso     : "com.android.support.test.espresso:espresso-core:$espressoCoreVersion"
         ]
     }
 }
