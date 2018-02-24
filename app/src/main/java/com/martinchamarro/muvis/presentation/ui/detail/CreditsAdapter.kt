@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Martin Chamarro (@martinchamarro)
+ * Copyright 2018 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,9 @@ import com.martinchamarro.muvis.R
 import com.martinchamarro.muvis.domain.model.Cast
 import com.martinchamarro.muvis.presentation.extensions.dimen
 
-class CreditsAdapter(val ctx: Context, val credits: List<Cast>) : RecyclerView.Adapter<CastViewHolder>() {
+class CreditsAdapter(
+        private val ctx: Context,
+        private val credits: List<Cast>) : RecyclerView.Adapter<CastViewHolder>() {
 
     private val itemWidth = ctx.dimen(R.dimen.item_cast_width)
     private val itemHeight = ctx.dimen(R.dimen.item_cast_height)

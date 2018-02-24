@@ -16,9 +16,9 @@
 
 package com.martinchamarro.muvis.presentation.base
 
-interface BasePresenter<T> {
+interface BasePresenter<VIEW> {
 
-    var view: T?
+    var view: VIEW?
 
     fun initialize() {
         // Default empty implementation

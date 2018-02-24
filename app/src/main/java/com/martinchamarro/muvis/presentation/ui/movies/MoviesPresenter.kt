@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Martin Chamarro (@martinchamarro)
+ * Copyright 2018 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ class MoviesPresenter @Inject constructor(private val getFeatured: GetFeatured) 
     override var view: MoviesContract.View? = null
 
     private var page: Int = 1
-    private var featured: MutableList<Movie> = mutableListOf()
+    private var featured = mutableListOf<Movie>()
 
     override fun initialize() { loadMovies() }
 

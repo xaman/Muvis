@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Martin Chamarro (@martinchamarro)
+ * Copyright 2018 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import com.martinchamarro.muvis.presentation.ui.movies.MoviesFragment
 class HomePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     companion object {
-        val NUM_PAGES = 2
-        val MOVIES_POS = 0
-        val FAVORITES_POS = 1
+        private const val NUM_PAGES = 2
+        private const val MOVIES_POS = 0
+        private const val FAVORITES_POS = 1
     }
 
     override fun getItem(pos: Int) = when (pos) {

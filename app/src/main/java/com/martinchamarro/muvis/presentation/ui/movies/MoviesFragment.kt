@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Martin Chamarro (@martinchamarro)
+ * Copyright 2018 Martin Chamarro (@martinchamarro)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ import javax.inject.Inject
 class MoviesFragment : Fragment(), MoviesContract.View {
 
     companion object {
-        private val NUM_COLUMNS = 3
+        private const val NUM_COLUMNS = 3
         fun getInstance() = MoviesFragment()
     }
 
