@@ -18,11 +18,11 @@ package com.martinchamarro.muvis.presentation.navigation
 
 import android.app.Activity
 import android.content.Intent
-import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
+import com.martinchamarro.muvis.presentation.ui.detail.DetailActivity
 
-import com.martinchamarro.muvis.presentation.views.home.HomeActivity
-import com.martinchamarro.muvis.presentation.views.search.SearchActivity
-import com.martinchamarro.muvis.presentation.views.trailer.TrailerActivity
+import com.martinchamarro.muvis.presentation.ui.home.HomeActivity
+import com.martinchamarro.muvis.presentation.ui.search.SearchActivity
+import com.martinchamarro.muvis.presentation.ui.trailer.TrailerActivity
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.noAnimation
 

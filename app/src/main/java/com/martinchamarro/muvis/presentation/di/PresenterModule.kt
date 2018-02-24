@@ -19,11 +19,11 @@ package com.martinchamarro.muvis.presentation.di
 import com.martinchamarro.muvis.domain.usecase.*
 import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.navigation.Navigator
-import com.martinchamarro.muvis.presentation.views.detail.*
-import com.martinchamarro.muvis.presentation.views.favorites.*
-import com.martinchamarro.muvis.presentation.views.movies.*
-import com.martinchamarro.muvis.presentation.views.search.*
-import com.martinchamarro.muvis.presentation.views.splash.*
+import com.martinchamarro.muvis.presentation.ui.detail.*
+import com.martinchamarro.muvis.presentation.ui.favorites.*
+import com.martinchamarro.muvis.presentation.ui.movies.*
+import com.martinchamarro.muvis.presentation.ui.search.*
+import com.martinchamarro.muvis.presentation.ui.splash.*
 
 import dagger.Module
 import dagger.Provides

@@ -29,7 +29,7 @@
         android:clipToPadding="false"
         android:padding="@dimen/favorites_grid_spacing"/>
 
-    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
+    <com.martinchamarro.muvis.presentation.widgets.EmptyView
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -23,8 +23,8 @@ import com.martinchamarro.muvis.domain.usecase.GetFeatured
 import com.martinchamarro.muvis.presentation.threading.DummyExecutor
 import com.martinchamarro.muvis.presentation.threading.DummyMainThread
 import com.martinchamarro.muvis.presentation.factories.DummyMovieFactory.givenAListOfMovies
-import com.martinchamarro.muvis.presentation.views.movies.MoviesContract
-import com.martinchamarro.muvis.presentation.views.movies.MoviesPresenter
+import com.martinchamarro.muvis.presentation.ui.movies.MoviesContract
+import com.martinchamarro.muvis.presentation.ui.movies.MoviesPresenter
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever

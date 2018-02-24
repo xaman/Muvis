@@ -23,7 +23,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.martinchamarro.muvis.presentation.views.detail.DetailActivity">
+    tools:context="com.martinchamarro.muvis.presentation.ui.detail.DetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -102,7 +102,7 @@
                 android:nestedScrollingEnabled="false"
                 android:padding="@dimen/small_padding"/>
 
-            <com.martinchamarro.muvis.presentation.views.detail.VideoThumbnailView
+            <com.martinchamarro.muvis.presentation.ui.detail.VideoThumbnailView
                 android:id="@+id/videoThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_video_thumbnail_height"

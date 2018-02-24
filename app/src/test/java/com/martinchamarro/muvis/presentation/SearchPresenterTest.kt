@@ -23,8 +23,8 @@ import com.martinchamarro.muvis.globalutils.logger.Logger
 import com.martinchamarro.muvis.presentation.threading.DummyExecutor
 import com.martinchamarro.muvis.presentation.threading.DummyMainThread
 import com.martinchamarro.muvis.presentation.factories.DummyMovieFactory.givenAListOfMovies
-import com.martinchamarro.muvis.presentation.views.search.SearchContract
-import com.martinchamarro.muvis.presentation.views.search.SearchPresenter
+import com.martinchamarro.muvis.presentation.ui.search.SearchContract
+import com.martinchamarro.muvis.presentation.ui.search.SearchPresenter
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever

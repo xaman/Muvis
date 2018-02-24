@@ -28,7 +28,7 @@ import com.martinchamarro.muvis.presentation.threading.*
 import com.martinchamarro.muvis.presentation.threading.DummyMainThread
 import com.martinchamarro.muvis.presentation.factories.DummyMovieFactory.givenAMovie
 import com.martinchamarro.muvis.presentation.factories.DummyTrailerFactory.givenATrailer
-import com.martinchamarro.muvis.presentation.views.detail.*
+import com.martinchamarro.muvis.presentation.ui.detail.*
 import com.nhaarman.mockito_kotlin.*
 import org.funktionale.either.Either
 import org.junit.Before

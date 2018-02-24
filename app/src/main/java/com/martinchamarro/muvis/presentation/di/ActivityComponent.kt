@@ -21,12 +21,12 @@ import android.app.Activity
 
 import com.martinchamarro.muvis.domain.di.UseCaseModule
 import com.martinchamarro.muvis.globalutils.di.ApplicationComponent
-import com.martinchamarro.muvis.presentation.views.detail.DetailActivity
-import com.martinchamarro.muvis.presentation.views.favorites.FavoritesFragment
-import com.martinchamarro.muvis.presentation.views.movies.MoviesFragment
-import com.martinchamarro.muvis.presentation.views.home.HomeActivity
-import com.martinchamarro.muvis.presentation.views.search.SearchActivity
-import com.martinchamarro.muvis.presentation.views.splash.SplashActivity
+import com.martinchamarro.muvis.presentation.ui.detail.DetailActivity
+import com.martinchamarro.muvis.presentation.ui.favorites.FavoritesFragment
+import com.martinchamarro.muvis.presentation.ui.movies.MoviesFragment
+import com.martinchamarro.muvis.presentation.ui.home.HomeActivity
+import com.martinchamarro.muvis.presentation.ui.search.SearchActivity
+import com.martinchamarro.muvis.presentation.ui.splash.SplashActivity
 
 import dagger.Component
 

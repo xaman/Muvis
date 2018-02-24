@@ -30,7 +30,7 @@
         android:padding="@dimen/movies_grid_spacing"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <com.martinchamarro.muvis.presentation.views.widgets.EmptyView
+    <com.martinchamarro.muvis.presentation.widgets.EmptyView
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
