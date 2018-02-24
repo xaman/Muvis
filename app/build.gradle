@@ -48,7 +48,7 @@ android {
 
         debug {
             applicationIdSuffix '.debug'
-            versionNameSuffix '-debug-build' + getDate()
+            versionNameSuffix '-debug'
             debuggable true
             buildConfigField "boolean", "DEBUG_MODE", "true"
             buildConfigField "String", "TMD_API_KEY", '"3202eb5aa836427005ced3a158c19d0b"'
@@ -118,12 +118,6 @@ dependencies {
     androidTestImplementation(rootProject.ext.testingDependencies.espresso) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-}
-
-static def getDate() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMddHHmmss')
-    return formattedDate
 }
 
 apply plugin: 'com.google.gms.google-services'
